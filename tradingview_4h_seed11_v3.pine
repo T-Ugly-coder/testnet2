@@ -1,0 +1,313 @@
+//@version=5
+// 4H SEED-11 v3 — Next-bar-open entry, breakeven, realistic slippage
+// Key: process_orders_on_close=false fills at next bar open (matches Python engine).
+// Slippage: set SLIPPAGE_TICKS = (BTC_PRICE * 0.00015) / TICK_SIZE for 1.5 bps.
+// Commission 0.04% matches Binance taker.
+
+strategy("4H Seed-11 v3", overlay=true, pyramiding=1, initial_capital=100000,
+     commission_type=strategy.commission.percent, commission_value=0.04,
+     slippage=150, calc_on_every_tick=false, process_orders_on_close=false)
+
+// --- Inputs (seed-11 params) ---
+entryThreshold = input.float(1.8844688405137129, "Entry Threshold", step=0.01)
+minDominance   = input.float(0.15249814698150033, "Min Dominance", step=0.01)
+rr             = input.float(2.0037318124660026, "Risk:Reward", step=0.05)
+
+atrPeriod = 8
+volMaPeriod = 47
+swingLen = 4
+slBufferAtr = input.float(1.437301859247677, "SL Buffer ATR", step=0.05)
+wickMinAtr = input.float(0.8111717887485163, "Wick Min ATR", step=0.05)
+
+breakoutLookback = 89
+breakoutAtrBuffer = input.float(0.1174998582174659, step=0.01)
+retestWindow = 16
+retestAtrBuffer = input.float(0.18657153637656076, step=0.01)
+failedLookback = 56
+failedAtrBuffer = input.float(0.18247915998961625, step=0.01)
+failedReclaimAtr = input.float(0.3741420338990924, step=0.01)
+volumeBreakoutLookback = 89
+volumeBreakoutAtrBuffer = input.float(0.27311646429462116, step=0.01)
+volumeBreakoutVolPeriod = 60
+volumeBreakoutVolMult = input.float(2.478825065742972, step=0.01)
+volumeBreakoutBodyAtrMin = input.float(0.4663014206414655, step=0.01)
+
+rsiPeriod = 13
+rsiBand = input.float(2.497830386765718, step=0.1)
+bbPeriod = 16
+bbMult = input.float(1.5013937992429751, step=0.05)
+squeezeWindow = 109
+squeezeQuantile = input.float(0.235743992160026, step=0.01)
+adxPeriod = 28
+adxThreshold = input.float(24.781941473238838, step=0.5)
+
+wyckoffLookback = 57
+wyckoffCompression = input.float(0.6624662041174703, step=0.01)
+vwapZThreshold = input.float(0.5313232029378815, step=0.05)
+
+w_trend = 2.4306478356469574
+w_sfp = 1.1763855030720272
+w_candle = 2.0626785300003982
+w_regime = 0.8090219741799084
+w_vsa = 0.1690276219453991
+w_wyckoff = 2.02676561228696
+w_vwap_dev = 0.5826204035977817
+w_breakout = 0.07415960000477857
+w_breakout_retest = 1.5742880244563195
+w_failed_breakout = 1.6500451562549494
+w_volume_breakout = 0.6720799575480777
+w_momentum = 2.064870346583357
+w_volatility = 0.905783282398238
+w_adx = 2.0447374807618255
+
+riskPct = input.float(1.0, "Risk %", step=0.1)
+allowLong = input.bool(true)
+allowShort = input.bool(true)
+showScores = input.bool(false)
+cooldownBars = input.int(0, "Cooldown", minval=0)
+usePartialExit = input.bool(true)
+partialTpR = input.float(0.487048552658079, step=0.05, minval=0.1)
+partialClosePct = input.float(74.11285221294069, step=1.0, minval=1.0, maxval=99.0)
+useBreakeven = input.bool(true)
+breakevenAfterR = input.float(0.5, step=0.1, minval=0.0)
+
+// --- Core indicators ---
+atr = ta.atr(atrPeriod)
+volMa = ta.sma(volume, volMaPeriod)
+body = math.abs(close - open)
+range_ = high - low
+
+emaFast = ta.ema(close, 12)
+emaSlow = ta.ema(close, 26)
+rsiVal = ta.rsi(close, rsiPeriod)
+[_, _, macdHist] = ta.macd(close, 12, 26, 9)
+[_, _, adxVal] = ta.dmi(adxPeriod, adxPeriod)
+
+bbMid = ta.sma(close, bbPeriod)
+bbStdevPop = ta.stdev(close, bbPeriod) * math.sqrt((bbPeriod - 1.0) / bbPeriod)
+bbDev = bbMult * bbStdevPop
+bbUpper = bbMid + bbDev
+bbLower = bbMid - bbDev
+bbWidth = (bbUpper - bbLower) / math.max(math.abs(bbMid), 1e-12)
+
+bbWidthLow = ta.lowest(bbWidth, squeezeWindow)
+bbWidthHigh = ta.highest(bbWidth, squeezeWindow)
+widthRankApprox = (bbWidth - bbWidthLow) / math.max(bbWidthHigh - bbWidthLow, 1e-10)
+wasSqueezed = ta.highest(widthRankApprox < squeezeQuantile ? 1 : 0, 5)[1] > 0
+
+var float vwapPV = 0.0
+var float vwapV = 0.0
+var float vwapPV2 = 0.0
+vwapPV += close * volume
+vwapV += volume
+vwapPV2 += close * close * volume
+vwapVal = vwapV > 0 ? vwapPV / vwapV : na
+vwapStd = vwapV > 0 ? math.sqrt(math.max(vwapPV2 / vwapV - vwapVal * vwapVal, 0.0)) : na
+vwapDev = vwapStd > 0 ? (close - vwapVal) / vwapStd : na
+
+// --- Scorers ---
+b(bool x) => x ? 1.0 : 0.0
+
+bull_trend = emaFast > emaSlow
+bear_trend = emaFast < emaSlow
+priorHighSwing = ta.highest(high, swingLen)[1]
+priorLowSwing = ta.lowest(low, swingLen)[1]
+upperWick = high - math.max(open, close)
+lowerWick = math.min(open, close) - low
+bull_sfp = low < priorLowSwing and close > priorLowSwing and lowerWick >= wickMinAtr * atr
+bear_sfp = high > priorHighSwing and close < priorHighSwing and upperWick >= wickMinAtr * atr
+bull_candle = (close > open and close[1] < open[1] and close > open[1] and open <= close[1]) or (lowerWick > body * 2 and close > open and lowerWick > wickMinAtr * atr)
+bear_candle = (close < open and close[1] > open[1] and close < open[1] and open >= close[1]) or (upperWick > body * 2 and close < open and upperWick > wickMinAtr * atr)
+emaRegime = ta.ema(close, 50)
+regimeSlope = emaRegime - emaRegime[10]
+bull_regime = adxVal > 20 and regimeSlope > 0
+bear_regime = adxVal > 20 and regimeSlope < 0
+wideSpread = range_ > ta.sma(range_, volMaPeriod) * 1.5
+highVolume = volume > volMa * 1.5
+bull_vsa = wideSpread and highVolume and close > (high + low) / 2
+bear_vsa = wideSpread and highVolume and close < (high + low) / 2
+trHigh = ta.highest(high, wyckoffLookback)[1]
+trLow = ta.lowest(low, wyckoffLookback)[1]
+trRange = trHigh - trLow
+compressed = trRange < ta.sma(atr, wyckoffLookback) * wyckoffLookback * wyckoffCompression
+bull_wyckoff = compressed and low < trLow and close > trLow
+bear_wyckoff = compressed and high > trHigh and close < trHigh
+bull_vwap = vwapDev < -vwapZThreshold
+bear_vwap = vwapDev > vwapZThreshold
+prevHighBreakout = ta.highest(high, breakoutLookback)[1]
+prevLowBreakout = ta.lowest(low, breakoutLookback)[1]
+bull_breakout = close > prevHighBreakout + breakoutAtrBuffer * atr
+bear_breakout = close < prevLowBreakout - breakoutAtrBuffer * atr
+
+var float longBreakLevel = na
+var int longBreakBars = 100000
+var float shortBreakLevel = na
+var int shortBreakBars = 100000
+
+if bull_breakout
+    {
+    longBreakLevel := prevHighBreakout
+    longBreakBars := 0
+    }
+else
+    longBreakBars += 1
+
+if bear_breakout
+    {
+    shortBreakLevel := prevLowBreakout
+    shortBreakBars := 0
+    }
+else
+    shortBreakBars += 1
+
+bull_retest = longBreakBars > 0 and longBreakBars <= retestWindow and low <= longBreakLevel + retestAtrBuffer * atr and close > longBreakLevel and close > open
+bear_retest = shortBreakBars > 0 and shortBreakBars <= retestWindow and high >= shortBreakLevel - retestAtrBuffer * atr and close < shortBreakLevel and close < open
+
+prevHighFailed = ta.highest(high, failedLookback)[1]
+prevLowFailed = ta.lowest(low, failedLookback)[1]
+bear_failed_breakout = high > prevHighFailed + failedAtrBuffer * atr and close < prevHighFailed - failedReclaimAtr * atr and close < open
+bull_failed_breakout = low < prevLowFailed - failedAtrBuffer * atr and close > prevLowFailed + failedReclaimAtr * atr and close > open
+
+prevHighVolBreak = ta.highest(high, volumeBreakoutLookback)[1]
+prevLowVolBreak = ta.lowest(low, volumeBreakoutLookback)[1]
+volBreakMa = ta.sma(volume, volumeBreakoutVolPeriod)[1]
+confirmedVolBreak = volume > volumeBreakoutVolMult * volBreakMa and body > volumeBreakoutBodyAtrMin * atr
+bull_volume_breakout = close > prevHighVolBreak + volumeBreakoutAtrBuffer * atr and confirmedVolBreak and close > open
+bear_volume_breakout = close < prevLowVolBreak - volumeBreakoutAtrBuffer * atr and confirmedVolBreak and close < open
+bull_momentum = rsiVal > 50 + rsiBand and macdHist > 0 and emaFast > emaSlow
+bear_momentum = rsiVal < 50 - rsiBand and macdHist < 0 and emaFast < emaSlow
+bull_volatility = wasSqueezed and close > bbUpper
+bear_volatility = wasSqueezed and close < bbLower
+adx_strength = adxVal > adxThreshold
+
+bull_score = b(bull_trend) * w_trend + b(bull_sfp) * w_sfp + b(bull_candle) * w_candle + b(bull_regime) * w_regime + b(bull_vsa) * w_vsa + b(bull_wyckoff) * w_wyckoff + b(bull_vwap) * w_vwap_dev + b(bull_breakout) * w_breakout + b(bull_retest) * w_breakout_retest + b(bull_failed_breakout) * w_failed_breakout + b(bull_volume_breakout) * w_volume_breakout + b(bull_momentum) * w_momentum + b(bull_volatility) * w_volatility + b(adx_strength) * w_adx
+
+bear_score = b(bear_trend) * w_trend + b(bear_sfp) * w_sfp + b(bear_candle) * w_candle + b(bear_regime) * w_regime + b(bear_vsa) * w_vsa + b(bear_wyckoff) * w_wyckoff + b(bear_vwap) * w_vwap_dev + b(bear_breakout) * w_breakout + b(bear_retest) * w_breakout_retest + b(bear_failed_breakout) * w_failed_breakout + b(bear_volume_breakout) * w_volume_breakout + b(bear_momentum) * w_momentum + b(bear_volatility) * w_volatility + b(adx_strength) * w_adx
+
+// --- Entry logic: signal bar -> queue -> next bar open fill ---
+var int lastEntryBar = na
+cooldownOk = na(lastEntryBar) or (bar_index - lastEntryBar) >= cooldownBars
+longSetup = bull_score >= entryThreshold and bull_score - bear_score >= minDominance and cooldownOk
+shortSetup = bear_score >= entryThreshold and bear_score - bull_score >= minDominance and cooldownOk
+
+var bool pendingLong = false
+var bool pendingShort = false
+var float pLongSL = na
+var float pLongTP = na
+var float pLongPartialTP = na
+var float pLongRisk = na
+var float pShortSL = na
+var float pShortTP = na
+var float pShortPartialTP = na
+var float pShortRisk = na
+
+var float aLongSL = na
+var float aLongTP = na
+var float aLongRisk = na
+var bool beLongDone = false
+var float aShortSL = na
+var float aShortTP = na
+var float aShortRisk = na
+var bool beShortDone = false
+
+qtyForRisk(float r) => r > 0 ? (strategy.equity * riskPct / 100.0) / r : na
+
+if longSetup and strategy.position_size == 0 and allowLong and not pendingLong
+    {
+    pendingLong := true
+    pLongSL := low - slBufferAtr * atr
+    pLongTP := close + (close - pLongSL) * rr
+    pLongPartialTP := close + (close - pLongSL) * partialTpR
+    pLongRisk := close - pLongSL
+    }
+
+if shortSetup and strategy.position_size == 0 and allowShort and not pendingShort
+    {
+    pendingShort := true
+    pShortSL := high + slBufferAtr * atr
+    pShortTP := close - (pShortSL - close) * rr
+    pShortPartialTP := close - (pShortSL - close) * partialTpR
+    pShortRisk := pShortSL - close
+    }
+
+if pendingLong and strategy.position_size == 0 and allowLong
+    {
+    strategy.entry("Long", strategy.long, qty = qtyForRisk(pLongRisk))
+    if usePartialExit
+        {
+        strategy.exit("Long Partial", "Long", qty_percent = partialClosePct, limit = pLongPartialTP)
+        strategy.exit("Long Runner", "Long", stop = pLongSL, limit = pLongTP)
+        }
+    else
+        strategy.exit("Long Exit", "Long", stop = pLongSL, limit = pLongTP)
+    aLongSL := pLongSL
+    aLongTP := pLongTP
+    aLongRisk := pLongRisk
+    beLongDone := false
+    pendingLong := false
+    }
+
+if pendingShort and strategy.position_size == 0 and allowShort
+    {
+    strategy.entry("Short", strategy.short, qty = qtyForRisk(pShortRisk))
+    if usePartialExit
+        {
+        strategy.exit("Short Partial", "Short", qty_percent = partialClosePct, limit = pShortPartialTP)
+        strategy.exit("Short Runner", "Short", stop = pShortSL, limit = pShortTP)
+        }
+    else
+        strategy.exit("Short Exit", "Short", stop = pShortSL, limit = pShortTP)
+    aShortSL := pShortSL
+    aShortTP := pShortTP
+    aShortRisk := pShortRisk
+    beShortDone := false
+    pendingShort := false
+    }
+
+// Track actual entry bar for cooldown
+justEntered = strategy.position_size > 0 and (strategy.position_size[1] == 0 or na(strategy.position_size[1]))
+if justEntered
+    lastEntryBar := bar_index
+
+// Breakeven: move runner SL to entry price after +R reached
+if useBreakeven and strategy.position_size > 0 and not beLongDone and not na(aLongRisk) and not na(strategy.position_avg_price)
+    {
+    beTrigger = strategy.position_avg_price + aLongRisk * breakevenAfterR
+    if high >= beTrigger
+        {
+        strategy.exit("Long Runner", "Long", stop = strategy.position_avg_price, limit = aLongTP)
+        beLongDone := true
+        }
+    }
+
+if useBreakeven and strategy.position_size < 0 and not beShortDone and not na(aShortRisk) and not na(strategy.position_avg_price)
+    {
+    beTrigger = strategy.position_avg_price - aShortRisk * breakevenAfterR
+    if low <= beTrigger
+        {
+        strategy.exit("Short Runner", "Short", stop = strategy.position_avg_price, limit = aShortTP)
+        beShortDone := true
+        }
+    }
+
+// Clear active levels when flat
+if strategy.position_size == 0
+    {
+    aLongSL := na
+    aLongTP := na
+    aLongRisk := na
+    beLongDone := false
+    aShortSL := na
+    aShortTP := na
+    aShortRisk := na
+    beShortDone := false
+    }
+
+// --- Visuals ---
+plot(emaFast, "EMA Fast", color = color.new(color.aqua, 0))
+plot(emaSlow, "EMA Slow", color = color.new(color.orange, 0))
+plot(vwapVal, "VWAP", color = color.new(color.yellow, 0))
+plotshape(longSetup, title = "Long", style = shape.triangleup, location = location.belowbar, color = color.new(color.lime, 0), size = size.tiny, text = "L")
+plotshape(shortSetup, title = "Short", style = shape.triangledown, location = location.abovebar, color = color.new(color.red, 0), size = size.tiny, text = "S")
+plot(showScores ? bull_score : na, "Bull", color = color.new(color.lime, 0))
+plot(showScores ? bear_score : na, "Bear", color = color.new(color.red, 0))

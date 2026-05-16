@@ -1,0 +1,17 @@
+{
+  "initial_balance": 100000.0,
+  "final_balance": 165886.51789051562,
+  "total_return": 0.6588651789051563,
+  "n_trades": 407,
+  "win_rate": 0.6461916461916462,
+  "profit_factor": 2.0694651160818673,
+  "expectancy": 161.88333634033333,
+  "expectancy_R": 0.4241912520278891,
+  "max_drawdown": -0.04367742964337251,
+  "max_open_trades": 6,
+  "max_strategy_open_trades": 2,
+  "risk_per_trade": 0.003,
+  "unique_strategies": 7,
+  "min_agree": 2,
+  "agree_window_hours": 4.0
+}

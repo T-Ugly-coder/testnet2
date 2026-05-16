@@ -1,0 +1,193 @@
+TradingView Champion Strategy Notes
+Generated from saved optimizer champions in data_store.
+
+IMPORTANT
+These are backtest/forward-test candidates, not guaranteed live profits.
+Use paper trading first. The current 1h champions are NOT 5-10 trades/month.
+They produced roughly 32-36 trades/month on the 2024-2026 forward set.
+
+
+CONFLUENCE RULE USED BY ALL CHAMPIONS
+
+For every candle, calculate bullish and bearish scores from the weighted signals.
+
+Long setup:
+  bull_score >= entry_threshold
+  bull_score - bear_score >= min_dominance
+
+Short setup:
+  bear_score >= entry_threshold
+  bear_score - bull_score >= min_dominance
+
+Risk/reward:
+  Target uses RR.
+  Stop uses swing/structure plus ATR buffer.
+
+Signal families:
+  trend
+  SFP / liquidity sweep
+  candle pattern
+  regime
+  VSA / volume spread analysis
+  Wyckoff
+  VWAP deviation
+  breakout
+  breakout retest
+  failed breakout
+  volume breakout
+  RSI/MACD momentum
+  Bollinger/squeeze volatility
+  ADX trend strength
+
+
+1) BALANCED CHAMPION - preferred first paper-trade candidate
+
+Source:
+  data_store\balanced_champion.json
+  data_store\balanced_champion_params.json
+
+Run:
+  BTCUSDT_1h_backtest_5y_tf-1h_target-22_seed-42
+
+Forward metrics:
+  Profit factor:      1.255969802954197
+  Expectancy_R:       0.24216108040876627
+  Max drawdown:       0.2862587026060167
+  Total return:       4.416512565552828
+  Trades/month:       32.583333333333336
+  Sharpe:             2.1108180819808235
+  Trades:             782
+
+Confluence thresholds:
+  entry_threshold:    1.2575136596178096
+  min_dominance:      0.3468121875394685
+  rr:                 2.491977279881775
+
+Main weights:
+  w_trend:            1.003
+  w_sfp:              1.483
+  w_candle:           1.812
+  w_regime:           0.916
+  w_vsa:              1.305
+  w_wyckoff:          1.709
+  w_vwap_dev:         0.385
+  w_breakout:         1.801
+  w_breakout_retest:  2.253
+  w_failed_breakout:  2.154
+  w_volume_breakout:  1.643
+  w_momentum:         1.690
+  w_volatility:       2.245
+  w_adx:              1.155
+
+Interpretation:
+  Best balance of breakout continuation, breakout retest, failed breakout,
+  volatility expansion, candle confirmation, Wyckoff, and momentum.
+  This is the best first candidate for paper trading.
+
+
+2) CURRENT CHAMPION - stricter confluence / trend candidate
+
+Source:
+  data_store\current_champion.json
+  data_store\current_champion_params.json
+
+Run:
+  BTCUSDT_1h_backtest_5y_tf-1h_target-16_seed-101
+
+Forward metrics:
+  Profit factor:      1.2192952151200593
+  Expectancy_R:       0.18384538311948428
+  Max drawdown:       0.2724367013188135
+  Total return:       2.8932215744918874
+  Trades/month:       35.875
+  Sharpe:             1.6864483514420034
+  Trades:             861
+
+Confluence thresholds:
+  entry_threshold:    1.911193105323096
+  min_dominance:      0.6491174039885605
+  rr:                 2.4830406638916966
+
+Main weights:
+  w_trend:            2.459
+  w_sfp:              1.249
+  w_candle:           1.599
+  w_regime:           1.273
+  w_vsa:              0.102
+  w_wyckoff:          1.476
+  w_vwap_dev:         1.963
+  w_breakout:         0.831
+  w_breakout_retest:  0.435
+  w_failed_breakout:  1.646
+  w_volume_breakout:  1.228
+  w_momentum:         0.779
+  w_volatility:       1.844
+  w_adx:              0.807
+
+Interpretation:
+  More strict than the balanced candidate.
+  Heavily favors trend, VWAP deviation, volatility, failed breakout,
+  candle, and Wyckoff confluence.
+
+
+3) ALT CHAMPION - aggressive candidate
+
+Source:
+  data_store\alt_champion.json
+  data_store\alt_champion_params.json
+
+Run:
+  BTCUSDT_1h_backtest_5y_tf-1h_target-22_seed-137
+
+Forward metrics:
+  Profit factor:      1.2622051748136471
+  Expectancy_R:       0.24148933253378435
+  Max drawdown:       0.303335955211292
+  Total return:       4.164630771844347
+  Trades/month:       32.041666666666664
+  Sharpe:             2.057624312248279
+  Trades:             769
+
+Confluence thresholds:
+  entry_threshold:    1.069767733861593
+  min_dominance:      0.10040937083685847
+  rr:                 2.6320131105167266
+
+Main weights:
+  w_trend:            0.387
+  w_sfp:              2.042
+  w_candle:           0.828
+  w_regime:           0.396
+  w_vsa:              2.020
+  w_wyckoff:          1.181
+  w_vwap_dev:         0.802
+  w_breakout:         0.876
+  w_breakout_retest:  1.444
+  w_failed_breakout:  2.309
+  w_volume_breakout:  2.185
+  w_momentum:         1.356
+  w_volatility:       2.098
+  w_adx:              0.771
+
+Interpretation:
+  Aggressive liquidity/failed-breakout and volume-breakout candidate.
+  Higher forward PF and expectancy than current champion, but drawdown crossed 30%.
+
+
+TRADE FREQUENCY ANSWER
+
+Are these getting 5-10 trades?
+  Not currently, if you mean trades per month.
+
+Observed forward trade frequency:
+  Balanced champion:  about 32.6 trades/month
+  Current champion:   about 35.9 trades/month
+  Alt champion:       about 32.0 trades/month
+
+If you want 5-10 trades/month:
+  Re-run optimization with lower target trade frequency and tighter max frequency.
+  For example, target 6-10 trades/month and reject high-frequency candidates.
+
+Suggested command for low-frequency search:
+  .\.venv\Scripts\python.exe tools\auto_algo_finder.py --patterns data_store\BTCUSDT_1h_backtest_5y.parquet data_store\BTCUSDT_4h_backtest_5y.parquet --trials 200 --strategy enhanced --targets 5 7 10 --seeds 7 19 29 42 73 101 137 211 --min-tpm-ratio 0.70 --max-tpm-ratio 1.30 --out-dir data_store\low_frequency_search --top 30
+

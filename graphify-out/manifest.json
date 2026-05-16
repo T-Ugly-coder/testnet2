@@ -1,0 +1,478 @@
+{
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\analyze_high_win.py": {
+    "mtime": 1778574529.1812332,
+    "hash": "0ad305e9f012079dcf2e2d2964728dd4"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\best_overall_analyze.py": {
+    "mtime": 1778574898.5810635,
+    "hash": "d0d283d5c9fab363372eef728bcb8e25"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\check_dates.py": {
+    "mtime": 1778573005.1171215,
+    "hash": "1e0a3b19f6743c4a79a81b4f6ea140f3"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\check_dates_fixed.py": {
+    "mtime": 1778573119.461988,
+    "hash": "5f1eafb28fc0e131a87f76dc2d65913b"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\download_candles.py": {
+    "mtime": 1778307067.7815835,
+    "hash": "c2a46cb2647a094c894453f117f4c28f"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\forward_test.py": {
+    "mtime": 1778326351.7607865,
+    "hash": "dd1090b3a418b5a752fbe68d6a94c1f7"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\load.py": {
+    "mtime": 1778304778.7796834,
+    "hash": "83318c0e3b27cb3269898073549305e0"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\peek_data.py": {
+    "mtime": 1778573092.4247663,
+    "hash": "e086c231593440f863c2044abda90c38"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\quick_fix_analyze.py": {
+    "mtime": 1778574753.4079177,
+    "hash": "baa477e02ce3a574b694472e6ca7114b"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\run_auto_algo_finder.ps1": {
+    "mtime": 1778592813.039635,
+    "hash": "77ec595ce9fd6c6c26d12477f0f91fd4"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\run_swing_return_finder.ps1": {
+    "mtime": 1778585696.2763557,
+    "hash": "f89b95bce48ecb835f7d12710c8eebfa"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\tick_cache.py": {
+    "mtime": 1778769294.0316122,
+    "hash": "21ad5fb2466342ec9855f530c2923c43"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\tick_forward_test.py": {
+    "mtime": 1778769338.7982872,
+    "hash": "53ffd319c624853c66ef0fde1958c0e5"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo\\__init__.py": {
+    "mtime": 1778306187.212574,
+    "hash": "f68cbe8b9a256e41978d893ee3b03bb9"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\config.py": {
+    "mtime": 1778305672.0421064,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\metrics.py": {
+    "mtime": 1778305695.913617,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\__init__.py": {
+    "mtime": 1778305666.7810647,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\backtest\\engine.py": {
+    "mtime": 1778305669.554083,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\backtest\\walkforward.py": {
+    "mtime": 1778306217.9339187,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\backtest\\__init__.py": {
+    "mtime": 1778305668.2003927,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\indicators.py": {
+    "mtime": 1778312174.052207,
+    "hash": "b02d2bb569bf0fce3ff6070c9de72bf8"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\ranges.py": {
+    "mtime": 1778305688.4665942,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\structure.py": {
+    "mtime": 1778305689.617697,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\__init__.py": {
+    "mtime": 1778305673.205606,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\patterns\\auction.py": {
+    "mtime": 1778305676.6950798,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\patterns\\candles.py": {
+    "mtime": 1778305677.8470917,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\patterns\\microstructure.py": {
+    "mtime": 1778305679.0150394,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\patterns\\regime.py": {
+    "mtime": 1778305680.5695143,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\patterns\\sfp.py": {
+    "mtime": 1778305681.804987,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\patterns\\smc.py": {
+    "mtime": 1778305683.268304,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\patterns\\vsa.py": {
+    "mtime": 1778305684.6890461,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\patterns\\vwap.py": {
+    "mtime": 1778305686.034101,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\patterns\\wyckoff.py": {
+    "mtime": 1778305687.3141973,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\core\\patterns\\__init__.py": {
+    "mtime": 1778305675.5263212,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\data\\bars.py": {
+    "mtime": 1778305692.2738502,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\data\\binance_tick.py": {
+    "mtime": 1778305693.4078617,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\data\\storage.py": {
+    "mtime": 1778305694.6107202,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\data\\__init__.py": {
+    "mtime": 1778305690.9377606,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\optimize\\auto.py": {
+    "mtime": 1778305699.551744,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\optimize\\objective.py": {
+    "mtime": 1778305700.7544165,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\optimize\\__init__.py": {
+    "mtime": 1778305697.1812005,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\optimize\\__main__.py": {
+    "mtime": 1778305698.3663888,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\strategy\\confluence.py": {
+    "mtime": 1778305704.4659302,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\strategy\\runner.py": {
+    "mtime": 1778305705.9964056,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\strategy\\scorer.py": {
+    "mtime": 1778305707.2819803,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\strategy\\__init__.py": {
+    "mtime": 1778305703.1247363,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\tests\\test_confluence.py": {
+    "mtime": 1778305709.6361592,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\tests\\test_engine.py": {
+    "mtime": 1778305710.8883164,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\tests\\test_metrics.py": {
+    "mtime": 1778305712.0906928,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\tests\\test_optimize.py": {
+    "mtime": 1778305713.3767588,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\tests\\test_regime.py": {
+    "mtime": 1778305714.808163,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\tests\\test_walkforward_and_scorer.py": {
+    "mtime": 1778305716.1367478,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\tests\\__init__.py": {
+    "mtime": 1778305708.4340098,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\forward_test.py": {
+    "mtime": 1778326351.7607865,
+    "hash": "dd1090b3a418b5a752fbe68d6a94c1f7"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\tick_cache.py": {
+    "mtime": 1778769294.0316122,
+    "hash": "21ad5fb2466342ec9855f530c2923c43"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\tick_forward_test.py": {
+    "mtime": 1778769338.7982872,
+    "hash": "53ffd319c624853c66ef0fde1958c0e5"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo\\__init__.py": {
+    "mtime": 1778306187.212574,
+    "hash": "f68cbe8b9a256e41978d893ee3b03bb9"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\config.py": {
+    "mtime": 1778305672.0421064,
+    "hash": "2c34ede19de630a38f6c7a42d958555c"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\metrics.py": {
+    "mtime": 1778305695.913617,
+    "hash": "a3d02668150a1061d951820f1e1704a6"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\__init__.py": {
+    "mtime": 1778305666.7810647,
+    "hash": "48e66f9ee6d79d59bca5453037d861d4"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\backtest\\engine.py": {
+    "mtime": 1778305669.554083,
+    "hash": "579baf0a87f9f7417d1bcb84a64b4ae0"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\backtest\\walkforward.py": {
+    "mtime": 1778306217.9339187,
+    "hash": "4845399472e7030183b0428adc4ed804"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\backtest\\__init__.py": {
+    "mtime": 1778305668.2003927,
+    "hash": "2b32217934240410f19d2b3bba6fb60d"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\indicators.py": {
+    "mtime": 1778312174.052207,
+    "hash": "b02d2bb569bf0fce3ff6070c9de72bf8"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\ranges.py": {
+    "mtime": 1778305688.4665942,
+    "hash": "7280988183899094a91c740d9960d2d5"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\structure.py": {
+    "mtime": 1778305689.617697,
+    "hash": "2ee5459fd6b1e3871a144dc03da05abf"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\__init__.py": {
+    "mtime": 1778305673.205606,
+    "hash": "91273498dd0b71fc3fcf6fe5201b862a"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\patterns\\auction.py": {
+    "mtime": 1778305676.6950798,
+    "hash": "6c49f8c697c484eb5856e2a60cf02975"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\patterns\\candles.py": {
+    "mtime": 1778305677.8470917,
+    "hash": "8e162823e5a4532ecf08f0b041de33af"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\patterns\\microstructure.py": {
+    "mtime": 1778305679.0150394,
+    "hash": "4b888d72b42d9b2c6191048ffc27e5d9"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\patterns\\regime.py": {
+    "mtime": 1778305680.5695143,
+    "hash": "5f43976231cddb82cdf220e5bd524839"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\patterns\\sfp.py": {
+    "mtime": 1778305681.804987,
+    "hash": "768d6bd127d9a0e4ead1e548c516ccb5"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\patterns\\smc.py": {
+    "mtime": 1778305683.268304,
+    "hash": "48ffa3d845413dbabb2b60ac9e8a2a47"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\patterns\\vsa.py": {
+    "mtime": 1778305684.6890461,
+    "hash": "7d3616ad66b9f4bc5522de88c62a2b02"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\patterns\\vwap.py": {
+    "mtime": 1778305686.034101,
+    "hash": "7accb092186e41c01d67b859333f823d"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\patterns\\wyckoff.py": {
+    "mtime": 1778305687.3141973,
+    "hash": "7d0abd3c01ac60a53819294bfc80eda2"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\core\\patterns\\__init__.py": {
+    "mtime": 1778305675.5263212,
+    "hash": "85ff2933c2b6797d197acaac648a12ef"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\data\\bars.py": {
+    "mtime": 1778305692.2738502,
+    "hash": "7bb64335135576494be0f712e8e83d62"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\data\\binance_tick.py": {
+    "mtime": 1778305693.4078617,
+    "hash": "d42ced73fc1b96d9386a2dac3dc8dc31"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\data\\storage.py": {
+    "mtime": 1778305694.6107202,
+    "hash": "52eb590b7c30dac896b11c38d23d8801"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\data\\__init__.py": {
+    "mtime": 1778305690.9377606,
+    "hash": "4f59f35e28903f53bd70dbc7806882e8"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\optimize\\auto.py": {
+    "mtime": 1778305699.551744,
+    "hash": "6d78f5dfa7ac8903de377ee7804ff8d3"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\optimize\\objective.py": {
+    "mtime": 1778305700.7544165,
+    "hash": "c25f1d4059a2a60a3bad04ffa8ca7fb5"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\optimize\\__init__.py": {
+    "mtime": 1778305697.1812005,
+    "hash": "51cc71fd6ed1a5693a924b39be1b4ce0"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\optimize\\__main__.py": {
+    "mtime": 1778305698.3663888,
+    "hash": "778c926d20c65109b9254e64c42597b9"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\strategy\\confluence.py": {
+    "mtime": 1778305704.4659302,
+    "hash": "75b363e64ac9cc466996f42e85a544ff"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\strategy\\runner.py": {
+    "mtime": 1778305705.9964056,
+    "hash": "2c05b37153fee949c7c7ca784efec42d"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\strategy\\scorer.py": {
+    "mtime": 1778305707.2819803,
+    "hash": "68610eb7398163fddf8d329b3cad5212"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\strategy\\__init__.py": {
+    "mtime": 1778305703.1247363,
+    "hash": "c29fa1c1535d59e0b27970b30f45cd47"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\tests\\test_confluence.py": {
+    "mtime": 1778305709.6361592,
+    "hash": "6b241ba8eb8cd57f253b42d8a78117bd"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\tests\\test_engine.py": {
+    "mtime": 1778305710.8883164,
+    "hash": "d45a66a10663c625cfc3c64b139067d3"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\tests\\test_metrics.py": {
+    "mtime": 1778305712.0906928,
+    "hash": "011e6a950feee91e6bdafb3ca55f3e17"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\tests\\test_optimize.py": {
+    "mtime": 1778305713.3767588,
+    "hash": "d012ae99b38008dc4bb4988c05a91aad"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\tests\\test_regime.py": {
+    "mtime": 1778305714.808163,
+    "hash": "ca8fa7c78e7a3fe296730bf181366664"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\tests\\test_walkforward_and_scorer.py": {
+    "mtime": 1778305716.1367478,
+    "hash": "956832d0718e4c846b99e51dbafa494d"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\tests\\__init__.py": {
+    "mtime": 1778305708.4340098,
+    "hash": "282ec1b7fd30d1c5c5af65770f06266f"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\scripts\\live_trade_email_alert.py": {
+    "mtime": 1778921991.988319,
+    "hash": "011f83726ec396e7d884ec759f3203b8"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\tools\\auto_algo_finder.py": {
+    "mtime": 1778702083.6940675,
+    "hash": "7bc47de96a01c8400f6d153a64a657fc"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\tools\\batch_tick_forward_test.py": {
+    "mtime": 1778776366.406547,
+    "hash": "4ce61a3a6ef9f976f8550b9d1bf8de6d"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\tools\\build_trade_portfolio.py": {
+    "mtime": 1778785390.3970912,
+    "hash": "4e88418da8c295c0eee6a74e8701f8cd"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\tools\\download_tick_archives.py": {
+    "mtime": 1778764510.7838671,
+    "hash": "99ec3862c4e267a6ef5e81db43990e71"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\tools\\enhanced_strategy.py": {
+    "mtime": 1778603091.8718252,
+    "hash": "0a86d07b1fe96734996b044792ddb275"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\tools\\auto_algo_finder.py": {
+    "mtime": 1778702083.6940675,
+    "hash": "7bc47de96a01c8400f6d153a64a657fc"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\tools\\batch_tick_forward_test.py": {
+    "mtime": 1778776366.406547,
+    "hash": "4ce61a3a6ef9f976f8550b9d1bf8de6d"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\tools\\build_trade_portfolio.py": {
+    "mtime": 1778785390.3970912,
+    "hash": "4e88418da8c295c0eee6a74e8701f8cd"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\tools\\download_tick_archives.py": {
+    "mtime": 1778764510.7838671,
+    "hash": "99ec3862c4e267a6ef5e81db43990e71"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\tools\\enhanced_strategy.py": {
+    "mtime": 1778603091.8718252,
+    "hash": "0a86d07b1fe96734996b044792ddb275"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\AGENTS.md": {
+    "mtime": 1778583637.5224981,
+    "hash": "747e73a5e1af4b72c0d65c9169c23199"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\CLAUDE.md": {
+    "mtime": 1778315949.5110357,
+    "hash": "e4e024b2a8bb75bfe1a7ca28e5fe0ad8"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\final_cmd_ran.txt": {
+    "mtime": 1778350019.0145643,
+    "hash": "2338e5e6ad34375aeac6a26f854bd033"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\STRATEGY_RESEARCH_MEMORY.md": {
+    "mtime": 1778785709.076132,
+    "hash": "1f105c1fabb0997523c4b5177b520937"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\TRADINGVIEW_CHAMPION_STRATEGIES.txt": {
+    "mtime": 1778322163.270945,
+    "hash": "00c6a24b0c404534afeac56fb8abef8c"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\algo_download\\requirements.txt": {
+    "mtime": 1778305701.873227,
+    "hash": ""
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\final_cmd_ran.txt": {
+    "mtime": 1778350019.0145643,
+    "hash": "2338e5e6ad34375aeac6a26f854bd033"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\README_GOOGLE_VM.md": {
+    "mtime": 1778921852.403579,
+    "hash": "ae5c2cd42d98c713ac5c950f27007775"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\requirements-google-vm.txt": {
+    "mtime": 1778920556.8819644,
+    "hash": "9e4004df4629b9e6b5f47cc02fadd634"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\STRATEGY_RESEARCH_MEMORY.md": {
+    "mtime": 1778785709.076132,
+    "hash": "1f105c1fabb0997523c4b5177b520937"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\TRADINGVIEW_CHAMPION_STRATEGIES.txt": {
+    "mtime": 1778322163.270945,
+    "hash": "00c6a24b0c404534afeac56fb8abef8c"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\algo_download\\requirements.txt": {
+    "mtime": 1778305701.873227,
+    "hash": "e69ed9e5fb1e65736e7bd1c5ff9e0310"
+  }
+}

@@ -1,0 +1,39 @@
+# Secrets and local environment
+.env
+**/.env
+.env.*
+**/.env.*
+!**/.env.example
+
+# Python/runtime artifacts
+.venv/
+**/.venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Local agent/editor state
+.codex/
+.openclaude/
+.graphify-review/
+
+# Large/generated market data
+/data_store/
+/GoogleRunCode/data_store/*
+!GoogleRunCode/data_store/focused_robust_7y_candidates_v3/
+GoogleRunCode/data_store/focused_robust_7y_candidates_v3/*
+!GoogleRunCode/data_store/focused_robust_7y_candidates_v3/*.json
+GoogleRunCode/data_store/focused_robust_7y_candidates_v3/*_candidates.json
+!GoogleRunCode/data_store/focused_robust_7y_candidates_v3/portfolio_confluence_top8_all_agree2/
+GoogleRunCode/data_store/focused_robust_7y_candidates_v3/portfolio_confluence_top8_all_agree2/*
+!GoogleRunCode/data_store/focused_robust_7y_candidates_v3/portfolio_confluence_top8_all_agree2/portfolio_report.json
+!GoogleRunCode/data_store/focused_robust_7y_candidates_v3/portfolio_confluence_top8_all_agree2/selected_strategies.csv
+
+# Graphify generated/cache output
+graphify-out/**
+!graphify-out/
+!graphify-out/GRAPH_REPORT.md
+!graphify-out/graph.json
+!graphify-out/manifest.json

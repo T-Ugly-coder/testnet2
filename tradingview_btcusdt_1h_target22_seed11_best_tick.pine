@@ -1,0 +1,344 @@
+//@version=5
+// BTCUSDT 1H target-22 seed-11.
+// Source: data_store/focused_robust_7y_candidates_v3/BTCUSDT_1h_backtest_7y_tf-1h_target-22_seed-11.json
+// Tick validation: PF 1.922, expR 0.465, tick return 275.5% at the research sizing.
+//
+// Use on a BTCUSDT 1H chart. This script avoids request.security() and bar magnifier
+// so it can run on a basic TradingView account. Signals are made on bar close and
+// TradingView fills entries on the next bar open. This is a single-position
+// TradingView port so stop/target handling stays clean on a basic account.
+
+strategy("BTCUSDT 1H Best Tick 22-11 Fixed", overlay=true, pyramiding=1, initial_capital=100000,
+     commission_type=strategy.commission.percent, commission_value=0.04,
+     slippage=300, calc_on_every_tick=false, calc_on_order_fills=true,
+     process_orders_on_close=false)
+
+// --- Fixed champion parameters ---
+entryThreshold = input.float(0.5920704397130059, "Entry Threshold", step=0.01)
+minDominance = input.float(0.4992523232932751, "Min Dominance", step=0.01)
+rr = input.float(3.4629673880464096, "Risk:Reward", step=0.01)
+
+atrPeriod = input.int(8, "ATR Period", minval=1)
+volMaPeriod = input.int(25, "Volume MA Period", minval=1)
+swingLen = input.int(4, "Swing Left/Right", minval=1)
+slBufferAtr = input.float(1.399543035087555, "SL Buffer ATR", step=0.01)
+wickMinAtr = input.float(0.7475770941905964, "Wick Min ATR", step=0.01)
+
+wyckoffLookback = input.int(49, "Wyckoff Lookback", minval=2)
+wyckoffCompression = input.float(0.825496908433244, "Wyckoff Compression", step=0.01)
+vwapZThreshold = input.float(0.7664822685323125, "VWAP Z Threshold", step=0.01)
+
+breakoutLookback = input.int(44, "Breakout Lookback", minval=2)
+breakoutAtrBuffer = input.float(0.1373886750367498, "Breakout ATR Buffer", step=0.01)
+retestWindow = input.int(9, "Retest Window", minval=1)
+retestAtrBuffer = input.float(0.5294267060826572, "Retest ATR Buffer", step=0.01)
+failedLookback = input.int(86, "Failed Breakout Lookback", minval=2)
+failedAtrBuffer = input.float(0.277249523293482, "Failed Breakout ATR Buffer", step=0.01)
+failedReclaimAtr = input.float(0.27513814421166144, "Failed Breakout Reclaim ATR", step=0.01)
+volumeBreakoutLookback = input.int(37, "Volume Breakout Lookback", minval=2)
+volumeBreakoutAtrBuffer = input.float(0.5735720457627571, "Volume Breakout ATR Buffer", step=0.01)
+volumeBreakoutVolPeriod = input.int(69, "Volume Breakout Volume Period", minval=1)
+volumeBreakoutVolMult = input.float(2.3230800642971166, "Volume Breakout Volume Mult", step=0.01)
+volumeBreakoutBodyAtrMin = input.float(0.4432328189851069, "Volume Breakout Body ATR Min", step=0.01)
+
+directionalAdxDiGap = input.float(8.03289534903049, "Directional ADX DI Gap", step=0.1)
+pullbackFastEma = input.int(19, "Pullback Fast EMA", minval=2)
+pullbackSlowEma = input.int(87, "Pullback Slow EMA", minval=3)
+pullbackRsiPeriod = input.int(19, "Pullback RSI Period", minval=1)
+pullbackRsiFloor = input.float(39.559977237459314, "Pullback RSI Floor", step=0.1)
+pullbackRsiCeiling = input.float(53.49635068755031, "Pullback RSI Ceiling", step=0.1)
+pullbackAtrTouch = input.float(0.8846991904568633, "Pullback ATR Touch", step=0.01)
+
+rangeBbPeriod = input.int(26, "Range BB Period", minval=2)
+rangeBbMult = input.float(1.6740081306005214, "Range BB Mult", step=0.01)
+rangeRsiPeriod = input.int(13, "Range RSI Period", minval=1)
+rangeRsiLongMax = input.float(26.587106642526614, "Range RSI Long Max", step=0.1)
+rangeRsiShortMin = input.float(59.51404135050059, "Range RSI Short Min", step=0.1)
+rangeMaxAdx = input.float(25.591812153381667, "Range Max ADX", step=0.1)
+
+rsiPeriod = input.int(7, "RSI Period", minval=1)
+rsiBand = input.float(4.294377017446733, "RSI Band", step=0.1)
+bbPeriod = input.int(34, "BB Period", minval=2)
+bbMult = input.float(1.5608626747397716, "BB Mult", step=0.01)
+squeezeWindow = input.int(52, "Squeeze Window", minval=5)
+squeezeQuantile = input.float(0.28977607372071756, "Squeeze Quantile", step=0.01)
+adxPeriod = input.int(11, "ADX Period", minval=1)
+adxThreshold = input.float(18.843488679389623, "ADX Threshold", step=0.1)
+
+wTrend = input.float(0.12226819506836073, "Weight Trend", step=0.01)
+wSfp = input.float(0.4403562525471568, "Weight SFP", step=0.01)
+wCandle = input.float(0.7795798467417631, "Weight Candle", step=0.01)
+wRegime = input.float(1.119248382781594, "Weight Regime", step=0.01)
+wVsa = input.float(0.9650487810140002, "Weight VSA", step=0.01)
+wWyckoff = input.float(0.3595882714471174, "Weight Wyckoff", step=0.01)
+wVwapDev = input.float(0.1719962248894795, "Weight VWAP Dev", step=0.01)
+wBreakout = input.float(1.760340915557908, "Weight Breakout", step=0.01)
+wBreakoutRetest = input.float(0.05535729104420924, "Weight Breakout Retest", step=0.01)
+wFailedBreakout = input.float(0.6841568413727477, "Weight Failed Breakout", step=0.01)
+wVolumeBreakout = input.float(1.7140636894682202, "Weight Volume Breakout", step=0.01)
+wMomentum = input.float(2.152764767414929, "Weight Momentum", step=0.01)
+wVolatility = input.float(1.3104211176331746, "Weight Volatility", step=0.01)
+wAdx = input.float(0.38626599187835886, "Weight ADX", step=0.01)
+wDirectionalAdx = input.float(0.387742571607085, "Weight Directional ADX", step=0.01)
+wTrendPullback = input.float(0.6733072614708521, "Weight Trend Pullback", step=0.01)
+wRangeReversion = input.float(0.1994636469342555, "Weight Range Reversion", step=0.01)
+
+// --- Execution controls ---
+riskPct = input.float(0.75, "Risk % Per Trade", minval=0.01, step=0.05)
+allowLong = input.bool(true, "Allow Long")
+allowShort = input.bool(true, "Allow Short")
+enforce1h = input.bool(true, "Only Trade On 1H Chart")
+showScores = input.bool(false, "Show Scores")
+showLevels = input.bool(true, "Show Active SL/TP")
+dustQty = input.float(0.0001, "Flat Dust Qty", minval=0.0, step=0.00001)
+
+partialTpR = input.float(1.0235504865734775, "Partial TP R", step=0.01)
+partialClosePct = input.float(54.72416930408416, "Partial Close %", minval=1.0, maxval=99.0, step=0.1)
+runnerClosePct = 100.0 - partialClosePct
+
+// --- Helpers ---
+b(bool x) => x ? 1.0 : 0.0
+
+clamp(float x, float lo, float hi) =>
+    math.min(math.max(x, lo), hi)
+
+tanhApprox(float x) =>
+    x > 20.0 ? 1.0 : x < -20.0 ? -1.0 : (math.exp(2.0 * x) - 1.0) / (math.exp(2.0 * x) + 1.0)
+
+// --- Indicators ---
+atr = ta.atr(atrPeriod)
+volMa = ta.sma(volume, volMaPeriod)
+body = math.abs(close - open)
+range_ = high - low
+
+emaFast = ta.ema(close, 12)
+emaSlow = ta.ema(close, 26)
+rsiVal = ta.rsi(close, rsiPeriod)
+[_macdLine, _macdSig, macdHist] = ta.macd(close, 12, 26, 9)
+[diPlus, diMinus, adxVal] = ta.dmi(adxPeriod, adxPeriod)
+
+bbMid = ta.sma(close, bbPeriod)
+bbDev = bbMult * ta.stdev(close, bbPeriod) * math.sqrt((bbPeriod - 1.0) / bbPeriod)
+bbUpper = bbMid + bbDev
+bbLower = bbMid - bbDev
+bbWidth = (bbUpper - bbLower) / math.max(math.abs(bbMid), 1e-12)
+bbWidthLow = ta.lowest(bbWidth, squeezeWindow)
+bbWidthHigh = ta.highest(bbWidth, squeezeWindow)
+widthRankApprox = (bbWidth - bbWidthLow) / math.max(bbWidthHigh - bbWidthLow, 1e-10)
+wasSqueezed = ta.highest(widthRankApprox < squeezeQuantile ? 1 : 0, 5)[1] > 0
+
+rangeBbMid = ta.sma(close, rangeBbPeriod)
+rangeBbDev = rangeBbMult * ta.stdev(close, rangeBbPeriod) * math.sqrt((rangeBbPeriod - 1.0) / rangeBbPeriod)
+rangeBbUpper = rangeBbMid + rangeBbDev
+rangeBbLower = rangeBbMid - rangeBbDev
+rangeRsi = ta.rsi(close, rangeRsiPeriod)
+
+var float vwapPV = 0.0
+var float vwapV = 0.0
+var float vwapPV2 = 0.0
+vwapPV := vwapPV + close * volume
+vwapV := vwapV + volume
+vwapPV2 := vwapPV2 + close * close * volume
+vwapVal = vwapV > 0 ? vwapPV / vwapV : na
+vwapStd = vwapV > 0 ? math.sqrt(math.max(vwapPV2 / vwapV - vwapVal * vwapVal, 0.0)) : na
+vwapDev = vwapStd > 0 ? (close - vwapVal) / vwapStd : na
+
+// --- Structural trend and SFP ---
+swingHigh = ta.pivothigh(high, swingLen, swingLen)
+swingLow = ta.pivotlow(low, swingLen, swingLen)
+
+var float lastSwingHigh = na
+var float lastSwingLow = na
+if not na(swingHigh)
+    lastSwingHigh := swingHigh
+if not na(swingLow)
+    lastSwingLow := swingLow
+
+var int structTrend = 0
+var float trendStrength = 0.0
+if not na(lastSwingHigh) and close > lastSwingHigh
+    trendStrength := structTrend == 1 ? 0.7 : 1.0
+    structTrend := 1
+if not na(lastSwingLow) and close < lastSwingLow
+    trendStrength := structTrend == -1 ? 0.7 : 1.0
+    structTrend := -1
+
+bullTrend = structTrend == 1 ? trendStrength : 0.0
+bearTrend = structTrend == -1 ? trendStrength : 0.0
+
+upperWick = high - math.max(open, close)
+lowerWick = math.min(open, close) - low
+bullSfpRaw = not na(lastSwingLow) and low < lastSwingLow and close > lastSwingLow ? lowerWick / math.max(atr, 1e-12) : 0.0
+bearSfpRaw = not na(lastSwingHigh) and high > lastSwingHigh and close < lastSwingHigh ? upperWick / math.max(atr, 1e-12) : 0.0
+bullSfp = clamp(bullSfpRaw, 0.0, 2.0) / 2.0
+bearSfp = clamp(bearSfpRaw, 0.0, 2.0) / 2.0
+
+// --- Default confluence scorers ---
+bullEngulf = close > open and close[1] < open[1] and close > open[1] and open <= close[1]
+bearEngulf = close < open and close[1] > open[1] and close < open[1] and open >= close[1]
+bullPin = lowerWick > body * 2.0 and close > open and lowerWick > wickMinAtr * atr
+bearPin = upperWick > body * 2.0 and close < open and upperWick > wickMinAtr * atr
+bullCandle = b(bullEngulf or bullPin)
+bearCandle = b(bearEngulf or bearPin)
+
+regimeCorr = ta.correlation(float(bar_index), math.log(math.max(close, 1e-12)), 50)
+regimeScore = clamp(regimeCorr * regimeCorr * math.max(adxVal - 20.0, 0.0) / 80.0, 0.0, 1.0)
+bullRegime = regimeCorr > 0 ? regimeScore : 0.0
+bearRegime = regimeCorr < 0 ? regimeScore : 0.0
+
+wideSpread = range_ > ta.sma(range_, volMaPeriod) * 1.5
+highVolume = volume > volMa * 1.5
+bullVsa = b(wideSpread and highVolume and close > (high + low) / 2.0)
+bearVsa = b(wideSpread and highVolume and close < (high + low) / 2.0)
+
+trHigh = ta.highest(high, wyckoffLookback)[1]
+trLow = ta.lowest(low, wyckoffLookback)[1]
+trRange = trHigh - trLow
+compressed = trRange < ta.sma(atr, wyckoffLookback) * wyckoffLookback * wyckoffCompression
+bullWyckoff = math.max(b(compressed and low < trLow and close > trLow), b(highVolume and close > open and body > atr))
+bearWyckoff = math.max(b(compressed and high > trHigh and close < trHigh), b(highVolume and close < open and body > atr))
+
+bullVwap = not na(vwapDev) and vwapDev <= -vwapZThreshold ? tanhApprox(-vwapDev - vwapZThreshold) : 0.0
+bearVwap = not na(vwapDev) and vwapDev >= vwapZThreshold ? tanhApprox(vwapDev - vwapZThreshold) : 0.0
+
+prevHighBreakout = ta.highest(high, breakoutLookback)[1]
+prevLowBreakout = ta.lowest(low, breakoutLookback)[1]
+bullBreakout = b(close > prevHighBreakout + breakoutAtrBuffer * atr)
+bearBreakout = b(close < prevLowBreakout - breakoutAtrBuffer * atr)
+
+var float longBreakLevel = na
+var int longBreakBars = 100000
+var float shortBreakLevel = na
+var int shortBreakBars = 100000
+if bullBreakout > 0
+    longBreakLevel := prevHighBreakout
+    longBreakBars := 0
+else
+    longBreakBars += 1
+if bearBreakout > 0
+    shortBreakLevel := prevLowBreakout
+    shortBreakBars := 0
+else
+    shortBreakBars += 1
+
+bullRetest = b(longBreakBars > 0 and longBreakBars <= retestWindow and low <= longBreakLevel + retestAtrBuffer * atr and close > longBreakLevel and close > open)
+bearRetest = b(shortBreakBars > 0 and shortBreakBars <= retestWindow and high >= shortBreakLevel - retestAtrBuffer * atr and close < shortBreakLevel and close < open)
+
+prevHighFailed = ta.highest(high, failedLookback)[1]
+prevLowFailed = ta.lowest(low, failedLookback)[1]
+bullFailedBreakout = b(low < prevLowFailed - failedAtrBuffer * atr and close > prevLowFailed + failedReclaimAtr * atr and close > open)
+bearFailedBreakout = b(high > prevHighFailed + failedAtrBuffer * atr and close < prevHighFailed - failedReclaimAtr * atr and close < open)
+
+prevHighVolBreak = ta.highest(high, volumeBreakoutLookback)[1]
+prevLowVolBreak = ta.lowest(low, volumeBreakoutLookback)[1]
+volBreakMa = ta.sma(volume, volumeBreakoutVolPeriod)[1]
+confirmedVolBreak = volume > volumeBreakoutVolMult * volBreakMa and body > volumeBreakoutBodyAtrMin * atr
+bullVolumeBreakout = b(close > prevHighVolBreak + volumeBreakoutAtrBuffer * atr and confirmedVolBreak and close > open)
+bearVolumeBreakout = b(close < prevLowVolBreak - volumeBreakoutAtrBuffer * atr and confirmedVolBreak and close < open)
+
+bullMomentum = b(rsiVal > 50.0 + rsiBand and macdHist > 0 and emaFast > emaSlow)
+bearMomentum = b(rsiVal < 50.0 - rsiBand and macdHist < 0 and emaFast < emaSlow)
+bullVolatility = b(wasSqueezed and close > bbUpper)
+bearVolatility = b(wasSqueezed and close < bbLower)
+adxStrength = b(adxVal > adxThreshold)
+
+// --- Extra scorers used by the final optimizer ---
+strongDirectionalAdx = adxVal >= adxThreshold
+bullDirectionalAdx = b(strongDirectionalAdx and diPlus >= diMinus + directionalAdxDiGap)
+bearDirectionalAdx = b(strongDirectionalAdx and diMinus >= diPlus + directionalAdxDiGap)
+
+pullFast = ta.ema(close, pullbackFastEma)
+pullSlow = ta.ema(close, pullbackSlowEma)
+pullRsi = ta.rsi(close, pullbackRsiPeriod)
+pullFastSlope = pullFast - pullFast[5]
+pullSlowSlope = pullSlow - pullSlow[5]
+bullTrendPullback = b(close > pullSlow and pullFast > pullSlow and pullFastSlope > 0 and pullSlowSlope > 0 and low <= pullFast + pullbackAtrTouch * atr and close > pullFast and pullRsi >= pullbackRsiFloor)
+bearTrendPullback = b(close < pullSlow and pullFast < pullSlow and pullFastSlope < 0 and pullSlowSlope < 0 and high >= pullFast - pullbackAtrTouch * atr and close < pullFast and pullRsi <= pullbackRsiCeiling)
+
+bullRangeReversion = b(low < rangeBbLower and close > rangeBbLower and close > open and rangeRsi <= rangeRsiLongMax and adxVal <= rangeMaxAdx)
+bearRangeReversion = b(high > rangeBbUpper and close < rangeBbUpper and close < open and rangeRsi >= rangeRsiShortMin and adxVal <= rangeMaxAdx)
+
+bullScore = bullTrend * wTrend + bullSfp * wSfp + bullCandle * wCandle + bullRegime * wRegime + bullVsa * wVsa + bullWyckoff * wWyckoff + bullVwap * wVwapDev + bullBreakout * wBreakout + bullRetest * wBreakoutRetest + bullFailedBreakout * wFailedBreakout + bullVolumeBreakout * wVolumeBreakout + bullMomentum * wMomentum + bullVolatility * wVolatility + adxStrength * wAdx + bullDirectionalAdx * wDirectionalAdx + bullTrendPullback * wTrendPullback + bullRangeReversion * wRangeReversion
+bearScore = bearTrend * wTrend + bearSfp * wSfp + bearCandle * wCandle + bearRegime * wRegime + bearVsa * wVsa + bearWyckoff * wWyckoff + bearVwap * wVwapDev + bearBreakout * wBreakout + bearRetest * wBreakoutRetest + bearFailedBreakout * wFailedBreakout + bearVolumeBreakout * wVolumeBreakout + bearMomentum * wMomentum + bearVolatility * wVolatility + adxStrength * wAdx + bearDirectionalAdx * wDirectionalAdx + bearTrendPullback * wTrendPullback + bearRangeReversion * wRangeReversion
+
+isOneHour = timeframe.isminutes and timeframe.multiplier == 60
+timeframeOk = not enforce1h or isOneHour
+flatOrDust = math.abs(strategy.position_size) <= dustQty
+canAddLong = flatOrDust
+canAddShort = flatOrDust
+longSetup = timeframeOk and allowLong and canAddLong and bullScore >= entryThreshold and bullScore - bearScore >= minDominance
+shortSetup = timeframeOk and allowShort and canAddShort and bearScore >= entryThreshold and bearScore - bullScore >= minDominance
+
+qtyForRisk(float riskPerUnit) =>
+    riskPerUnit > 0 ? (strategy.equity * riskPct / 100.0) / riskPerUnit : na
+
+var float pendingLongSl = na
+var float pendingShortSl = na
+var float activeLongSl = na
+var float activeLongTp = na
+var float activeLongPartialTp = na
+var float activeShortSl = na
+var float activeShortTp = na
+var float activeShortPartialTp = na
+
+if longSetup
+    pendingLongSl := low - slBufferAtr * atr
+    riskPerUnit = close - pendingLongSl
+    strategy.entry("Long", strategy.long, qty=qtyForRisk(riskPerUnit))
+
+if shortSetup
+    pendingShortSl := high + slBufferAtr * atr
+    riskPerUnit = pendingShortSl - close
+    strategy.entry("Short", strategy.short, qty=qtyForRisk(riskPerUnit))
+
+prevPos = nz(strategy.position_size[1])
+newLong = strategy.position_size > 0 and strategy.position_size > prevPos
+newShort = strategy.position_size < 0 and strategy.position_size < prevPos
+
+if newLong and not na(pendingLongSl)
+    activeLongSl := pendingLongSl
+    activeRisk = math.abs(strategy.position_avg_price - activeLongSl)
+    activeLongTp := strategy.position_avg_price + rr * activeRisk
+    activeLongPartialTp := strategy.position_avg_price + partialTpR * activeRisk
+    pendingLongSl := na
+
+if newShort and not na(pendingShortSl)
+    activeShortSl := pendingShortSl
+    activeRisk = math.abs(activeShortSl - strategy.position_avg_price)
+    activeShortTp := strategy.position_avg_price - rr * activeRisk
+    activeShortPartialTp := strategy.position_avg_price - partialTpR * activeRisk
+    pendingShortSl := na
+
+if strategy.position_size > 0 and not na(activeLongSl)
+    strategy.exit("Long Partial", "Long", qty_percent=partialClosePct, stop=activeLongSl, limit=activeLongPartialTp)
+    strategy.exit("Long Runner", "Long", qty_percent=runnerClosePct, stop=activeLongSl, limit=activeLongTp)
+
+if strategy.position_size < 0 and not na(activeShortSl)
+    strategy.exit("Short Partial", "Short", qty_percent=partialClosePct, stop=activeShortSl, limit=activeShortPartialTp)
+    strategy.exit("Short Runner", "Short", qty_percent=runnerClosePct, stop=activeShortSl, limit=activeShortTp)
+
+if strategy.position_size != 0 and flatOrDust
+    strategy.close_all(comment="Dust Cleanup")
+
+if flatOrDust
+    activeLongSl := na
+    activeLongTp := na
+    activeLongPartialTp := na
+    activeShortSl := na
+    activeShortTp := na
+    activeShortPartialTp := na
+
+// --- Visuals and alerts ---
+plot(vwapVal, "Anchored VWAP", color=color.new(color.yellow, 0))
+plot(showScores ? bullScore : na, "Bull Score", color=color.new(color.lime, 0))
+plot(showScores ? bearScore : na, "Bear Score", color=color.new(color.red, 0))
+plot(showLevels and strategy.position_size > 0 ? activeLongSl : na, "Long SL", color=color.new(color.red, 0), style=plot.style_linebr)
+plot(showLevels and strategy.position_size > 0 ? activeLongTp : na, "Long TP", color=color.new(color.lime, 0), style=plot.style_linebr)
+plot(showLevels and strategy.position_size < 0 ? activeShortSl : na, "Short SL", color=color.new(color.red, 0), style=plot.style_linebr)
+plot(showLevels and strategy.position_size < 0 ? activeShortTp : na, "Short TP", color=color.new(color.lime, 0), style=plot.style_linebr)
+
+plotshape(longSetup, title="Long Setup", style=shape.triangleup, location=location.belowbar, color=color.new(color.lime, 0), size=size.tiny, text="L")
+plotshape(shortSetup, title="Short Setup", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.tiny, text="S")
+
+alertcondition(longSetup, title="BTCUSDT 1H Best Tick Long", message="BTCUSDT 1H target-22 seed-11 LONG setup")
+alertcondition(shortSetup, title="BTCUSDT 1H Best Tick Short", message="BTCUSDT 1H target-22 seed-11 SHORT setup")
