@@ -6,6 +6,7 @@ import pandas as pd
 from algo_download.backtest.engine import run_backtest
 from algo_download.core.indicators import bollinger, ema, macd, rsi, adx
 from algo_download.strategy.scorer import ConfluenceScorer
+from strategy_framework.registry import apply_registered_components
 
 
 def _wilder_atr(high: np.ndarray, low: np.ndarray, close: np.ndarray, period: int) -> np.ndarray:
@@ -838,7 +839,7 @@ def build_enhanced_signals(
     trend_filter: str = "none",
     trend_ema_period: int = 200,
     cooldown_bars: int = 0,
-    **_: object,
+    **extra_params: object,
 ) -> dict:
     scorer = ConfluenceScorer.default(
         entry_threshold=entry_threshold,
@@ -934,6 +935,7 @@ def build_enhanced_signals(
         ),
         w_range_reversion,
     )
+    apply_registered_components(scorer, extra_params)
     signals = scorer.build_signals(bars)
     return _apply_entry_quality_filters(
         bars,

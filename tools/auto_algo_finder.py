@@ -22,6 +22,11 @@ from algo_download.optimize import ObjectiveConfig, OptimizeConfig, optimize
 from algo_download.optimize.auto import score_run
 from algo_download.strategy.runner import backtest_strategy
 from algo_download.backtest import walkforward as walkforward_mod
+from strategy_framework.registry import (
+    load_component_modules,
+    registered_param_bounds,
+    suggest_registered_params,
+)
 from tools.enhanced_strategy import enhanced_backtest_strategy
 
 
@@ -104,6 +109,12 @@ PARAM_BOUNDS: dict[str, tuple[float, float, bool]] = {
     "w_trend_pullback": (0.0, 2.5, False),
     "w_range_reversion": (0.0, 2.5, False),
 }
+
+
+def _all_param_bounds() -> dict[str, tuple[float, float, bool]]:
+    bounds = dict(PARAM_BOUNDS)
+    bounds.update(registered_param_bounds())
+    return bounds
 
 
 def _json_safe(value: Any) -> Any:
@@ -191,10 +202,11 @@ def _jitter_seed_params(
 ) -> dict[str, Any]:
     variant = dict(params)
     scale = max(0.0, float(jitter))
+    bounds = _all_param_bounds()
     for name, value in list(params.items()):
-        if name not in PARAM_BOUNDS or not isinstance(value, int | float):
+        if name not in bounds or not isinstance(value, int | float):
             continue
-        low, high, is_int = PARAM_BOUNDS[name]
+        low, high, is_int = bounds[name]
         if name == "rr":
             low, high = max(low, rr_min), min(high, rr_max)
         span = high - low
@@ -571,6 +583,7 @@ def _sample_enhanced_params(trial: optuna.Trial) -> dict[str, Any]:
         "swing_left": swing,
         "swing_right": swing,
     }
+    params.update(suggest_registered_params(trial))
     params.update(_quality_params(trial))
     params.update(_exit_params(trial, trial.study.user_attrs["args"]))
     return params
@@ -931,6 +944,9 @@ def _rank_score(row: dict[str, Any], args: argparse.Namespace) -> float:
 
 
 def run(args: argparse.Namespace) -> int:
+    loaded_components = load_component_modules(getattr(args, "component_modules", []))
+    if loaded_components:
+        print(f"loaded component modules: {', '.join(loaded_components)}")
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     rows: list[dict[str, Any]] = []
@@ -1214,7 +1230,7 @@ def run(args: argparse.Namespace) -> int:
     return 0
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Run robust multi-seed optimizer sweeps and rank only by out-of-sample evidence."
     )
@@ -1385,6 +1401,16 @@ def parse_args() -> argparse.Namespace:
         help="Saved JSON files whose best_params should be enqueued as optimizer seed trials.",
     )
     parser.add_argument(
+        "--component-module",
+        action="append",
+        dest="component_modules",
+        default=[],
+        help=(
+            "Dotted module or .py file that registers extra enhanced-strategy "
+            "components via strategy_framework.registry.register_component."
+        ),
+    )
+    parser.add_argument(
         "--rebuild-existing",
         action="store_true",
         help="Rebuild leaderboard files from saved per-run JSONs in --out-dir without optimizing again.",
@@ -1394,7 +1420,7 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="When optimizing, load existing per-run JSONs from --out-dir instead of recomputing them.",
     )
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
 if __name__ == "__main__":

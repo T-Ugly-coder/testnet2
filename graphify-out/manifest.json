@@ -384,8 +384,8 @@
     "hash": "282ec1b7fd30d1c5c5af65770f06266f"
   },
   "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\scripts\\live_trade_email_alert.py": {
-    "mtime": 1778921991.988319,
-    "hash": "011f83726ec396e7d884ec759f3203b8"
+    "mtime": 1778946532.4076536,
+    "hash": "3cd015f869d70e32eb086767649c4ad1"
   },
   "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\tools\\auto_algo_finder.py": {
     "mtime": 1778702083.6940675,
@@ -407,9 +407,41 @@
     "mtime": 1778603091.8718252,
     "hash": "0a86d07b1fe96734996b044792ddb275"
   },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\strategy_framework\\cli.py": {
+    "mtime": 1778949337.1823559,
+    "hash": "cee776c3315749b64cdeda51440c1d20"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\strategy_framework\\data.py": {
+    "mtime": 1778949463.0055137,
+    "hash": "9e27fad5ff0bb43698690ef8275920eb"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\strategy_framework\\optimizer.py": {
+    "mtime": 1778949208.3972924,
+    "hash": "c0b0f4da0877af422378addfaba7158f"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\strategy_framework\\registry.py": {
+    "mtime": 1778949462.9255154,
+    "hash": "a50113cfe3a090c95be548095040b1be"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\strategy_framework\\__init__.py": {
+    "mtime": 1778949208.1662931,
+    "hash": "d125f042e3f006a1aedf012a5a5003a3"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\strategy_framework\\__main__.py": {
+    "mtime": 1778949208.494943,
+    "hash": "f3615ff0acfae6c58455f31f66429471"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\strategy_framework\\examples\\ema_slope_component.py": {
+    "mtime": 1778949324.7137816,
+    "hash": "772e87d652969c80853140743df1ece5"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\strategy_framework\\examples\\__init__.py": {
+    "mtime": 1778949324.6342597,
+    "hash": "49dc946dd50c6fb1420f63c697b4ccec"
+  },
   "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\tools\\auto_algo_finder.py": {
-    "mtime": 1778702083.6940675,
-    "hash": "7bc47de96a01c8400f6d153a64a657fc"
+    "mtime": 1778949247.592799,
+    "hash": "8a334282a91a327e3ec664cc8bda3f5c"
   },
   "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\tools\\batch_tick_forward_test.py": {
     "mtime": 1778776366.406547,
@@ -424,8 +456,12 @@
     "hash": "99ec3862c4e267a6ef5e81db43990e71"
   },
   "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\tools\\enhanced_strategy.py": {
-    "mtime": 1778603091.8718252,
-    "hash": "0a86d07b1fe96734996b044792ddb275"
+    "mtime": 1778949227.3180737,
+    "hash": "4f2cd5b07fca02ec928aed42bc725ff1"
+  },
+  "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\tools\\strategy_framework.py": {
+    "mtime": 1778949208.5389433,
+    "hash": "41d30372637b86ea6dee1169a3ec12f0"
   },
   "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\AGENTS.md": {
     "mtime": 1778583637.5224981,
@@ -456,8 +492,8 @@
     "hash": "2338e5e6ad34375aeac6a26f854bd033"
   },
   "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\README_GOOGLE_VM.md": {
-    "mtime": 1778921852.403579,
-    "hash": "ae5c2cd42d98c713ac5c950f27007775"
+    "mtime": 1778946598.3110068,
+    "hash": "d038f0f0aeea8f648150a9511b626e66"
   },
   "C:\\Users\\vaibh\\OneDrive\\Documents\\tryingnew\\GoogleRunCode\\requirements-google-vm.txt": {
     "mtime": 1778920556.8819644,
