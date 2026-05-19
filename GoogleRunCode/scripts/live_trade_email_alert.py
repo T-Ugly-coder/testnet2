@@ -338,6 +338,90 @@ def paper_signal_score(agreement_count: int, tick_pf: float, tick_exp_r: float) 
     return agreement_count * 2.0 + tick_pf + max(tick_exp_r, 0.0)
 
 
+def adverse_risk_per_unit(direction: int, entry: float, stop: float) -> float:
+    if direction == 1:
+        return max(0.0, entry - stop)
+    return max(0.0, stop - entry)
+
+
+def maybe_tighten_same_side_stop(
+    alert: Alert,
+    existing_trade: dict[str, Any],
+    market_price: float,
+) -> tuple[bool, str]:
+    if os.getenv("PAPER_SAME_SIDE_UPGRADE_ENABLED", "1") == "0":
+        return False, "same-side stop upgrade disabled"
+
+    direction = int(existing_trade.get("direction") or 0)
+    if direction != alert.direction:
+        return False, "same-side stop upgrade skipped because direction does not match"
+
+    old_agreement = int(existing_trade.get("agreement_count") or 0)
+    old_pf = float(existing_trade.get("primary_tick_pf") or 0.0)
+    old_exp_r = float(existing_trade.get("primary_tick_exp_r") or 0.0)
+    new_agreement = len(alert.candidates)
+    new_pf = float(alert.primary.tick_pf)
+    new_exp_r = float(alert.primary.tick_exp_r)
+    old_score = paper_signal_score(old_agreement, old_pf, old_exp_r)
+    new_score = paper_signal_score(new_agreement, new_pf, new_exp_r)
+    min_score_ratio = env_float("PAPER_SAME_SIDE_UPGRADE_MIN_SCORE_RATIO", 1.0)
+
+    if new_score < old_score * min_score_ratio:
+        return False, f"same-side signal score {new_score:.3f} is below required {min_score_ratio:.2f}x open score {old_score:.3f}"
+
+    entry = float(existing_trade["entry"])
+    old_stop = float(existing_trade["stop"])
+    new_stop = float(alert.primary.stop)
+    if not np.isfinite(new_stop):
+        return False, "same-side signal has invalid stop"
+
+    if direction == 1 and not (old_stop < new_stop < market_price):
+        return False, f"same-side long stop {new_stop:.2f} does not tighten safely from {old_stop:.2f} with market {market_price:.2f}"
+    if direction == -1 and not (market_price < new_stop < old_stop):
+        return False, f"same-side short stop {new_stop:.2f} does not tighten safely from {old_stop:.2f} with market {market_price:.2f}"
+
+    old_risk = adverse_risk_per_unit(direction, entry, old_stop)
+    new_risk = adverse_risk_per_unit(direction, entry, new_stop)
+    if new_risk >= old_risk:
+        return False, f"same-side stop does not reduce open trade risk: old {old_risk:.2f}, new {new_risk:.2f}"
+
+    now_ms = utc_now_ms()
+    existing_trade["stop"] = new_stop
+    existing_trade["last_stop_update_ms"] = now_ms
+    existing_trade["last_stop_update_utc"] = ms_to_iso(now_ms)
+    existing_trade["last_stop_update_reason"] = "same_side_stronger_signal"
+    existing_trade["last_stop_update_from"] = old_stop
+    existing_trade["stop_update_count"] = int(existing_trade.get("stop_update_count") or 0) + 1
+    existing_trade["agreement_count"] = max(old_agreement, new_agreement)
+    existing_trade["primary_tick_pf"] = max(old_pf, new_pf)
+    existing_trade["primary_tick_exp_r"] = max(old_exp_r, new_exp_r)
+    existing_trade["management_primary_run_id"] = alert.primary.run_id
+    existing_trade["management_signal_key"] = alert.key
+    append_ledger(
+        {
+            "event": "stop_update",
+            "trade_id": existing_trade["trade_id"],
+            "symbol": existing_trade["symbol"],
+            "side": existing_trade["side"],
+            "status": "open",
+            "time_utc": existing_trade["last_stop_update_utc"],
+            "entry": existing_trade["entry"],
+            "stop": existing_trade["stop"],
+            "take_profit": existing_trade["take_profit"],
+            "qty": existing_trade["qty"],
+            "risk_amount": existing_trade["risk_amount"],
+            "agreement_count": existing_trade["agreement_count"],
+            "primary_run_id": existing_trade.get("primary_run_id"),
+            "run_ids": existing_trade.get("run_ids"),
+            "exit_reason": f"tightened_stop_from_{old_stop:.2f}",
+        }
+    )
+    return True, (
+        f"Same-side stronger signal tightened stop from {old_stop:.2f} to {new_stop:.2f}; "
+        f"qty and take-profit stayed unchanged."
+    )
+
+
 def reversal_quality_decision(alert: Alert, existing_trade: dict[str, Any]) -> tuple[bool, str]:
     new_agreement = len(alert.candidates)
     new_pf = float(alert.primary.tick_pf)
@@ -420,12 +504,22 @@ def open_paper_trade(alert: Alert, state: dict[str, Any]) -> PaperTradeDecision:
         decision.notes.append("Duplicate paper setup skipped: same symbol, direction, and candle time are already open.")
         return decision
 
+    same_side_trades = [
+        t
+        for t in open_trades
+        if t.get("symbol") == alert.symbol and int(t.get("direction") or 0) == alert.direction
+    ]
     skip_same_side = os.getenv("PAPER_SKIP_IF_SAME_SIDE_OPEN", "1") != "0"
-    if skip_same_side and any(t.get("symbol") == alert.symbol and t.get("direction") == alert.direction for t in open_trades):
-        decision.notes.append(
-            "Same-side paper setup skipped because another trade in that direction is already open. "
-            "Keep the existing paper trade entry, stop, and take-profit unchanged."
-        )
+    if skip_same_side and same_side_trades:
+        market_price = latest_reversal_exit_price(alert.symbol, alert.primary.entry)
+        upgraded = 0
+        for trade in same_side_trades:
+            did_upgrade, reason = maybe_tighten_same_side_stop(alert, trade, market_price)
+            if did_upgrade:
+                upgraded += 1
+            decision.notes.append(reason)
+        if upgraded == 0:
+            decision.notes.append("No same-side paper trade was changed; entry, qty, and take-profit stayed unchanged.")
         return decision
 
     opposite_trades = [
