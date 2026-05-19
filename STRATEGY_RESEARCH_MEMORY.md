@@ -1,6 +1,6 @@
 # Strategy Research Memory
 
-Last updated: 2026-05-14
+Last updated: 2026-05-19
 
 ## Goal
 
@@ -22,6 +22,14 @@ Use 7-year files for serious testing:
 - `data_store/BTCUSDT_1h_forward_7y.parquet`
 - `data_store/BTCUSDT_4h_backtest_7y.parquet`
 - `data_store/BTCUSDT_4h_forward_7y.parquet`
+
+Current 1h forward file status:
+
+- Updated on `2026-05-19`
+- Range: `2024-01-01 00:00 UTC` through `2026-05-19 09:00 UTC`
+- Rows: `20,866`
+- Shape: standard OHLCV columns only (`ts_ms`, `open`, `high`, `low`, `close`, `volume`)
+- Gap check: no missing 1h bars in the forward range
 
 Avoid mixing 5y and 7y outputs in one folder when judging results.
 
@@ -77,6 +85,13 @@ Avoid mixing 5y and 7y outputs in one folder when judging results.
    - `tick_cache.py` now prefers official Binance monthly `aggTrades` archive files from `data.binance.vision` before REST fallback
    - `tools/download_tick_archives.py` can preload archive data into `data_store/tick_cache.duckdb`
    - tick replay now queries DuckDB for first entry/exit/partial-hit ticks instead of loading huge multi-week tick windows into pandas
+
+7. Added optional liquidity confluence search:
+   - `tools/enhanced_strategy.py` includes `liquidity_confluence_scorer()`
+   - Setup: HTF bias + liquidity sweep + volume profile level + absorption + CVD/delta + structure shift + retest
+   - `tools/auto_algo_finder.py` supports `--liquidity-confluence off|search`
+   - Default is `off`, preserving the previous optimizer behavior
+   - Use `search` only for A/B runs against the known 1h 7y candidates
 
 Official tick archive preload completed:
 

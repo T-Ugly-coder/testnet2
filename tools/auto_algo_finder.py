@@ -83,6 +83,15 @@ PARAM_BOUNDS: dict[str, tuple[float, float, bool]] = {
     "range_rsi_long_max": (25.0, 42.0, False),
     "range_rsi_short_min": (58.0, 75.0, False),
     "range_max_adx": (14.0, 30.0, False),
+    "liq_htf_window": (80, 360, True),
+    "liq_profile_lookback": (48, 240, True),
+    "liq_profile_bins": (32, 96, True),
+    "liq_level_atr": (0.2, 1.2, False),
+    "liq_setup_window": (3, 12, True),
+    "liq_retest_window": (3, 18, True),
+    "liq_retest_atr": (0.1, 0.8, False),
+    "liq_cvd_window": (3, 20, True),
+    "liq_min_score": (3.0, 8.0, False),
     "rsi_period": (7, 28, True),
     "rsi_band": (2.0, 15.0, False),
     "bb_period": (12, 40, True),
@@ -108,6 +117,7 @@ PARAM_BOUNDS: dict[str, tuple[float, float, bool]] = {
     "w_directional_adx": (0.0, 2.5, False),
     "w_trend_pullback": (0.0, 2.5, False),
     "w_range_reversion": (0.0, 2.5, False),
+    "w_liquidity_confluence": (0.0, 2.5, False),
 }
 
 
@@ -518,6 +528,8 @@ def _forward_metrics(
 
 
 def _sample_enhanced_params(trial: optuna.Trial) -> dict[str, Any]:
+    args = trial.study.user_attrs.get("args")
+    search_liquidity = getattr(args, "liquidity_confluence", "off") == "search"
     swing = trial.suggest_int("swing", 3, 12)
     params = {
         "entry_threshold": trial.suggest_float("entry_threshold", 0.5, 2.7),
@@ -555,6 +567,15 @@ def _sample_enhanced_params(trial: optuna.Trial) -> dict[str, Any]:
         "range_rsi_long_max": trial.suggest_float("range_rsi_long_max", 25.0, 42.0),
         "range_rsi_short_min": trial.suggest_float("range_rsi_short_min", 58.0, 75.0),
         "range_max_adx": trial.suggest_float("range_max_adx", 14.0, 30.0),
+        "liq_htf_window": 200,
+        "liq_profile_lookback": 120,
+        "liq_profile_bins": 64,
+        "liq_level_atr": 0.6,
+        "liq_setup_window": 5,
+        "liq_retest_window": 8,
+        "liq_retest_atr": 0.35,
+        "liq_cvd_window": 5,
+        "liq_min_score": 5.0,
         "rsi_period": trial.suggest_int("rsi_period", 7, 28),
         "rsi_band": trial.suggest_float("rsi_band", 2.0, 15.0),
         "bb_period": trial.suggest_int("bb_period", 12, 40),
@@ -580,9 +601,23 @@ def _sample_enhanced_params(trial: optuna.Trial) -> dict[str, Any]:
         "w_directional_adx": trial.suggest_float("w_directional_adx", 0.0, 2.5),
         "w_trend_pullback": trial.suggest_float("w_trend_pullback", 0.0, 2.5),
         "w_range_reversion": trial.suggest_float("w_range_reversion", 0.0, 2.5),
+        "w_liquidity_confluence": 0.0,
         "swing_left": swing,
         "swing_right": swing,
     }
+    if search_liquidity:
+        params.update({
+            "liq_htf_window": trial.suggest_int("liq_htf_window", 80, 360),
+            "liq_profile_lookback": trial.suggest_int("liq_profile_lookback", 48, 240),
+            "liq_profile_bins": trial.suggest_int("liq_profile_bins", 32, 96),
+            "liq_level_atr": trial.suggest_float("liq_level_atr", 0.2, 1.2),
+            "liq_setup_window": trial.suggest_int("liq_setup_window", 3, 12),
+            "liq_retest_window": trial.suggest_int("liq_retest_window", 3, 18),
+            "liq_retest_atr": trial.suggest_float("liq_retest_atr", 0.1, 0.8),
+            "liq_cvd_window": trial.suggest_int("liq_cvd_window", 3, 20),
+            "liq_min_score": trial.suggest_float("liq_min_score", 3.0, 8.0),
+            "w_liquidity_confluence": trial.suggest_float("w_liquidity_confluence", 0.0, 2.5),
+        })
     params.update(suggest_registered_params(trial))
     params.update(_quality_params(trial))
     params.update(_exit_params(trial, trial.study.user_attrs["args"]))
@@ -1409,6 +1444,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
             "Dotted module or .py file that registers extra enhanced-strategy "
             "components via strategy_framework.registry.register_component."
         ),
+    )
+    parser.add_argument(
+        "--liquidity-confluence",
+        choices=["off", "search"],
+        default="off",
+        help="Keep the liquidity-sweep composite disabled, or let the optimizer search its weight and knobs.",
     )
     parser.add_argument(
         "--rebuild-existing",

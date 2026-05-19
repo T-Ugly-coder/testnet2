@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 from algo_download.backtest.engine import run_backtest
-from algo_download.core.indicators import bollinger, ema, macd, rsi, adx
+from algo_download.core.indicators import bollinger, ema, macd, rsi, adx, cvd_from_ticks, cvd_proxy
 from algo_download.strategy.scorer import ConfluenceScorer
 from strategy_framework.registry import apply_registered_components
 
@@ -385,6 +385,269 @@ def make_breakout_retest_scorer(
         ctx["retest_window"] = retest_window
         ctx["retest_atr_buffer"] = retest_atr_buffer
         return breakout_retest_scorer(bars, ctx)
+
+    return scorer
+
+
+def _rolling_profile_levels(
+    high: np.ndarray,
+    low: np.ndarray,
+    close: np.ndarray,
+    volume: np.ndarray,
+    lookback: int,
+    bins: int,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Fast causal volume-profile proxy.
+
+    The first version rebuilt a binned histogram for every bar. That is too
+    slow inside thousands of optimizer trials. This uses prior-window
+    volume-weighted mean price as POC and one weighted standard deviation as
+    VAH/VAL. It keeps the same location intent without making optimization
+    impractical.
+    """
+    lookback = max(10, int(lookback))
+    typical = (high + low + close) / 3.0
+    vol = pd.Series(np.where(np.isfinite(volume), volume, 0.0))
+    pv = pd.Series(typical * volume)
+    pv2 = pd.Series(typical * typical * volume)
+    vol_sum = vol.rolling(lookback, min_periods=lookback).sum().shift(1).to_numpy()
+    pv_sum = pv.rolling(lookback, min_periods=lookback).sum().shift(1).to_numpy()
+    pv2_sum = pv2.rolling(lookback, min_periods=lookback).sum().shift(1).to_numpy()
+    poc = pv_sum / np.maximum(vol_sum, 1e-12)
+    var = pv2_sum / np.maximum(vol_sum, 1e-12) - poc * poc
+    sd = np.sqrt(np.maximum(var, 0.0))
+    poc[vol_sum <= 0.0] = np.nan
+    vah = poc + sd
+    val = poc - sd
+    return poc, vah, val
+
+
+def _local_sweep_levels(
+    high: np.ndarray,
+    low: np.ndarray,
+    close: np.ndarray,
+    sh_idx: np.ndarray,
+    sh_px: np.ndarray,
+    sl_idx: np.ndarray,
+    sl_px: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray]:
+    n = close.shape[0]
+    bull = np.full(n, np.nan, dtype=float)
+    bear = np.full(n, np.nan, dtype=float)
+    swept_h = np.zeros(sh_px.shape[0], dtype=bool)
+    swept_l = np.zeros(sl_px.shape[0], dtype=bool)
+    for i in range(n):
+        for kh in range(sh_px.shape[0] - 1, -1, -1):
+            if sh_idx[kh] >= i or swept_h[kh]:
+                continue
+            level = sh_px[kh]
+            if high[i] > level:
+                if close[i] < level:
+                    bear[i] = level
+                swept_h[kh] = True
+            break
+        for kl in range(sl_px.shape[0] - 1, -1, -1):
+            if sl_idx[kl] >= i or swept_l[kl]:
+                continue
+            level = sl_px[kl]
+            if low[i] < level:
+                if close[i] > level:
+                    bull[i] = level
+                swept_l[kl] = True
+            break
+    return bull, bear
+
+
+def _local_absorption(
+    open_: np.ndarray,
+    high: np.ndarray,
+    low: np.ndarray,
+    close: np.ndarray,
+    volume: np.ndarray,
+    atr: np.ndarray,
+    vol_ma: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray]:
+    n = close.shape[0]
+    bull = np.zeros(n, dtype=bool)
+    bear = np.zeros(n, dtype=bool)
+    for i in range(1, n):
+        a = atr[i]
+        vm = vol_ma[i]
+        if not np.isfinite(a) or not np.isfinite(vm) or a <= 0.0 or vm <= 0.0:
+            continue
+        spread = high[i] - low[i]
+        if spread < 0.4 * a and volume[i] > 2.0 * vm:
+            if close[i] > open_[i]:
+                bull[i] = True
+            else:
+                bear[i] = True
+        elif close[i] < open_[i] and spread > 1.5 * a and volume[i] > 2.0 * vm and (close[i] - low[i]) > 0.6 * spread:
+            bull[i] = True
+        elif close[i] > open_[i] and spread > 1.5 * a and volume[i] > 2.0 * vm and (high[i] - close[i]) > 0.6 * spread:
+            bear[i] = True
+    return bull, bear
+
+
+def _local_structure_shift(
+    close: np.ndarray,
+    sh_idx: np.ndarray,
+    sh_px: np.ndarray,
+    sl_idx: np.ndarray,
+    sl_px: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray]:
+    n = close.shape[0]
+    bull = np.zeros(n, dtype=bool)
+    bear = np.zeros(n, dtype=bool)
+    h_pos = 0
+    l_pos = 0
+    last_high = np.nan
+    last_low = np.nan
+    for i in range(n):
+        while h_pos < sh_idx.shape[0] and sh_idx[h_pos] < i:
+            last_high = sh_px[h_pos]
+            h_pos += 1
+        while l_pos < sl_idx.shape[0] and sl_idx[l_pos] < i:
+            last_low = sl_px[l_pos]
+            l_pos += 1
+        if np.isfinite(last_high) and close[i] > last_high:
+            bull[i] = True
+        if np.isfinite(last_low) and close[i] < last_low:
+            bear[i] = True
+    return bull, bear
+
+
+def liquidity_confluence_scorer(bars: pd.DataFrame, ctx: dict) -> tuple[np.ndarray, np.ndarray]:
+    high = bars["high"].to_numpy(float)
+    low = bars["low"].to_numpy(float)
+    close = bars["close"].to_numpy(float)
+    open_ = bars["open"].to_numpy(float)
+    volume = bars["volume"].to_numpy(float) if "volume" in bars.columns else None
+    n = close.shape[0]
+    long = np.zeros(n, dtype=float)
+    short = np.zeros(n, dtype=float)
+    if volume is None:
+        return long, short
+
+    atr = ctx["atr"]
+    sh_idx, sh_px, sl_idx, sl_px = ctx["swings"]
+    swing_right = int(ctx.get("swing_right", 5))
+    htf_window = int(ctx.get("liq_htf_window", 200))
+    profile_lookback = int(ctx.get("liq_profile_lookback", 120))
+    profile_bins = int(ctx.get("liq_profile_bins", 64))
+    level_atr = float(ctx.get("liq_level_atr", 0.6))
+    setup_window = int(ctx.get("liq_setup_window", 5))
+    retest_window = int(ctx.get("liq_retest_window", 8))
+    retest_atr = float(ctx.get("liq_retest_atr", 0.35))
+    min_score = float(ctx.get("liq_min_score", 5.0))
+
+    shift = max(2, htf_window // 6)
+    htf_ma = pd.Series(close).rolling(htf_window, min_periods=htf_window).mean().shift(1).to_numpy()
+    htf_prev = pd.Series(close).rolling(htf_window, min_periods=htf_window).mean().shift(shift).to_numpy()
+    htf_bull = (close > htf_ma) & (htf_ma > htf_prev)
+    htf_bear = (close < htf_ma) & (htf_ma < htf_prev)
+
+    bull_sweep_level, bear_sweep_level = _local_sweep_levels(
+        high, low, close, sh_idx + swing_right, sh_px, sl_idx + swing_right, sl_px
+    )
+
+    poc, vah, val = _rolling_profile_levels(high, low, close, volume, profile_lookback, profile_bins)
+    near_bull_level = (
+        np.isfinite(val) & np.isfinite(atr)
+        & (np.minimum(np.abs(low - val), np.abs(close - val)) <= level_atr * atr)
+    )
+    near_bear_level = (
+        np.isfinite(vah) & np.isfinite(atr)
+        & (np.minimum(np.abs(high - vah), np.abs(close - vah)) <= level_atr * atr)
+    )
+
+    vol_ma = pd.Series(volume).rolling(int(ctx.get("vol_ma_period", 20)), min_periods=1).mean().to_numpy()
+    absorb_bull, absorb_bear = _local_absorption(open_, high, low, close, volume, atr, vol_ma)
+
+    if "buy_volume" in bars.columns and "sell_volume" in bars.columns:
+        cvd = cvd_from_ticks(
+            bars["buy_volume"].to_numpy(float),
+            bars["sell_volume"].to_numpy(float),
+        )
+    else:
+        cvd = cvd_proxy(open_, high, low, close, volume)
+    cvd_delta = np.diff(cvd, prepend=cvd[0] if n else 0.0)
+    cvd_ma = pd.Series(cvd_delta).rolling(int(ctx.get("liq_cvd_window", 5)), min_periods=1).mean().to_numpy()
+    cvd_bull = cvd_ma > 0
+    cvd_bear = cvd_ma < 0
+
+    bull_shift, bear_shift = _local_structure_shift(
+        close, sh_idx + swing_right, sh_px, sl_idx + swing_right, sl_px
+    )
+
+    bull_setup_level = np.full(n, np.nan, dtype=float)
+    bear_setup_level = np.full(n, np.nan, dtype=float)
+    for i in range(n):
+        s = max(0, i - setup_window + 1)
+        if (
+            htf_bull[i]
+            and np.isfinite(bull_sweep_level[s:i + 1]).any()
+            and near_bull_level[s:i + 1].any()
+            and absorb_bull[s:i + 1].any()
+            and cvd_bull[i]
+            and bull_shift[s:i + 1].any()
+        ):
+            levels = bull_sweep_level[s:i + 1]
+            bull_setup_level[i] = levels[np.isfinite(levels)][-1]
+        if (
+            htf_bear[i]
+            and np.isfinite(bear_sweep_level[s:i + 1]).any()
+            and near_bear_level[s:i + 1].any()
+            and absorb_bear[s:i + 1].any()
+            and cvd_bear[i]
+            and bear_shift[s:i + 1].any()
+        ):
+            levels = bear_sweep_level[s:i + 1]
+            bear_setup_level[i] = levels[np.isfinite(levels)][-1]
+
+    bull_retest = pd.Series(bull_setup_level).ffill(limit=retest_window).shift(1).to_numpy()
+    bear_retest = pd.Series(bear_setup_level).ffill(limit=retest_window).shift(1).to_numpy()
+    long_mask = (
+        np.isfinite(bull_retest) & np.isfinite(atr)
+        & (low <= bull_retest + retest_atr * atr)
+        & (close > bull_retest)
+        & (close > open_)
+        & cvd_bull
+    )
+    short_mask = (
+        np.isfinite(bear_retest) & np.isfinite(atr)
+        & (high >= bear_retest - retest_atr * atr)
+        & (close < bear_retest)
+        & (close < open_)
+        & cvd_bear
+    )
+    long[long_mask] = min_score
+    short[short_mask] = min_score
+    return long, short
+
+
+def make_liquidity_confluence_scorer(
+    htf_window: int,
+    profile_lookback: int,
+    profile_bins: int,
+    level_atr: float,
+    setup_window: int,
+    retest_window: int,
+    retest_atr: float,
+    cvd_window: int,
+    min_score: float,
+):
+    def scorer(bars: pd.DataFrame, ctx: dict) -> tuple[np.ndarray, np.ndarray]:
+        ctx = dict(ctx)
+        ctx["liq_htf_window"] = htf_window
+        ctx["liq_profile_lookback"] = profile_lookback
+        ctx["liq_profile_bins"] = profile_bins
+        ctx["liq_level_atr"] = level_atr
+        ctx["liq_setup_window"] = setup_window
+        ctx["liq_retest_window"] = retest_window
+        ctx["liq_retest_atr"] = retest_atr
+        ctx["liq_cvd_window"] = cvd_window
+        ctx["liq_min_score"] = min_score
+        return liquidity_confluence_scorer(bars, ctx)
 
     return scorer
 
@@ -805,6 +1068,15 @@ def build_enhanced_signals(
     range_rsi_long_max: float = 35.0,
     range_rsi_short_min: float = 65.0,
     range_max_adx: float = 22.0,
+    liq_htf_window: int = 200,
+    liq_profile_lookback: int = 120,
+    liq_profile_bins: int = 64,
+    liq_level_atr: float = 0.6,
+    liq_setup_window: int = 5,
+    liq_retest_window: int = 8,
+    liq_retest_atr: float = 0.35,
+    liq_cvd_window: int = 5,
+    liq_min_score: float = 5.0,
     w_trend: float = 1.0,
     w_sfp: float = 1.0,
     w_candle: float = 1.0,
@@ -822,6 +1094,7 @@ def build_enhanced_signals(
     w_directional_adx: float = 0.0,
     w_trend_pullback: float = 0.0,
     w_range_reversion: float = 0.0,
+    w_liquidity_confluence: float = 0.0,
     min_tp_pct: float = 0.0,
     max_sl_pct: float = 1.0,
     min_signal_score: float = 0.0,
@@ -935,6 +1208,22 @@ def build_enhanced_signals(
         ),
         w_range_reversion,
     )
+    if w_liquidity_confluence > 0.0:
+        scorer.register(
+            "liquidity_confluence",
+            make_liquidity_confluence_scorer(
+                liq_htf_window,
+                liq_profile_lookback,
+                liq_profile_bins,
+                liq_level_atr,
+                liq_setup_window,
+                liq_retest_window,
+                liq_retest_atr,
+                liq_cvd_window,
+                liq_min_score,
+            ),
+            w_liquidity_confluence,
+        )
     apply_registered_components(scorer, extra_params)
     signals = scorer.build_signals(bars)
     return _apply_entry_quality_filters(
