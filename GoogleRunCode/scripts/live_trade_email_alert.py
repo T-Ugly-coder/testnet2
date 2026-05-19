@@ -40,7 +40,9 @@ class Candidate:
     interval: str
     direction: int
     candle_time_ms: int
+    signal_close: float
     entry: float
+    entry_source: str
     stop: float
     take_profit: float
     rr: float
@@ -149,16 +151,24 @@ def signal_candidate(row: dict[str, str], bars: pd.DataFrame, candidate_dir: Pat
     if signal == 0:
         return None
 
-    entry = float(bars["close"].iloc[i])
+    signal_close = float(bars["close"].iloc[i])
     stop = float(np.asarray(signals["sl"], dtype=float)[i])
     tp_arr = np.asarray(signals.get("tp", np.full(len(bars), np.nan)), dtype=float)
-    take_profit = float(tp_arr[i]) if np.isfinite(tp_arr[i]) else float("nan")
     rr_arr = np.asarray(signals.get("rr", np.full(len(bars), np.nan)), dtype=float)
     rr = float(rr_arr[i]) if np.isfinite(rr_arr[i]) else float(params.get("rr", 0.0))
+    next_i = i + 1
+    if next_i < len(bars):
+        entry = float(bars["open"].iloc[next_i])
+        entry_source = "next_candle_open"
+    else:
+        entry = signal_close
+        entry_source = "signal_close_fallback"
 
     if not np.isfinite(stop):
         return None
-    if not np.isfinite(take_profit) and rr > 0:
+    if rr <= 0:
+        take_profit = float(tp_arr[i]) if np.isfinite(tp_arr[i]) else float("nan")
+    else:
         risk = abs(entry - stop)
         take_profit = entry + signal * rr * risk
     if not np.isfinite(take_profit):
@@ -177,7 +187,9 @@ def signal_candidate(row: dict[str, str], bars: pd.DataFrame, candidate_dir: Pat
         interval=infer_interval(run_id),
         direction=signal,
         candle_time_ms=int(bars["ts_ms"].iloc[i]),
+        signal_close=signal_close,
         entry=entry,
+        entry_source=entry_source,
         stop=stop,
         take_profit=take_profit,
         rr=rr,
@@ -303,7 +315,8 @@ def format_alert(symbol: str, direction: int, candidates: list[Candidate]) -> tu
         f"Candle time UTC: {candle_time}",
         "",
         "Primary trade levels:",
-        f"Entry reference: {primary.entry:.2f}",
+        f"Signal close: {primary.signal_close:.2f}",
+        f"Entry reference: {primary.entry:.2f} ({primary.entry_source})",
         f"Stop loss: {primary.stop:.2f}",
         f"Take profit: {primary.take_profit:.2f}",
         f"RR: {primary.rr:.3f}",
@@ -409,7 +422,10 @@ def open_paper_trade(alert: Alert, state: dict[str, Any]) -> PaperTradeDecision:
 
     skip_same_side = os.getenv("PAPER_SKIP_IF_SAME_SIDE_OPEN", "1") != "0"
     if skip_same_side and any(t.get("symbol") == alert.symbol and t.get("direction") == alert.direction for t in open_trades):
-        decision.notes.append("Same-side paper setup skipped because another trade in that direction is already open.")
+        decision.notes.append(
+            "Same-side paper setup skipped because another trade in that direction is already open. "
+            "Keep the existing paper trade entry, stop, and take-profit unchanged."
+        )
         return decision
 
     opposite_trades = [
