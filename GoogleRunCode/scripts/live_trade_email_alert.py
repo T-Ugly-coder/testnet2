@@ -235,6 +235,9 @@ def append_ledger(row: dict[str, Any]) -> None:
         "status",
         "time_utc",
         "entry",
+        "entry_source",
+        "reference_entry",
+        "entry_drift_bps",
         "stop",
         "take_profit",
         "exit_price",
@@ -578,10 +581,38 @@ def open_paper_trade(alert: Alert, state: dict[str, Any]) -> PaperTradeDecision:
     initial_balance = env_float("PAPER_INITIAL_BALANCE", 10000.0)
     risk_per_trade = env_float("PAPER_RISK_PER_TRADE", 0.003)
     risk_amount = initial_balance * risk_per_trade
-    risk_per_unit = abs(alert.primary.entry - alert.primary.stop)
+    reference_entry = float(alert.primary.entry)
+    actual_entry = latest_reversal_exit_price(alert.symbol, reference_entry)
+    entry_drift_bps = abs(actual_entry - reference_entry) / max(abs(reference_entry), 1e-12) * 10_000.0
+    max_entry_drift_bps = env_float("PAPER_MAX_ENTRY_DRIFT_BPS", 15.0)
+    if entry_drift_bps > max_entry_drift_bps:
+        decision.notes.append(
+            f"Paper setup skipped because live entry drift {entry_drift_bps:.2f} bps exceeds "
+            f"PAPER_MAX_ENTRY_DRIFT_BPS={max_entry_drift_bps:.2f}. "
+            f"Reference {reference_entry:.2f}, live {actual_entry:.2f}."
+        )
+        return decision
+
+    stop = float(alert.primary.stop)
+    if not np.isfinite(stop):
+        decision.notes.append("Paper setup skipped because stop is invalid.")
+        return decision
+    if alert.direction == 1 and not stop < actual_entry:
+        decision.notes.append(
+            f"Paper setup skipped because live long entry {actual_entry:.2f} is not above stop {stop:.2f}."
+        )
+        return decision
+    if alert.direction == -1 and not actual_entry < stop:
+        decision.notes.append(
+            f"Paper setup skipped because live short entry {actual_entry:.2f} is not below stop {stop:.2f}."
+        )
+        return decision
+
+    risk_per_unit = abs(actual_entry - stop)
     if risk_per_unit <= 0:
         decision.notes.append("Paper setup skipped because entry and stop create zero risk per unit.")
         return decision
+    take_profit = actual_entry + alert.direction * alert.primary.rr * risk_per_unit
 
     qty = risk_amount / risk_per_unit
     opened_ms = utc_now_ms()
@@ -597,9 +628,13 @@ def open_paper_trade(alert: Alert, state: dict[str, Any]) -> PaperTradeDecision:
         "opened_at_utc": ms_to_iso(opened_ms),
         "opened_candle_time_ms": alert.primary.candle_time_ms,
         "opened_candle_time_utc": ms_to_iso(alert.primary.candle_time_ms),
-        "entry": alert.primary.entry,
-        "stop": alert.primary.stop,
-        "take_profit": alert.primary.take_profit,
+        "signal_close": alert.primary.signal_close,
+        "reference_entry": reference_entry,
+        "entry": actual_entry,
+        "entry_source": "live_ticker",
+        "entry_drift_bps": entry_drift_bps,
+        "stop": stop,
+        "take_profit": take_profit,
         "rr": alert.primary.rr,
         "qty": qty,
         "risk_amount": risk_amount,
@@ -614,6 +649,10 @@ def open_paper_trade(alert: Alert, state: dict[str, Any]) -> PaperTradeDecision:
         "unrealized_pnl": 0.0,
         "unrealized_pnl_R": 0.0,
     }
+    decision.notes.append(
+        f"Paper trade opened at live ticker price {actual_entry:.2f}, not the candle reference {reference_entry:.2f}. "
+        f"Entry drift was {entry_drift_bps:.2f} bps; TP was recalculated from the live entry."
+    )
     open_trades.append(trade)
     append_ledger(
         {
@@ -624,6 +663,9 @@ def open_paper_trade(alert: Alert, state: dict[str, Any]) -> PaperTradeDecision:
             "status": "open",
             "time_utc": trade["opened_at_utc"],
             "entry": trade["entry"],
+            "entry_source": trade["entry_source"],
+            "reference_entry": trade["reference_entry"],
+            "entry_drift_bps": trade["entry_drift_bps"],
             "stop": trade["stop"],
             "take_profit": trade["take_profit"],
             "qty": trade["qty"],
