@@ -309,6 +309,24 @@ def format_alert(symbol: str, direction: int, candidates: list[Candidate]) -> tu
     primary = sorted(candidates, key=lambda c: (c.tick_pf, c.tick_exp_r), reverse=True)[0]
     names = ", ".join(c.run_id for c in candidates)
     candle_time = pd.to_datetime(primary.candle_time_ms, unit="ms", utc=True).isoformat()
+    live_price_text = "unavailable"
+    entry_drift_text = "unavailable"
+    paper_action_text = "Paper entry uses live ticker when the trade is recorded."
+    try:
+        live_price = fetch_latest_price(symbol)
+        entry_drift_bps = abs(live_price - primary.entry) / max(abs(primary.entry), 1e-12) * 10_000.0
+        max_entry_drift_bps = env_float("PAPER_MAX_ENTRY_DRIFT_BPS", 15.0)
+        live_price_text = f"{live_price:.2f}"
+        entry_drift_text = f"{entry_drift_bps:.2f} bps"
+        if entry_drift_bps > max_entry_drift_bps:
+            paper_action_text = (
+                f"Paper trade will be skipped if drift is still above {max_entry_drift_bps:.2f} bps "
+                "when recording."
+            )
+        else:
+            paper_action_text = "Paper entry will use live ticker and TP will be recalculated from that fill."
+    except Exception as exc:
+        paper_action_text = f"Paper entry uses live ticker when recording, but live ticker check failed for email: {exc}"
 
     subject = f"{symbol} {side} alert: {len(candidates)} strategies agree"
     body = [
@@ -320,9 +338,12 @@ def format_alert(symbol: str, direction: int, candidates: list[Candidate]) -> tu
         "Primary trade levels:",
         f"Signal close: {primary.signal_close:.2f}",
         f"Entry reference: {primary.entry:.2f} ({primary.entry_source})",
+        f"Live ticker now: {live_price_text}",
+        f"Live/reference drift: {entry_drift_text}",
         f"Stop loss: {primary.stop:.2f}",
         f"Take profit: {primary.take_profit:.2f}",
         f"RR: {primary.rr:.3f}",
+        f"Paper handling: {paper_action_text}",
         "",
         "Reason:",
         f"{len(candidates)} selected strategies agree in the same direction. The primary strategy has tick PF {primary.tick_pf:.3f} and tick expectancy R {primary.tick_exp_r:.3f}.",
