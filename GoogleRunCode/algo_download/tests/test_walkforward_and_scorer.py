@@ -21,6 +21,10 @@ def _bars(n: int, seed: int = 13) -> pd.DataFrame:
     return pd.DataFrame({"open": o, "high": h, "low": l, "close": c})
 
 
+def test_backtest_config_defaults_to_single_position():
+    assert BacktestConfig().max_concurrent_trades == 1
+
+
 def test_purged_kfold_no_overlap_and_purge():
     n = 1000
     folds = list(purged_kfold_indices(n, n_splits=5, purge=10, embargo=0))

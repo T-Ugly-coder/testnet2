@@ -34,7 +34,7 @@ def _run_managed_backtest(
     fee_bps: float = 4.0,
     slip_bps: float = 1.5,
     initial_balance: float = 100000.0,
-    max_concurrent: int = 3,
+    max_concurrent: int = 1,
     breakeven_after_r: float = 0.0,
     partial_tp_r: float = 0.0,
     partial_close_frac: float = 0.5,
@@ -43,6 +43,10 @@ def _run_managed_backtest(
     trail_atr_period: int = 14,
     max_hold_hours: float = 0.0,
 ) -> dict:
+    max_concurrent = int(max_concurrent)
+    if max_concurrent < 1:
+        raise ValueError("max_concurrent must be >= 1")
+
     open_ = bars["open"].to_numpy(float)
     high = bars["high"].to_numpy(float)
     low = bars["low"].to_numpy(float)
@@ -66,6 +70,7 @@ def _run_managed_backtest(
     closed: list[dict] = []
 
     for i in range(n):
+        open_count_at_bar_open = len(open_trades)
         still_open: list[dict] = []
         for trade in open_trades:
             direction = trade["direction"]
@@ -148,7 +153,7 @@ def _run_managed_backtest(
 
         open_trades = still_open
 
-        if i > 0 and len(open_trades) < max_concurrent and signal[i - 1] != 0:
+        if i > 0 and open_count_at_bar_open < max_concurrent and signal[i - 1] != 0:
             direction = int(signal[i - 1])
             raw_entry = open_[i]
             entry = raw_entry * (1.0 + slip) if direction == 1 else raw_entry * (1.0 - slip)
@@ -967,7 +972,7 @@ def enhanced_backtest_strategy(
     slip_bps: float = 1.5,
     slippage_bps: float | None = None,
     initial_balance: float = 100000.0,
-    max_concurrent: int = 3,
+    max_concurrent: int = 1,
     breakeven_after_r: float = 0.0,
     partial_tp_r: float = 0.0,
     partial_close_frac: float = 0.5,

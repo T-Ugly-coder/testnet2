@@ -373,9 +373,13 @@ def _trade_profile_metrics(trades: pd.DataFrame, tf: str) -> dict[str, Any]:
             "median_abs_price_move_pct": 0.0,
             "avg_aligned_price_move_pct": 0.0,
             "avg_hold_bars": 0.0,
+            "min_hold_bars": 0.0,
             "median_hold_bars": 0.0,
+            "max_hold_bars": 0.0,
             "avg_hold_hours": 0.0,
+            "min_hold_hours": 0.0,
             "median_hold_hours": 0.0,
+            "max_hold_hours": 0.0,
             "funding_exposure_days": 0.0,
         }
     entry = trades["entry"].to_numpy(float)
@@ -389,9 +393,13 @@ def _trade_profile_metrics(trades: pd.DataFrame, tf: str) -> dict[str, Any]:
         "median_abs_price_move_pct": float(np.median(np.abs(move_pct))),
         "avg_aligned_price_move_pct": float(np.mean(move_pct)),
         "avg_hold_bars": float(np.mean(hold_bars)),
+        "min_hold_bars": float(np.min(hold_bars)),
         "median_hold_bars": float(np.median(hold_bars)),
+        "max_hold_bars": float(np.max(hold_bars)),
         "avg_hold_hours": float(np.mean(hold_hours)),
+        "min_hold_hours": float(np.min(hold_hours)),
         "median_hold_hours": float(np.median(hold_hours)),
+        "max_hold_hours": float(np.max(hold_hours)),
         "funding_exposure_days": float(np.sum(hold_hours) / 24.0),
     }
 
@@ -456,6 +464,7 @@ def _strategy_metrics(
             risk=args.risk_per_trade,
             fee_bps=fee_bps,
             slip_bps=slip_bps,
+            max_concurrent=args.max_concurrent,
             **runtime_params,
         )
     else:
@@ -463,7 +472,8 @@ def _strategy_metrics(
             bars,
             risk=args.risk_per_trade,
             fee_bps=fee_bps,
-            slippage_bps=slip_bps,
+            slip_bps=slip_bps,
+            max_concurrent=args.max_concurrent,
             **runtime_params,
         )
     perf = compute_perf(result["equity"], result["trades"], BARS_PER_YEAR.get(tf, 365 * 24))
@@ -987,6 +997,7 @@ def run(args: argparse.Namespace) -> int:
                                 risk_per_trade=args.risk_per_trade,
                                 fee_bps=args.fee_bps,
                                 slippage_bps=args.slip_bps,
+                                max_concurrent_trades=args.max_concurrent,
                             ),
                             objective_cfg=_objective_for_target(target, args),
                         )
@@ -1134,7 +1145,9 @@ def run(args: argparse.Namespace) -> int:
                 "avg_abs_move_pct": forward.get("avg_abs_price_move_pct"),
                 "median_abs_move_pct": forward.get("median_abs_price_move_pct"),
                 "avg_hold_hours": forward.get("avg_hold_hours"),
+                "min_hold_hours": forward.get("min_hold_hours"),
                 "median_hold_hours": forward.get("median_hold_hours"),
+                "max_hold_hours": forward.get("max_hold_hours"),
                 "mc_profit_prob": forward.get("mc_profit_prob"),
                 "mc_p05_return": forward.get("mc_p05_return"),
                 "mc_p95_drawdown": forward.get("mc_p95_drawdown"),
@@ -1233,6 +1246,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--risk-per-trade", type=float, default=0.01)
     parser.add_argument("--fee-bps", type=float, default=4.0)
     parser.add_argument("--slip-bps", type=float, default=1.5)
+    parser.add_argument(
+        "--max-concurrent",
+        type=int,
+        default=1,
+        help="Maximum simultaneous positions per strategy. Default 1 disables single-symbol pyramiding.",
+    )
     parser.add_argument(
         "--stress-fee-bps",
         type=float,

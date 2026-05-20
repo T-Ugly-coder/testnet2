@@ -54,7 +54,7 @@
       "source_file": "check_dates.py",
       "source_location": "L1",
       "id": "check_dates_py",
-      "community": 43,
+      "community": 44,
       "norm_label": "check_dates.py"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "check_dates_fixed.py",
       "source_location": "L1",
       "id": "check_dates_fixed_py",
-      "community": 44,
+      "community": 45,
       "norm_label": "check_dates_fixed.py"
     },
     {
@@ -279,7 +279,7 @@
       "source_file": "peek_data.py",
       "source_location": "L1",
       "id": "peek_data_py",
-      "community": 45,
+      "community": 46,
       "norm_label": "peek_data.py"
     },
     {
@@ -333,7 +333,7 @@
       "source_file": "run_auto_algo_finder.ps1",
       "source_location": "L1",
       "id": "run_auto_algo_finder_ps1",
-      "community": 46,
+      "community": 47,
       "norm_label": "run_auto_algo_finder.ps1"
     },
     {
@@ -342,7 +342,7 @@
       "source_file": "run_swing_return_finder.ps1",
       "source_location": "L1",
       "id": "run_swing_return_finder_ps1",
-      "community": 47,
+      "community": 48,
       "norm_label": "run_swing_return_finder.ps1"
     },
     {
@@ -700,7 +700,7 @@
       "label": "run_tick_validation()",
       "file_type": "code",
       "source_file": "tick_forward_test.py",
-      "source_location": "L486",
+      "source_location": "L507",
       "id": "tryingnew_tick_forward_test_run_tick_validation",
       "community": 3,
       "norm_label": "run_tick_validation()"
@@ -709,7 +709,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "tick_forward_test.py",
-      "source_location": "L583",
+      "source_location": "L604",
       "id": "tryingnew_tick_forward_test_main",
       "community": 3,
       "norm_label": "main()"
@@ -981,7 +981,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L1",
       "id": "googleruncode_tick_cache_py",
-      "community": 6,
+      "community": 7,
       "norm_label": "tick_cache.py"
     },
     {
@@ -990,7 +990,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L64",
       "id": "googleruncode_tick_cache_connect",
-      "community": 6,
+      "community": 7,
       "norm_label": "connect()"
     },
     {
@@ -999,7 +999,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L70",
       "id": "googleruncode_tick_cache_covered_by_ranges",
-      "community": 6,
+      "community": 7,
       "norm_label": "_covered_by_ranges()"
     },
     {
@@ -1008,7 +1008,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L85",
       "id": "googleruncode_tick_cache_is_cached",
-      "community": 6,
+      "community": 7,
       "norm_label": "is_cached()"
     },
     {
@@ -1017,7 +1017,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L100",
       "id": "googleruncode_tick_cache_read_ticks",
-      "community": 6,
+      "community": 7,
       "norm_label": "read_ticks()"
     },
     {
@@ -1026,7 +1026,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L115",
       "id": "googleruncode_tick_cache_read_first_tick",
-      "community": 6,
+      "community": 7,
       "norm_label": "read_first_tick()"
     },
     {
@@ -1035,7 +1035,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L139",
       "id": "googleruncode_tick_cache_read_last_tick",
-      "community": 6,
+      "community": 7,
       "norm_label": "read_last_tick()"
     },
     {
@@ -1044,7 +1044,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L163",
       "id": "googleruncode_tick_cache_read_first_price_cross",
-      "community": 6,
+      "community": 7,
       "norm_label": "read_first_price_cross()"
     },
     {
@@ -1053,7 +1053,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L196",
       "id": "googleruncode_tick_cache_store_chunk",
-      "community": 6,
+      "community": 7,
       "norm_label": "_store_chunk()"
     },
     {
@@ -1062,7 +1062,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L215",
       "id": "googleruncode_tick_cache_mark_cached",
-      "community": 6,
+      "community": 7,
       "norm_label": "_mark_cached()"
     },
     {
@@ -1071,7 +1071,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L224",
       "id": "googleruncode_tick_cache_month_start_ms",
-      "community": 6,
+      "community": 7,
       "norm_label": "_month_start_ms()"
     },
     {
@@ -1080,7 +1080,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L228",
       "id": "googleruncode_tick_cache_next_month",
-      "community": 6,
+      "community": 7,
       "norm_label": "_next_month()"
     },
     {
@@ -1089,7 +1089,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L234",
       "id": "googleruncode_tick_cache_month_end_ms",
-      "community": 6,
+      "community": 7,
       "norm_label": "_month_end_ms()"
     },
     {
@@ -1098,7 +1098,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L239",
       "id": "googleruncode_tick_cache_months_between",
-      "community": 6,
+      "community": 7,
       "norm_label": "_months_between()"
     },
     {
@@ -1107,7 +1107,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L252",
       "id": "googleruncode_tick_cache_archive_url",
-      "community": 6,
+      "community": 7,
       "norm_label": "_archive_url()"
     },
     {
@@ -1116,7 +1116,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L258",
       "id": "googleruncode_tick_cache_archive_path",
-      "community": 6,
+      "community": 7,
       "norm_label": "_archive_path()"
     },
     {
@@ -1125,7 +1125,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L263",
       "id": "googleruncode_tick_cache_is_archive_imported",
-      "community": 6,
+      "community": 7,
       "norm_label": "_is_archive_imported()"
     },
     {
@@ -1134,7 +1134,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L278",
       "id": "googleruncode_tick_cache_mark_archive_imported",
-      "community": 6,
+      "community": 7,
       "norm_label": "_mark_archive_imported()"
     },
     {
@@ -1143,7 +1143,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L303",
       "id": "googleruncode_tick_cache_download_monthly_archive",
-      "community": 6,
+      "community": 7,
       "norm_label": "download_monthly_archive()"
     },
     {
@@ -1152,7 +1152,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L339",
       "id": "googleruncode_tick_cache_store_archive_frame",
-      "community": 6,
+      "community": 7,
       "norm_label": "_store_archive_frame()"
     },
     {
@@ -1161,7 +1161,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L368",
       "id": "googleruncode_tick_cache_import_monthly_archive",
-      "community": 6,
+      "community": 7,
       "norm_label": "import_monthly_archive()"
     },
     {
@@ -1170,7 +1170,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L424",
       "id": "googleruncode_tick_cache_ensure_archive_ticks",
-      "community": 6,
+      "community": 7,
       "norm_label": "ensure_archive_ticks()"
     },
     {
@@ -1179,7 +1179,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L455",
       "id": "googleruncode_tick_cache_ensure_ticks",
-      "community": 6,
+      "community": 7,
       "norm_label": "ensure_ticks()"
     },
     {
@@ -1188,7 +1188,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L570",
       "id": "googleruncode_tick_cache_get_ticks",
-      "community": 6,
+      "community": 7,
       "norm_label": "get_ticks()"
     },
     {
@@ -1197,7 +1197,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L1",
       "id": "googleruncode_tick_cache_rationale_1",
-      "community": 6,
+      "community": 7,
       "norm_label": "on-demand binance aggtrade cache for tick-level validation.  this intentionally"
     },
     {
@@ -1206,7 +1206,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L310",
       "id": "googleruncode_tick_cache_rationale_310",
-      "community": 6,
+      "community": 7,
       "norm_label": "download one official binance monthly aggtrades zip, if it exists."
     },
     {
@@ -1215,7 +1215,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L369",
       "id": "googleruncode_tick_cache_rationale_369",
-      "community": 6,
+      "community": 7,
       "norm_label": "import one binance monthly aggtrades zip into duckdb."
     },
     {
@@ -1224,7 +1224,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L431",
       "id": "googleruncode_tick_cache_rationale_431",
-      "community": 6,
+      "community": 7,
       "norm_label": "download/import official binance monthly aggtrades archives for a range."
     },
     {
@@ -1233,7 +1233,7 @@
       "source_file": "GoogleRunCode/tick_cache.py",
       "source_location": "L466",
       "id": "googleruncode_tick_cache_rationale_466",
-      "community": 6,
+      "community": 7,
       "norm_label": "ensure aggtrades for [start_ms, end_ms) exist in the local cache.      returns t"
     },
     {
@@ -1242,7 +1242,7 @@
       "source_file": "GoogleRunCode/tick_forward_test.py",
       "source_location": "L1",
       "id": "googleruncode_tick_forward_test_py",
-      "community": 22,
+      "community": 21,
       "norm_label": "tick_forward_test.py"
     },
     {
@@ -1251,7 +1251,7 @@
       "source_file": "GoogleRunCode/tick_forward_test.py",
       "source_location": "L55",
       "id": "googleruncode_tick_forward_test_jsonable",
-      "community": 22,
+      "community": 21,
       "norm_label": "_jsonable()"
     },
     {
@@ -1260,7 +1260,7 @@
       "source_file": "GoogleRunCode/tick_forward_test.py",
       "source_location": "L71",
       "id": "googleruncode_tick_forward_test_load_bars",
-      "community": 22,
+      "community": 21,
       "norm_label": "load_bars()"
     },
     {
@@ -1269,7 +1269,7 @@
       "source_file": "GoogleRunCode/tick_forward_test.py",
       "source_location": "L95",
       "id": "googleruncode_tick_forward_test_load_best_params",
-      "community": 22,
+      "community": 21,
       "norm_label": "load_best_params()"
     },
     {
@@ -1278,7 +1278,7 @@
       "source_file": "GoogleRunCode/tick_forward_test.py",
       "source_location": "L103",
       "id": "googleruncode_tick_forward_test_signal_value",
-      "community": 22,
+      "community": 21,
       "norm_label": "_signal_value()"
     },
     {
@@ -1287,7 +1287,7 @@
       "source_file": "GoogleRunCode/tick_forward_test.py",
       "source_location": "L112",
       "id": "googleruncode_tick_forward_test_resolve_trade_with_ticks",
-      "community": 22,
+      "community": 21,
       "norm_label": "resolve_trade_with_ticks()"
     },
     {
@@ -1296,7 +1296,7 @@
       "source_file": "GoogleRunCode/tick_forward_test.py",
       "source_location": "L277",
       "id": "googleruncode_tick_forward_test_tick_sort_key",
-      "community": 22,
+      "community": 21,
       "norm_label": "_tick_sort_key()"
     },
     {
@@ -1305,7 +1305,7 @@
       "source_file": "GoogleRunCode/tick_forward_test.py",
       "source_location": "L283",
       "id": "googleruncode_tick_forward_test_resolve_trade_from_cache",
-      "community": 22,
+      "community": 21,
       "norm_label": "resolve_trade_from_cache()"
     },
     {
@@ -1314,7 +1314,7 @@
       "source_file": "GoogleRunCode/tick_forward_test.py",
       "source_location": "L434",
       "id": "googleruncode_tick_forward_test_equity_from_trades",
-      "community": 22,
+      "community": 21,
       "norm_label": "equity_from_trades()"
     },
     {
@@ -1323,25 +1323,25 @@
       "source_file": "GoogleRunCode/tick_forward_test.py",
       "source_location": "L461",
       "id": "googleruncode_tick_forward_test_summarize",
-      "community": 22,
+      "community": 21,
       "norm_label": "summarize()"
     },
     {
       "label": "run_tick_validation()",
       "file_type": "code",
       "source_file": "GoogleRunCode/tick_forward_test.py",
-      "source_location": "L486",
+      "source_location": "L507",
       "id": "googleruncode_tick_forward_test_run_tick_validation",
-      "community": 22,
+      "community": 21,
       "norm_label": "run_tick_validation()"
     },
     {
       "label": "main()",
       "file_type": "code",
       "source_file": "GoogleRunCode/tick_forward_test.py",
-      "source_location": "L583",
+      "source_location": "L604",
       "id": "googleruncode_tick_forward_test_main",
-      "community": 22,
+      "community": 21,
       "norm_label": "main()"
     },
     {
@@ -1350,7 +1350,7 @@
       "source_file": "GoogleRunCode/tick_forward_test.py",
       "source_location": "L1",
       "id": "googleruncode_tick_forward_test_rationale_1",
-      "community": 22,
+      "community": 21,
       "norm_label": "tick-level validation for optimized candle strategies.  workflow: 1. load forwar"
     },
     {
@@ -1368,7 +1368,7 @@
       "source_file": "GoogleRunCode/algo_download/config.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_config_py",
-      "community": 1,
+      "community": 5,
       "norm_label": "config.py"
     },
     {
@@ -1377,7 +1377,7 @@
       "source_file": "GoogleRunCode/algo_download/config.py",
       "source_location": "L18",
       "id": "algo_download_config_hardwareconfig",
-      "community": 1,
+      "community": 5,
       "norm_label": "hardwareconfig"
     },
     {
@@ -1386,7 +1386,7 @@
       "source_file": "GoogleRunCode/algo_download/config.py",
       "source_location": "L27",
       "id": "algo_download_config_dataconfig",
-      "community": 1,
+      "community": 5,
       "norm_label": "dataconfig"
     },
     {
@@ -1395,25 +1395,25 @@
       "source_file": "GoogleRunCode/algo_download/config.py",
       "source_location": "L38",
       "id": "algo_download_config_backtestconfig",
-      "community": 1,
+      "community": 5,
       "norm_label": "backtestconfig"
     },
     {
       "label": "LLMConfig",
       "file_type": "code",
       "source_file": "GoogleRunCode/algo_download/config.py",
-      "source_location": "L52",
+      "source_location": "L54",
       "id": "algo_download_config_llmconfig",
-      "community": 1,
+      "community": 5,
       "norm_label": "llmconfig"
     },
     {
       "label": "Config",
       "file_type": "code",
       "source_file": "GoogleRunCode/algo_download/config.py",
-      "source_location": "L64",
+      "source_location": "L66",
       "id": "algo_download_config_config",
-      "community": 1,
+      "community": 5,
       "norm_label": "config"
     },
     {
@@ -1422,7 +1422,7 @@
       "source_file": "GoogleRunCode/algo_download/config.py",
       "source_location": "L1",
       "id": "algo_download_config_rationale_1",
-      "community": 1,
+      "community": 5,
       "norm_label": "central config \u2014 no cron, all timing handled by event loop."
     },
     {
@@ -1593,7 +1593,7 @@
       "source_file": "GoogleRunCode/algo_download/__init__.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_init_py",
-      "community": 1,
+      "community": 5,
       "norm_label": "__init__.py"
     },
     {
@@ -1602,7 +1602,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/engine.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_backtest_engine_py",
-      "community": 12,
+      "community": 11,
       "norm_label": "engine.py"
     },
     {
@@ -1611,7 +1611,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/engine.py",
       "source_location": "L23",
       "id": "backtest_engine_traderesult",
-      "community": 12,
+      "community": 11,
       "norm_label": "traderesult"
     },
     {
@@ -1620,7 +1620,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/engine.py",
       "source_location": "L37",
       "id": "backtest_engine_resolve_exit",
-      "community": 12,
+      "community": 11,
       "norm_label": "_resolve_exit()"
     },
     {
@@ -1629,16 +1629,16 @@
       "source_file": "GoogleRunCode/algo_download/backtest/engine.py",
       "source_location": "L74",
       "id": "backtest_engine_simulate",
-      "community": 12,
+      "community": 11,
       "norm_label": "_simulate()"
     },
     {
       "label": "run_backtest()",
       "file_type": "code",
       "source_file": "GoogleRunCode/algo_download/backtest/engine.py",
-      "source_location": "L217",
+      "source_location": "L225",
       "id": "backtest_engine_run_backtest",
-      "community": 12,
+      "community": 11,
       "norm_label": "run_backtest()"
     },
     {
@@ -1647,7 +1647,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/engine.py",
       "source_location": "L1",
       "id": "backtest_engine_rationale_1",
-      "community": 12,
+      "community": 11,
       "norm_label": "vectorized event-driven backtester.  design: - strategy emits signalevents on ba"
     },
     {
@@ -1656,16 +1656,16 @@
       "source_file": "GoogleRunCode/algo_download/backtest/engine.py",
       "source_location": "L38",
       "id": "backtest_engine_rationale_38",
-      "community": 12,
+      "community": 11,
       "norm_label": "determine sl/tp resolution for one bar.      returns (reason, exit_px):"
     },
     {
       "label": "bars: DataFrame with open/high/low/close.     signals: dict with 'signal' (+1/-1",
       "file_type": "rationale",
       "source_file": "GoogleRunCode/algo_download/backtest/engine.py",
-      "source_location": "L221",
-      "id": "backtest_engine_rationale_221",
-      "community": 12,
+      "source_location": "L229",
+      "id": "backtest_engine_rationale_229",
+      "community": 11,
       "norm_label": "bars: dataframe with open/high/low/close.     signals: dict with 'signal' (+1/-1"
     },
     {
@@ -1674,7 +1674,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/walkforward.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_backtest_walkforward_py",
-      "community": 1,
+      "community": 5,
       "norm_label": "walkforward.py"
     },
     {
@@ -1683,7 +1683,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/walkforward.py",
       "source_location": "L35",
       "id": "backtest_walkforward_fold",
-      "community": 1,
+      "community": 5,
       "norm_label": "fold"
     },
     {
@@ -1692,7 +1692,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/walkforward.py",
       "source_location": "L43",
       "id": "backtest_walkforward_purged_kfold_indices",
-      "community": 1,
+      "community": 5,
       "norm_label": "purged_kfold_indices()"
     },
     {
@@ -1701,7 +1701,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/walkforward.py",
       "source_location": "L80",
       "id": "backtest_walkforward_walk_forward",
-      "community": 1,
+      "community": 5,
       "norm_label": "walk_forward()"
     },
     {
@@ -1710,7 +1710,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/walkforward.py",
       "source_location": "L158",
       "id": "backtest_walkforward_aggregate_walk_forward",
-      "community": 1,
+      "community": 5,
       "norm_label": "aggregate_walk_forward()"
     },
     {
@@ -1719,7 +1719,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/walkforward.py",
       "source_location": "L1",
       "id": "backtest_walkforward_rationale_1",
-      "community": 1,
+      "community": 5,
       "norm_label": "purged & embargoed walk-forward cross-validation.  why purge + embargo? (lopez d"
     },
     {
@@ -1728,7 +1728,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/walkforward.py",
       "source_location": "L45",
       "id": "backtest_walkforward_rationale_45",
-      "community": 1,
+      "community": 5,
       "norm_label": "generate non-overlapping forward-looking folds with purge+embargo.      each fol"
     },
     {
@@ -1737,7 +1737,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/walkforward.py",
       "source_location": "L87",
       "id": "backtest_walkforward_rationale_87",
-      "community": 1,
+      "community": 5,
       "norm_label": "run anchored walk-forward across `bars` and return a per-fold results     datafr"
     },
     {
@@ -1746,7 +1746,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/walkforward.py",
       "source_location": "L159",
       "id": "backtest_walkforward_rationale_159",
-      "community": 1,
+      "community": 5,
       "norm_label": "summary across folds: mean/std of key metrics, plus stability stats."
     },
     {
@@ -1755,7 +1755,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/__init__.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_backtest_init_py",
-      "community": 37,
+      "community": 38,
       "norm_label": "__init__.py"
     },
     {
@@ -1764,7 +1764,7 @@
       "source_file": "GoogleRunCode/algo_download/backtest/__init__.py",
       "source_location": "L1",
       "id": "backtest_init_rationale_1",
-      "community": 37,
+      "community": 38,
       "norm_label": "backtest sub-package."
     },
     {
@@ -1935,7 +1935,7 @@
       "source_file": "GoogleRunCode/algo_download/core/__init__.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_core_init_py",
-      "community": 48,
+      "community": 49,
       "norm_label": "__init__.py"
     },
     {
@@ -2322,7 +2322,7 @@
       "source_file": "GoogleRunCode/algo_download/core/patterns/sfp.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_core_patterns_sfp_py",
-      "community": 21,
+      "community": 22,
       "norm_label": "sfp.py"
     },
     {
@@ -2331,7 +2331,7 @@
       "source_file": "GoogleRunCode/algo_download/core/patterns/sfp.py",
       "source_location": "L14",
       "id": "patterns_sfp_detect_sfp",
-      "community": 21,
+      "community": 22,
       "norm_label": "detect_sfp()"
     },
     {
@@ -2340,7 +2340,7 @@
       "source_file": "GoogleRunCode/algo_download/core/patterns/sfp.py",
       "source_location": "L1",
       "id": "patterns_sfp_rationale_1",
-      "community": 21,
+      "community": 22,
       "norm_label": "swing failure pattern (sfp) \u2014 tom dante / topsteptrader style.  an sfp forms whe"
     },
     {
@@ -2349,7 +2349,7 @@
       "source_file": "GoogleRunCode/algo_download/core/patterns/sfp.py",
       "source_location": "L18",
       "id": "patterns_sfp_rationale_18",
-      "community": 21,
+      "community": 22,
       "norm_label": "returns (idx, side, level, wick_size).     side: 1 = bearish sfp (wick above res"
     },
     {
@@ -2655,7 +2655,7 @@
       "source_file": "GoogleRunCode/algo_download/core/patterns/__init__.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_core_patterns_init_py",
-      "community": 38,
+      "community": 39,
       "norm_label": "__init__.py"
     },
     {
@@ -2664,7 +2664,7 @@
       "source_file": "GoogleRunCode/algo_download/core/patterns/__init__.py",
       "source_location": "L1",
       "id": "patterns_init_rationale_1",
-      "community": 38,
+      "community": 39,
       "norm_label": "patterns sub-package."
     },
     {
@@ -2736,7 +2736,7 @@
       "source_file": "GoogleRunCode/algo_download/data/binance_tick.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_data_binance_tick_py",
-      "community": 1,
+      "community": 5,
       "norm_label": "binance_tick.py"
     },
     {
@@ -2745,7 +2745,7 @@
       "source_file": "GoogleRunCode/algo_download/data/binance_tick.py",
       "source_location": "L33",
       "id": "data_binance_tick_download_monthly_ticks",
-      "community": 1,
+      "community": 5,
       "norm_label": "download_monthly_ticks()"
     },
     {
@@ -2754,7 +2754,7 @@
       "source_file": "GoogleRunCode/algo_download/data/binance_tick.py",
       "source_location": "L48",
       "id": "data_binance_tick_backfill_ticks",
-      "community": 1,
+      "community": 5,
       "norm_label": "backfill_ticks()"
     },
     {
@@ -2763,7 +2763,7 @@
       "source_file": "GoogleRunCode/algo_download/data/binance_tick.py",
       "source_location": "L75",
       "id": "data_binance_tick_fetch_klines",
-      "community": 1,
+      "community": 5,
       "norm_label": "fetch_klines()"
     },
     {
@@ -2772,7 +2772,7 @@
       "source_file": "GoogleRunCode/algo_download/data/binance_tick.py",
       "source_location": "L111",
       "id": "data_binance_tick_stream_aggtrades",
-      "community": 1,
+      "community": 5,
       "norm_label": "stream_aggtrades()"
     },
     {
@@ -2781,7 +2781,7 @@
       "source_file": "GoogleRunCode/algo_download/data/binance_tick.py",
       "source_location": "L1",
       "id": "data_binance_tick_rationale_1",
-      "community": 1,
+      "community": 5,
       "norm_label": "binance tick + historical data fetcher.  - historical: rest /api/v3/aggtrades fo"
     },
     {
@@ -2862,7 +2862,7 @@
       "source_file": "GoogleRunCode/algo_download/data/__init__.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_data_init_py",
-      "community": 49,
+      "community": 50,
       "norm_label": "__init__.py"
     },
     {
@@ -3042,7 +3042,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_optimize_objective_py",
-      "community": 7,
+      "community": 1,
       "norm_label": "objective.py"
     },
     {
@@ -3051,7 +3051,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L37",
       "id": "optimize_objective_objectiveconfig",
-      "community": 7,
+      "community": 1,
       "norm_label": "objectiveconfig"
     },
     {
@@ -3060,7 +3060,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L72",
       "id": "optimize_objective_safe",
-      "community": 7,
+      "community": 1,
       "norm_label": "_safe()"
     },
     {
@@ -3069,7 +3069,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L80",
       "id": "optimize_objective_clean_series",
-      "community": 7,
+      "community": 1,
       "norm_label": "_clean_series()"
     },
     {
@@ -3078,7 +3078,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L87",
       "id": "optimize_objective_weighted_mean",
-      "community": 7,
+      "community": 1,
       "norm_label": "_weighted_mean()"
     },
     {
@@ -3087,7 +3087,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L113",
       "id": "optimize_objective_weighted_mean_std",
-      "community": 7,
+      "community": 1,
       "norm_label": "_weighted_mean_std()"
     },
     {
@@ -3096,7 +3096,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L142",
       "id": "optimize_objective_trades_per_month",
-      "community": 7,
+      "community": 1,
       "norm_label": "trades_per_month()"
     },
     {
@@ -3105,7 +3105,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L155",
       "id": "optimize_objective_freq_penalty",
-      "community": 7,
+      "community": 1,
       "norm_label": "_freq_penalty()"
     },
     {
@@ -3114,7 +3114,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L173",
       "id": "optimize_objective_dd_penalty",
-      "community": 7,
+      "community": 1,
       "norm_label": "_dd_penalty()"
     },
     {
@@ -3123,7 +3123,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L183",
       "id": "optimize_objective_check_required_columns",
-      "community": 7,
+      "community": 1,
       "norm_label": "_check_required_columns()"
     },
     {
@@ -3132,7 +3132,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L190",
       "id": "optimize_objective_score",
-      "community": 7,
+      "community": 1,
       "norm_label": "score()"
     },
     {
@@ -3141,7 +3141,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L1",
       "id": "optimize_objective_rationale_1",
-      "community": 7,
+      "community": 1,
       "norm_label": "composite objective for the auto-optimizer.  the objective collapses a multi-met"
     },
     {
@@ -3150,7 +3150,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L82",
       "id": "optimize_objective_rationale_82",
-      "community": 7,
+      "community": 1,
       "norm_label": "replace \u00b1inf and drop nan. keeps the original index for weighting."
     },
     {
@@ -3159,7 +3159,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L89",
       "id": "optimize_objective_rationale_89",
-      "community": 7,
+      "community": 1,
       "norm_label": "trade-weighted mean (or any-weight). single fall-back path: simple mean     of t"
     },
     {
@@ -3168,7 +3168,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L114",
       "id": "optimize_objective_rationale_114",
-      "community": 7,
+      "community": 1,
       "norm_label": "weighted mean and (unbiased) weighted std for a 1-d array.      falls back grace"
     },
     {
@@ -3177,7 +3177,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L143",
       "id": "optimize_objective_rationale_143",
-      "community": 7,
+      "community": 1,
       "norm_label": "average trades per month across folds (weighted by fold bar-count)."
     },
     {
@@ -3186,7 +3186,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L156",
       "id": "optimize_objective_rationale_156",
-      "community": 7,
+      "community": 1,
       "norm_label": "piecewise-linear penalty around the target band, c0-continuous at lo/hi.      in"
     },
     {
@@ -3195,7 +3195,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L174",
       "id": "optimize_objective_rationale_174",
-      "community": 7,
+      "community": 1,
       "norm_label": "quadratic above the soft cap; saturates at the hard cap."
     },
     {
@@ -3204,7 +3204,7 @@
       "source_file": "GoogleRunCode/algo_download/optimize/objective.py",
       "source_location": "L192",
       "id": "optimize_objective_rationale_192",
-      "community": 7,
+      "community": 1,
       "norm_label": "return a dict with `score` and component metrics.      `score` is the scalar to"
     },
     {
@@ -3267,7 +3267,7 @@
       "source_file": "GoogleRunCode/algo_download/strategy/confluence.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_strategy_confluence_py",
-      "community": 21,
+      "community": 22,
       "norm_label": "confluence.py"
     },
     {
@@ -3276,7 +3276,7 @@
       "source_file": "GoogleRunCode/algo_download/strategy/confluence.py",
       "source_location": "L33",
       "id": "strategy_confluence_trend_from_events",
-      "community": 21,
+      "community": 22,
       "norm_label": "_trend_from_events()"
     },
     {
@@ -3285,7 +3285,7 @@
       "source_file": "GoogleRunCode/algo_download/strategy/confluence.py",
       "source_location": "L51",
       "id": "strategy_confluence_bool_mask",
-      "community": 21,
+      "community": 22,
       "norm_label": "_bool_mask()"
     },
     {
@@ -3294,7 +3294,7 @@
       "source_file": "GoogleRunCode/algo_download/strategy/confluence.py",
       "source_location": "L61",
       "id": "strategy_confluence_build_signals",
-      "community": 21,
+      "community": 22,
       "norm_label": "build_signals()"
     },
     {
@@ -3303,7 +3303,7 @@
       "source_file": "GoogleRunCode/algo_download/strategy/confluence.py",
       "source_location": "L1",
       "id": "strategy_confluence_rationale_1",
-      "community": 21,
+      "community": 22,
       "norm_label": "confluence strategy \u2014 bias + sweep + trigger.  causality contract:     signal[i]"
     },
     {
@@ -3312,7 +3312,7 @@
       "source_file": "GoogleRunCode/algo_download/strategy/confluence.py",
       "source_location": "L35",
       "id": "strategy_confluence_rationale_35",
-      "community": 21,
+      "community": 22,
       "norm_label": "forward-fill structural trend (+1 bull, -1 bear, 0 unknown).      ev_type from b"
     },
     {
@@ -3321,7 +3321,7 @@
       "source_file": "GoogleRunCode/algo_download/strategy/confluence.py",
       "source_location": "L53",
       "id": "strategy_confluence_rationale_53",
-      "community": 21,
+      "community": 22,
       "norm_label": "return length-n boolean mask: true at indices where side == want_side."
     },
     {
@@ -3330,7 +3330,7 @@
       "source_file": "GoogleRunCode/algo_download/strategy/confluence.py",
       "source_location": "L68",
       "id": "strategy_confluence_rationale_68",
-      "community": 21,
+      "community": 22,
       "norm_label": "build causal (signal, sl, tp) arrays from ohlc bars.      parameters     -------"
     },
     {
@@ -3429,7 +3429,7 @@
       "source_file": "GoogleRunCode/algo_download/strategy/scorer.py",
       "source_location": "L125",
       "id": "strategy_scorer_sfp_scorer",
-      "community": 21,
+      "community": 22,
       "norm_label": "sfp_scorer()"
     },
     {
@@ -3699,7 +3699,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_tests_test_engine_py",
-      "community": 12,
+      "community": 11,
       "norm_label": "test_engine.py"
     },
     {
@@ -3708,7 +3708,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
       "source_location": "L23",
       "id": "tests_test_engine_test_resolve_exit_long_both_touched_sl_wins",
-      "community": 12,
+      "community": 11,
       "norm_label": "test_resolve_exit_long_both_touched_sl_wins()"
     },
     {
@@ -3717,7 +3717,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
       "source_location": "L31",
       "id": "tests_test_engine_test_resolve_exit_long_gap_up_tp_at_open",
-      "community": 12,
+      "community": 11,
       "norm_label": "test_resolve_exit_long_gap_up_tp_at_open()"
     },
     {
@@ -3726,7 +3726,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
       "source_location": "L39",
       "id": "tests_test_engine_test_resolve_exit_long_gap_down_sl_at_open",
-      "community": 12,
+      "community": 11,
       "norm_label": "test_resolve_exit_long_gap_down_sl_at_open()"
     },
     {
@@ -3735,7 +3735,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
       "source_location": "L47",
       "id": "tests_test_engine_test_resolve_exit_entry_bar_ignores_open_check",
-      "community": 12,
+      "community": 11,
       "norm_label": "test_resolve_exit_entry_bar_ignores_open_check()"
     },
     {
@@ -3744,7 +3744,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
       "source_location": "L56",
       "id": "tests_test_engine_test_resolve_exit_short_gap_down_tp_at_open",
-      "community": 12,
+      "community": 11,
       "norm_label": "test_resolve_exit_short_gap_down_tp_at_open()"
     },
     {
@@ -3753,7 +3753,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
       "source_location": "L64",
       "id": "tests_test_engine_test_resolve_exit_short_gap_up_sl_at_open",
-      "community": 12,
+      "community": 11,
       "norm_label": "test_resolve_exit_short_gap_up_sl_at_open()"
     },
     {
@@ -3762,7 +3762,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
       "source_location": "L73",
       "id": "tests_test_engine_make_bars",
-      "community": 12,
+      "community": 11,
       "norm_label": "_make_bars()"
     },
     {
@@ -3771,7 +3771,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
       "source_location": "L78",
       "id": "tests_test_engine_test_run_backtest_long_takes_profit",
-      "community": 12,
+      "community": 11,
       "norm_label": "test_run_backtest_long_takes_profit()"
     },
     {
@@ -3780,7 +3780,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
       "source_location": "L100",
       "id": "tests_test_engine_test_run_backtest_long_stop_loss",
-      "community": 12,
+      "community": 11,
       "norm_label": "test_run_backtest_long_stop_loss()"
     },
     {
@@ -3789,16 +3789,34 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
       "source_location": "L120",
       "id": "tests_test_engine_test_run_backtest_invalid_direction_rejected",
-      "community": 12,
+      "community": 11,
       "norm_label": "test_run_backtest_invalid_direction_rejected()"
+    },
+    {
+      "label": "test_run_backtest_default_does_not_reuse_slot_after_intrabar_exit()",
+      "file_type": "code",
+      "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
+      "source_location": "L138",
+      "id": "tests_test_engine_test_run_backtest_default_does_not_reuse_slot_after_intrabar_exit",
+      "community": 11,
+      "norm_label": "test_run_backtest_default_does_not_reuse_slot_after_intrabar_exit()"
+    },
+    {
+      "label": "test_run_backtest_rejects_zero_max_concurrent()",
+      "file_type": "code",
+      "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
+      "source_location": "L164",
+      "id": "tests_test_engine_test_run_backtest_rejects_zero_max_concurrent",
+      "community": 11,
+      "norm_label": "test_run_backtest_rejects_zero_max_concurrent()"
     },
     {
       "label": "test_run_backtest_equity_finite()",
       "file_type": "code",
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
-      "source_location": "L138",
+      "source_location": "L177",
       "id": "tests_test_engine_test_run_backtest_equity_finite",
-      "community": 12,
+      "community": 11,
       "norm_label": "test_run_backtest_equity_finite()"
     },
     {
@@ -3807,7 +3825,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
       "source_location": "L1",
       "id": "tests_test_engine_rationale_1",
-      "community": 12,
+      "community": 11,
       "norm_label": "unit tests for algo.backtest.engine._resolve_exit and run_backtest.  covers:   -"
     },
     {
@@ -3960,7 +3978,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_optimize.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_tests_test_optimize_py",
-      "community": 7,
+      "community": 1,
       "norm_label": "test_optimize.py"
     },
     {
@@ -3969,7 +3987,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_optimize.py",
       "source_location": "L13",
       "id": "tests_test_optimize_fake_folds",
-      "community": 7,
+      "community": 1,
       "norm_label": "_fake_folds()"
     },
     {
@@ -3978,7 +3996,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_optimize.py",
       "source_location": "L30",
       "id": "tests_test_optimize_test_trades_per_month_basic",
-      "community": 7,
+      "community": 1,
       "norm_label": "test_trades_per_month_basic()"
     },
     {
@@ -3987,7 +4005,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_optimize.py",
       "source_location": "L37",
       "id": "tests_test_optimize_test_freq_penalty_zero_inside_band",
-      "community": 7,
+      "community": 1,
       "norm_label": "test_freq_penalty_zero_inside_band()"
     },
     {
@@ -3996,7 +4014,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_optimize.py",
       "source_location": "L45",
       "id": "tests_test_optimize_test_dd_penalty_monotone",
-      "community": 7,
+      "community": 1,
       "norm_label": "test_dd_penalty_monotone()"
     },
     {
@@ -4005,7 +4023,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_optimize.py",
       "source_location": "L52",
       "id": "tests_test_optimize_test_score_prefers_high_sharpe_target_freq_low_dd",
-      "community": 7,
+      "community": 1,
       "norm_label": "test_score_prefers_high_sharpe_target_freq_low_dd()"
     },
     {
@@ -4014,7 +4032,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_optimize.py",
       "source_location": "L69",
       "id": "tests_test_optimize_test_score_handles_empty",
-      "community": 7,
+      "community": 1,
       "norm_label": "test_score_handles_empty()"
     },
     {
@@ -4023,7 +4041,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_optimize.py",
       "source_location": "L76",
       "id": "tests_test_optimize_synthetic_bars",
-      "community": 7,
+      "community": 1,
       "norm_label": "_synthetic_bars()"
     },
     {
@@ -4041,7 +4059,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_optimize.py",
       "source_location": "L1",
       "id": "tests_test_optimize_rationale_1",
-      "community": 7,
+      "community": 1,
       "norm_label": "unit tests for the auto-optimizer's objective scoring + smoke run."
     },
     {
@@ -4050,7 +4068,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_optimize.py",
       "source_location": "L16",
       "id": "tests_test_optimize_rationale_16",
-      "community": 7,
+      "community": 1,
       "norm_label": "720 1h bars/fold = 1 month per fold; 12 trades = 12 trades/month."
     },
     {
@@ -4171,12 +4189,39 @@
       "norm_label": "unit tests for algo.core.patterns.regime.  validates:   - variance ratio ~ 1 on"
     },
     {
+      "label": "test_trade_hold_metrics.py",
+      "file_type": "code",
+      "source_file": "GoogleRunCode/algo_download/tests/test_trade_hold_metrics.py",
+      "source_location": "L1",
+      "id": "googleruncode_algo_download_tests_test_trade_hold_metrics_py",
+      "community": 36,
+      "norm_label": "test_trade_hold_metrics.py"
+    },
+    {
+      "label": "test_forward_trade_profile_reports_min_avg_max_hold_time()",
+      "file_type": "code",
+      "source_file": "GoogleRunCode/algo_download/tests/test_trade_hold_metrics.py",
+      "source_location": "L10",
+      "id": "tests_test_trade_hold_metrics_test_forward_trade_profile_reports_min_avg_max_hold_time",
+      "community": 36,
+      "norm_label": "test_forward_trade_profile_reports_min_avg_max_hold_time()"
+    },
+    {
+      "label": "test_tick_summary_reports_min_avg_max_hold_time()",
+      "file_type": "code",
+      "source_file": "GoogleRunCode/algo_download/tests/test_trade_hold_metrics.py",
+      "source_location": "L29",
+      "id": "tests_test_trade_hold_metrics_test_tick_summary_reports_min_avg_max_hold_time",
+      "community": 36,
+      "norm_label": "test_tick_summary_reports_min_avg_max_hold_time()"
+    },
+    {
       "label": "test_walkforward_and_scorer.py",
       "file_type": "code",
       "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_tests_test_walkforward_and_scorer_py",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_walkforward_and_scorer.py"
     },
     {
@@ -4185,70 +4230,79 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
       "source_location": "L15",
       "id": "tests_test_walkforward_and_scorer_bars",
-      "community": 1,
+      "community": 5,
       "norm_label": "_bars()"
+    },
+    {
+      "label": "test_backtest_config_defaults_to_single_position()",
+      "file_type": "code",
+      "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
+      "source_location": "L24",
+      "id": "tests_test_walkforward_and_scorer_test_backtest_config_defaults_to_single_position",
+      "community": 5,
+      "norm_label": "test_backtest_config_defaults_to_single_position()"
     },
     {
       "label": "test_purged_kfold_no_overlap_and_purge()",
       "file_type": "code",
       "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
-      "source_location": "L24",
+      "source_location": "L28",
       "id": "tests_test_walkforward_and_scorer_test_purged_kfold_no_overlap_and_purge",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_purged_kfold_no_overlap_and_purge()"
     },
     {
       "label": "test_purged_kfold_rejects_too_few_bars()",
       "file_type": "code",
       "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
-      "source_location": "L35",
+      "source_location": "L39",
       "id": "tests_test_walkforward_and_scorer_test_purged_kfold_rejects_too_few_bars",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_purged_kfold_rejects_too_few_bars()"
     },
     {
       "label": "test_walk_forward_runs_and_aggregates()",
       "file_type": "code",
       "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
-      "source_location": "L40",
+      "source_location": "L44",
       "id": "tests_test_walkforward_and_scorer_test_walk_forward_runs_and_aggregates",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_walk_forward_runs_and_aggregates()"
     },
     {
       "label": "test_scorer_default_runs()",
       "file_type": "code",
       "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
-      "source_location": "L55",
+      "source_location": "L59",
       "id": "tests_test_walkforward_and_scorer_test_scorer_default_runs",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_scorer_default_runs()"
     },
     {
       "label": "test_scorer_direction_sanity()",
       "file_type": "code",
       "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
-      "source_location": "L65",
+      "source_location": "L69",
       "id": "tests_test_walkforward_and_scorer_test_scorer_direction_sanity",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_scorer_direction_sanity()"
     },
     {
       "label": "test_scorer_no_signals_below_threshold()",
       "file_type": "code",
       "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
-      "source_location": "L79",
+      "source_location": "L83",
       "id": "tests_test_walkforward_and_scorer_test_scorer_no_signals_below_threshold",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_scorer_no_signals_below_threshold()"
     },
     {
       "label": "test_scorer_empty_bars()",
       "file_type": "code",
       "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
-      "source_location": "L86",
+      "source_location": "L90",
       "id": "tests_test_walkforward_and_scorer_test_scorer_empty_bars",
-      "community": 1,
+      "community": 5,
       "norm_label": "test_scorer_empty_bars()"
     },
     {
@@ -4257,7 +4311,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
       "source_location": "L1",
       "id": "tests_test_walkforward_and_scorer_rationale_1",
-      "community": 1,
+      "community": 5,
       "norm_label": "smoke tests for walk-forward and the pluggable scorer."
     },
     {
@@ -4266,7 +4320,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/__init__.py",
       "source_location": "L1",
       "id": "googleruncode_algo_download_tests_init_py",
-      "community": 39,
+      "community": 40,
       "norm_label": "__init__.py"
     },
     {
@@ -4275,7 +4329,7 @@
       "source_file": "GoogleRunCode/algo_download/tests/__init__.py",
       "source_location": "L1",
       "id": "tests_init_rationale_1",
-      "community": 39,
+      "community": 40,
       "norm_label": "test suite for the algo package."
     },
     {
@@ -4284,7 +4338,7 @@
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
       "source_location": "L1",
       "id": "googleruncode_scripts_live_trade_email_alert_py",
-      "community": 5,
+      "community": 4,
       "norm_label": "live_trade_email_alert.py"
     },
     {
@@ -4293,286 +4347,304 @@
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
       "source_location": "L38",
       "id": "scripts_live_trade_email_alert_candidate",
-      "community": 5,
+      "community": 4,
       "norm_label": "candidate"
     },
     {
       "label": "Alert",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L55",
+      "source_location": "L57",
       "id": "scripts_live_trade_email_alert_alert",
-      "community": 5,
+      "community": 4,
       "norm_label": "alert"
     },
     {
       "label": "PaperTradeDecision",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L66",
+      "source_location": "L68",
       "id": "scripts_live_trade_email_alert_papertradedecision",
-      "community": 5,
+      "community": 4,
       "norm_label": "papertradedecision"
     },
     {
       "label": "env_int()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L72",
+      "source_location": "L74",
       "id": "scripts_live_trade_email_alert_env_int",
-      "community": 5,
+      "community": 4,
       "norm_label": "env_int()"
     },
     {
       "label": "env_float()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L77",
+      "source_location": "L79",
       "id": "scripts_live_trade_email_alert_env_float",
-      "community": 5,
+      "community": 4,
       "norm_label": "env_float()"
     },
     {
       "label": "infer_interval()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L82",
+      "source_location": "L84",
       "id": "scripts_live_trade_email_alert_infer_interval",
-      "community": 5,
+      "community": 4,
       "norm_label": "infer_interval()"
     },
     {
       "label": "fetch_klines()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L88",
+      "source_location": "L90",
       "id": "scripts_live_trade_email_alert_fetch_klines",
-      "community": 5,
+      "community": 4,
       "norm_label": "fetch_klines()"
     },
     {
       "label": "fetch_latest_price()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L113",
+      "source_location": "L115",
       "id": "scripts_live_trade_email_alert_fetch_latest_price",
-      "community": 5,
+      "community": 4,
       "norm_label": "fetch_latest_price()"
     },
     {
       "label": "load_selected()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L121",
+      "source_location": "L123",
       "id": "scripts_live_trade_email_alert_load_selected",
-      "community": 5,
+      "community": 4,
       "norm_label": "load_selected()"
     },
     {
       "label": "load_params()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L126",
+      "source_location": "L128",
       "id": "scripts_live_trade_email_alert_load_params",
-      "community": 5,
+      "community": 4,
       "norm_label": "load_params()"
     },
     {
       "label": "latest_closed_index()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L134",
+      "source_location": "L136",
       "id": "scripts_live_trade_email_alert_latest_closed_index",
-      "community": 5,
+      "community": 4,
       "norm_label": "latest_closed_index()"
     },
     {
       "label": "signal_candidate()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L142",
+      "source_location": "L144",
       "id": "scripts_live_trade_email_alert_signal_candidate",
-      "community": 5,
+      "community": 4,
       "norm_label": "signal_candidate()"
     },
     {
       "label": "load_state()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L192",
+      "source_location": "L204",
       "id": "scripts_live_trade_email_alert_load_state",
-      "community": 5,
+      "community": 4,
       "norm_label": "load_state()"
     },
     {
       "label": "save_state()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L199",
+      "source_location": "L211",
       "id": "scripts_live_trade_email_alert_save_state",
-      "community": 5,
+      "community": 4,
       "norm_label": "save_state()"
     },
     {
       "label": "load_paper_state()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L204",
+      "source_location": "L216",
       "id": "scripts_live_trade_email_alert_load_paper_state",
-      "community": 5,
+      "community": 4,
       "norm_label": "load_paper_state()"
     },
     {
       "label": "save_paper_state()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L210",
+      "source_location": "L222",
       "id": "scripts_live_trade_email_alert_save_paper_state",
-      "community": 5,
+      "community": 4,
       "norm_label": "save_paper_state()"
     },
     {
       "label": "append_ledger()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L216",
+      "source_location": "L228",
       "id": "scripts_live_trade_email_alert_append_ledger",
-      "community": 5,
+      "community": 4,
       "norm_label": "append_ledger()"
     },
     {
       "label": "write_csv()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L246",
+      "source_location": "L261",
       "id": "scripts_live_trade_email_alert_write_csv",
-      "community": 5,
+      "community": 4,
       "norm_label": "write_csv()"
     },
     {
       "label": "write_trade_snapshots()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L257",
+      "source_location": "L272",
       "id": "scripts_live_trade_email_alert_write_trade_snapshots",
-      "community": 5,
+      "community": 4,
       "norm_label": "write_trade_snapshots()"
     },
     {
       "label": "utc_now_ms()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L263",
+      "source_location": "L278",
       "id": "scripts_live_trade_email_alert_utc_now_ms",
-      "community": 5,
+      "community": 4,
       "norm_label": "utc_now_ms()"
     },
     {
       "label": "ms_to_iso()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L267",
+      "source_location": "L282",
       "id": "scripts_live_trade_email_alert_ms_to_iso",
-      "community": 5,
+      "community": 4,
       "norm_label": "ms_to_iso()"
     },
     {
       "label": "send_mail()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L271",
+      "source_location": "L286",
       "id": "scripts_live_trade_email_alert_send_mail",
-      "community": 5,
+      "community": 4,
       "norm_label": "send_mail()"
     },
     {
       "label": "format_alert()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L292",
+      "source_location": "L307",
       "id": "scripts_live_trade_email_alert_format_alert",
-      "community": 5,
+      "community": 4,
       "norm_label": "format_alert()"
     },
     {
       "label": "paper_signal_score()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L324",
+      "source_location": "L361",
       "id": "scripts_live_trade_email_alert_paper_signal_score",
-      "community": 5,
+      "community": 4,
       "norm_label": "paper_signal_score()"
+    },
+    {
+      "label": "adverse_risk_per_unit()",
+      "file_type": "code",
+      "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
+      "source_location": "L365",
+      "id": "scripts_live_trade_email_alert_adverse_risk_per_unit",
+      "community": 4,
+      "norm_label": "adverse_risk_per_unit()"
+    },
+    {
+      "label": "maybe_tighten_same_side_stop()",
+      "file_type": "code",
+      "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
+      "source_location": "L371",
+      "id": "scripts_live_trade_email_alert_maybe_tighten_same_side_stop",
+      "community": 4,
+      "norm_label": "maybe_tighten_same_side_stop()"
     },
     {
       "label": "reversal_quality_decision()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L328",
+      "source_location": "L449",
       "id": "scripts_live_trade_email_alert_reversal_quality_decision",
-      "community": 5,
+      "community": 4,
       "norm_label": "reversal_quality_decision()"
     },
     {
       "label": "record_opposite_signal_warning()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L361",
+      "source_location": "L482",
       "id": "scripts_live_trade_email_alert_record_opposite_signal_warning",
-      "community": 5,
+      "community": 4,
       "norm_label": "record_opposite_signal_warning()"
     },
     {
       "label": "latest_reversal_exit_price()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L389",
+      "source_location": "L510",
       "id": "scripts_live_trade_email_alert_latest_reversal_exit_price",
-      "community": 5,
+      "community": 4,
       "norm_label": "latest_reversal_exit_price()"
     },
     {
       "label": "open_paper_trade()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L397",
+      "source_location": "L518",
       "id": "scripts_live_trade_email_alert_open_paper_trade",
-      "community": 5,
+      "community": 4,
       "norm_label": "open_paper_trade()"
     },
     {
       "label": "close_paper_trade()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L530",
+      "source_location": "L703",
       "id": "scripts_live_trade_email_alert_close_paper_trade",
-      "community": 5,
+      "community": 4,
       "norm_label": "close_paper_trade()"
     },
     {
       "label": "monitor_paper_trades()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L578",
+      "source_location": "L751",
       "id": "scripts_live_trade_email_alert_monitor_paper_trades",
-      "community": 5,
+      "community": 4,
       "norm_label": "monitor_paper_trades()"
     },
     {
       "label": "scan_once()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L661",
+      "source_location": "L834",
       "id": "scripts_live_trade_email_alert_scan_once",
-      "community": 5,
+      "community": 4,
       "norm_label": "scan_once()"
     },
     {
       "label": "main()",
       "file_type": "code",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
-      "source_location": "L698",
+      "source_location": "L871",
       "id": "scripts_live_trade_email_alert_main",
-      "community": 5,
+      "community": 4,
       "norm_label": "main()"
     },
     {
@@ -4705,7 +4777,7 @@
       "label": "_monte_carlo_forward()",
       "file_type": "code",
       "source_file": "tools/auto_algo_finder.py",
-      "source_location": "L421",
+      "source_location": "L429",
       "id": "tools_auto_algo_finder_monte_carlo_forward",
       "community": 8,
       "norm_label": "_monte_carlo_forward()"
@@ -4714,7 +4786,7 @@
       "label": "_strategy_metrics()",
       "file_type": "code",
       "source_file": "tools/auto_algo_finder.py",
-      "source_location": "L461",
+      "source_location": "L469",
       "id": "tools_auto_algo_finder_strategy_metrics",
       "community": 8,
       "norm_label": "_strategy_metrics()"
@@ -4723,7 +4795,7 @@
       "label": "_forward_metrics()",
       "file_type": "code",
       "source_file": "tools/auto_algo_finder.py",
-      "source_location": "L509",
+      "source_location": "L519",
       "id": "tools_auto_algo_finder_forward_metrics",
       "community": 8,
       "norm_label": "_forward_metrics()"
@@ -4732,7 +4804,7 @@
       "label": "_sample_enhanced_params()",
       "file_type": "code",
       "source_file": "tools/auto_algo_finder.py",
-      "source_location": "L530",
+      "source_location": "L540",
       "id": "tools_auto_algo_finder_sample_enhanced_params",
       "community": 8,
       "norm_label": "_sample_enhanced_params()"
@@ -4741,7 +4813,7 @@
       "label": "_seed_to_enqueued_trial()",
       "file_type": "code",
       "source_file": "tools/auto_algo_finder.py",
-      "source_location": "L627",
+      "source_location": "L637",
       "id": "tools_auto_algo_finder_seed_to_enqueued_trial",
       "community": 8,
       "norm_label": "_seed_to_enqueued_trial()"
@@ -4750,7 +4822,7 @@
       "label": "_bars_per_day()",
       "file_type": "code",
       "source_file": "tools/auto_algo_finder.py",
-      "source_location": "L680",
+      "source_location": "L690",
       "id": "tools_auto_algo_finder_bars_per_day",
       "community": 8,
       "norm_label": "_bars_per_day()"
@@ -4759,7 +4831,7 @@
       "label": "_score_with_user_targets()",
       "file_type": "code",
       "source_file": "tools/auto_algo_finder.py",
-      "source_location": "L684",
+      "source_location": "L694",
       "id": "tools_auto_algo_finder_score_with_user_targets",
       "community": 8,
       "norm_label": "_score_with_user_targets()"
@@ -4768,7 +4840,7 @@
       "label": "_optimize_enhanced()",
       "file_type": "code",
       "source_file": "tools/auto_algo_finder.py",
-      "source_location": "L714",
+      "source_location": "L724",
       "id": "tools_auto_algo_finder_optimize_enhanced",
       "community": 8,
       "norm_label": "_optimize_enhanced()"
@@ -4777,7 +4849,7 @@
       "label": "_guardrail_failures()",
       "file_type": "code",
       "source_file": "tools/auto_algo_finder.py",
-      "source_location": "L857",
+      "source_location": "L867",
       "id": "tools_auto_algo_finder_guardrail_failures",
       "community": 8,
       "norm_label": "_guardrail_failures()"
@@ -4786,7 +4858,7 @@
       "label": "_passes_guardrails()",
       "file_type": "code",
       "source_file": "tools/auto_algo_finder.py",
-      "source_location": "L924",
+      "source_location": "L934",
       "id": "tools_auto_algo_finder_passes_guardrails",
       "community": 8,
       "norm_label": "_passes_guardrails()"
@@ -4795,7 +4867,7 @@
       "label": "_rank_score()",
       "file_type": "code",
       "source_file": "tools/auto_algo_finder.py",
-      "source_location": "L928",
+      "source_location": "L938",
       "id": "tools_auto_algo_finder_rank_score",
       "community": 8,
       "norm_label": "_rank_score()"
@@ -4804,7 +4876,7 @@
       "label": "run()",
       "file_type": "code",
       "source_file": "tools/auto_algo_finder.py",
-      "source_location": "L981",
+      "source_location": "L991",
       "id": "tools_auto_algo_finder_run",
       "community": 8,
       "norm_label": "run()"
@@ -4813,7 +4885,7 @@
       "label": "parse_args()",
       "file_type": "code",
       "source_file": "tools/auto_algo_finder.py",
-      "source_location": "L1268",
+      "source_location": "L1281",
       "id": "tools_auto_algo_finder_parse_args",
       "community": 8,
       "norm_label": "parse_args()"
@@ -5110,7 +5182,7 @@
       "label": "_infer_bar_hours()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L205",
+      "source_location": "L210",
       "id": "tools_enhanced_strategy_infer_bar_hours",
       "community": 0,
       "norm_label": "_infer_bar_hours()"
@@ -5119,7 +5191,7 @@
       "label": "_rolling_max_shifted()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L220",
+      "source_location": "L225",
       "id": "tools_enhanced_strategy_rolling_max_shifted",
       "community": 0,
       "norm_label": "_rolling_max_shifted()"
@@ -5128,7 +5200,7 @@
       "label": "_rolling_min_shifted()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L224",
+      "source_location": "L229",
       "id": "tools_enhanced_strategy_rolling_min_shifted",
       "community": 0,
       "norm_label": "_rolling_min_shifted()"
@@ -5137,7 +5209,7 @@
       "label": "adx_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L228",
+      "source_location": "L233",
       "id": "tools_enhanced_strategy_adx_scorer",
       "community": 0,
       "norm_label": "adx_scorer()"
@@ -5146,7 +5218,7 @@
       "label": "make_adx_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L242",
+      "source_location": "L247",
       "id": "tools_enhanced_strategy_make_adx_scorer",
       "community": 0,
       "norm_label": "make_adx_scorer()"
@@ -5155,7 +5227,7 @@
       "label": "_wilder_rma()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L251",
+      "source_location": "L256",
       "id": "tools_enhanced_strategy_wilder_rma",
       "community": 0,
       "norm_label": "_wilder_rma()"
@@ -5164,7 +5236,7 @@
       "label": "_directional_adx()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L262",
+      "source_location": "L267",
       "id": "tools_enhanced_strategy_directional_adx",
       "community": 0,
       "norm_label": "_directional_adx()"
@@ -5173,7 +5245,7 @@
       "label": "directional_adx_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L288",
+      "source_location": "L293",
       "id": "tools_enhanced_strategy_directional_adx_scorer",
       "community": 0,
       "norm_label": "directional_adx_scorer()"
@@ -5182,7 +5254,7 @@
       "label": "make_directional_adx_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L305",
+      "source_location": "L310",
       "id": "tools_enhanced_strategy_make_directional_adx_scorer",
       "community": 0,
       "norm_label": "make_directional_adx_scorer()"
@@ -5191,7 +5263,7 @@
       "label": "breakout_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L314",
+      "source_location": "L319",
       "id": "tools_enhanced_strategy_breakout_scorer",
       "community": 0,
       "norm_label": "breakout_scorer()"
@@ -5200,7 +5272,7 @@
       "label": "make_breakout_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L331",
+      "source_location": "L336",
       "id": "tools_enhanced_strategy_make_breakout_scorer",
       "community": 0,
       "norm_label": "make_breakout_scorer()"
@@ -5209,7 +5281,7 @@
       "label": "breakout_retest_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L341",
+      "source_location": "L346",
       "id": "tools_enhanced_strategy_breakout_retest_scorer",
       "community": 0,
       "norm_label": "breakout_retest_scorer()"
@@ -5218,7 +5290,7 @@
       "label": "make_breakout_retest_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L375",
+      "source_location": "L380",
       "id": "tools_enhanced_strategy_make_breakout_retest_scorer",
       "community": 0,
       "norm_label": "make_breakout_retest_scorer()"
@@ -5227,7 +5299,7 @@
       "label": "failed_breakout_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L655",
+      "source_location": "L660",
       "id": "tools_enhanced_strategy_failed_breakout_scorer",
       "community": 0,
       "norm_label": "failed_breakout_scorer()"
@@ -5236,7 +5308,7 @@
       "label": "make_failed_breakout_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L682",
+      "source_location": "L687",
       "id": "tools_enhanced_strategy_make_failed_breakout_scorer",
       "community": 0,
       "norm_label": "make_failed_breakout_scorer()"
@@ -5245,7 +5317,7 @@
       "label": "volume_breakout_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L697",
+      "source_location": "L702",
       "id": "tools_enhanced_strategy_volume_breakout_scorer",
       "community": 0,
       "norm_label": "volume_breakout_scorer()"
@@ -5254,7 +5326,7 @@
       "label": "trend_pullback_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L722",
+      "source_location": "L727",
       "id": "tools_enhanced_strategy_trend_pullback_scorer",
       "community": 0,
       "norm_label": "trend_pullback_scorer()"
@@ -5263,7 +5335,7 @@
       "label": "make_trend_pullback_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L762",
+      "source_location": "L767",
       "id": "tools_enhanced_strategy_make_trend_pullback_scorer",
       "community": 0,
       "norm_label": "make_trend_pullback_scorer()"
@@ -5272,7 +5344,7 @@
       "label": "range_reversion_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L782",
+      "source_location": "L787",
       "id": "tools_enhanced_strategy_range_reversion_scorer",
       "community": 0,
       "norm_label": "range_reversion_scorer()"
@@ -5281,7 +5353,7 @@
       "label": "make_range_reversion_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L817",
+      "source_location": "L822",
       "id": "tools_enhanced_strategy_make_range_reversion_scorer",
       "community": 0,
       "norm_label": "make_range_reversion_scorer()"
@@ -5290,7 +5362,7 @@
       "label": "make_volume_breakout_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L837",
+      "source_location": "L842",
       "id": "tools_enhanced_strategy_make_volume_breakout_scorer",
       "community": 0,
       "norm_label": "make_volume_breakout_scorer()"
@@ -5299,7 +5371,7 @@
       "label": "momentum_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L856",
+      "source_location": "L861",
       "id": "tools_enhanced_strategy_momentum_scorer",
       "community": 0,
       "norm_label": "momentum_scorer()"
@@ -5308,7 +5380,7 @@
       "label": "make_momentum_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L877",
+      "source_location": "L882",
       "id": "tools_enhanced_strategy_make_momentum_scorer",
       "community": 0,
       "norm_label": "make_momentum_scorer()"
@@ -5317,7 +5389,7 @@
       "label": "volatility_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L887",
+      "source_location": "L892",
       "id": "tools_enhanced_strategy_volatility_scorer",
       "community": 0,
       "norm_label": "volatility_scorer()"
@@ -5326,7 +5398,7 @@
       "label": "_apply_entry_quality_filters()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L906",
+      "source_location": "L911",
       "id": "tools_enhanced_strategy_apply_entry_quality_filters",
       "community": 0,
       "norm_label": "_apply_entry_quality_filters()"
@@ -5335,7 +5407,7 @@
       "label": "make_volatility_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L1010",
+      "source_location": "L1015",
       "id": "tools_enhanced_strategy_make_volatility_scorer",
       "community": 0,
       "norm_label": "make_volatility_scorer()"
@@ -5344,7 +5416,7 @@
       "label": "build_enhanced_signals()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L1027",
+      "source_location": "L1032",
       "id": "tools_enhanced_strategy_build_enhanced_signals",
       "community": 0,
       "norm_label": "build_enhanced_signals()"
@@ -5353,7 +5425,7 @@
       "label": "enhanced_backtest_strategy()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L1253",
+      "source_location": "L1258",
       "id": "tools_enhanced_strategy_enhanced_backtest_strategy",
       "community": 0,
       "norm_label": "enhanced_backtest_strategy()"
@@ -5607,7 +5679,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L1",
       "id": "strategy_framework_registry_py",
-      "community": 4,
+      "community": 6,
       "norm_label": "registry.py"
     },
     {
@@ -5616,7 +5688,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L49",
       "id": "strategy_framework_registry_paramspec",
-      "community": 4,
+      "community": 6,
       "norm_label": "paramspec"
     },
     {
@@ -5625,7 +5697,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L60",
       "id": "strategy_framework_registry_floating",
-      "community": 4,
+      "community": 6,
       "norm_label": "floating()"
     },
     {
@@ -5634,7 +5706,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L71",
       "id": "strategy_framework_registry_integer",
-      "community": 4,
+      "community": 6,
       "norm_label": "integer()"
     },
     {
@@ -5643,7 +5715,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L82",
       "id": "strategy_framework_registry_categorical",
-      "community": 4,
+      "community": 6,
       "norm_label": "categorical()"
     },
     {
@@ -5652,7 +5724,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L99",
       "id": "strategy_framework_registry_paramspec_suggest",
-      "community": 4,
+      "community": 6,
       "norm_label": ".suggest()"
     },
     {
@@ -5661,7 +5733,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L108",
       "id": "strategy_framework_registry_paramspec_numeric_bound",
-      "community": 4,
+      "community": 6,
       "norm_label": ".numeric_bound()"
     },
     {
@@ -5670,7 +5742,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L117",
       "id": "strategy_framework_registry_componentspec",
-      "community": 4,
+      "community": 6,
       "norm_label": "componentspec"
     },
     {
@@ -5679,7 +5751,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L128",
       "id": "strategy_framework_registry_weight_name",
-      "community": 4,
+      "community": 6,
       "norm_label": "weight_name()"
     },
     {
@@ -5688,7 +5760,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L131",
       "id": "strategy_framework_registry_componentspec_make_scorer",
-      "community": 4,
+      "community": 6,
       "norm_label": ".make_scorer()"
     },
     {
@@ -5697,7 +5769,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L142",
       "id": "strategy_framework_registry_register_component",
-      "community": 4,
+      "community": 6,
       "norm_label": "register_component()"
     },
     {
@@ -5706,7 +5778,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L182",
       "id": "strategy_framework_registry_registered_components",
-      "community": 4,
+      "community": 6,
       "norm_label": "registered_components()"
     },
     {
@@ -5715,7 +5787,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L186",
       "id": "strategy_framework_registry_clear_registered_components",
-      "community": 4,
+      "community": 6,
       "norm_label": "clear_registered_components()"
     },
     {
@@ -5724,7 +5796,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L191",
       "id": "strategy_framework_registry_load_component_modules",
-      "community": 4,
+      "community": 6,
       "norm_label": "load_component_modules()"
     },
     {
@@ -5733,7 +5805,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L215",
       "id": "strategy_framework_registry_suggest_registered_params",
-      "community": 4,
+      "community": 6,
       "norm_label": "suggest_registered_params()"
     },
     {
@@ -5742,7 +5814,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L229",
       "id": "strategy_framework_registry_registered_param_bounds",
-      "community": 4,
+      "community": 6,
       "norm_label": "registered_param_bounds()"
     },
     {
@@ -5751,7 +5823,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L245",
       "id": "strategy_framework_registry_apply_registered_components",
-      "community": 4,
+      "community": 6,
       "norm_label": "apply_registered_components()"
     },
     {
@@ -5760,7 +5832,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L1",
       "id": "strategy_framework_registry_rationale_1",
-      "community": 4,
+      "community": 6,
       "norm_label": "extension registry for optimizer-discovered signal components.  new indicator or"
     },
     {
@@ -5769,7 +5841,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L50",
       "id": "strategy_framework_registry_rationale_50",
-      "community": 4,
+      "community": 6,
       "norm_label": "one optimizer-searchable parameter for a registered component."
     },
     {
@@ -5778,7 +5850,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L118",
       "id": "strategy_framework_registry_rationale_118",
-      "community": 4,
+      "community": 6,
       "norm_label": "a scorer component and its search space."
     },
     {
@@ -5787,7 +5859,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L153",
       "id": "strategy_framework_registry_rationale_153",
-      "community": 4,
+      "community": 6,
       "norm_label": "register a scorer component for enhanced-strategy optimization.      use ``score"
     },
     {
@@ -5796,7 +5868,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L187",
       "id": "strategy_framework_registry_rationale_187",
-      "community": 4,
+      "community": 6,
       "norm_label": "clear runtime-registered components. intended for tests/smoke runs."
     },
     {
@@ -5805,7 +5877,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L192",
       "id": "strategy_framework_registry_rationale_192",
-      "community": 4,
+      "community": 6,
       "norm_label": "import dotted modules or ``.py`` files that register components."
     },
     {
@@ -5814,7 +5886,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L216",
       "id": "strategy_framework_registry_rationale_216",
-      "community": 4,
+      "community": 6,
       "norm_label": "suggest optimizer parameters for all registered components."
     },
     {
@@ -5823,7 +5895,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L230",
       "id": "strategy_framework_registry_rationale_230",
-      "community": 4,
+      "community": 6,
       "norm_label": "return numeric bounds for seed jitter and neighborhood search."
     },
     {
@@ -5832,7 +5904,7 @@
       "source_file": "strategy_framework/registry.py",
       "source_location": "L246",
       "id": "strategy_framework_registry_rationale_246",
-      "community": 4,
+      "community": 6,
       "norm_label": "register runtime components on a ``confluencescorer`` instance."
     },
     {
@@ -5841,7 +5913,7 @@
       "source_file": "strategy_framework/__init__.py",
       "source_location": "L1",
       "id": "strategy_framework_init_py",
-      "community": 40,
+      "community": 41,
       "norm_label": "__init__.py"
     },
     {
@@ -5850,7 +5922,7 @@
       "source_file": "strategy_framework/__init__.py",
       "source_location": "L1",
       "id": "strategy_framework_init_rationale_1",
-      "community": 40,
+      "community": 41,
       "norm_label": "strategy research framework built on the existing optimizer stack."
     },
     {
@@ -5868,7 +5940,7 @@
       "source_file": "strategy_framework/examples/ema_slope_component.py",
       "source_location": "L1",
       "id": "strategy_framework_examples_ema_slope_component_py",
-      "community": 36,
+      "community": 37,
       "norm_label": "ema_slope_component.py"
     },
     {
@@ -5877,7 +5949,7 @@
       "source_file": "strategy_framework/examples/ema_slope_component.py",
       "source_location": "L15",
       "id": "examples_ema_slope_component_factory",
-      "community": 36,
+      "community": 37,
       "norm_label": "_factory()"
     },
     {
@@ -5886,7 +5958,7 @@
       "source_file": "strategy_framework/examples/ema_slope_component.py",
       "source_location": "L1",
       "id": "examples_ema_slope_component_rationale_1",
-      "community": 36,
+      "community": 37,
       "norm_label": "example plugin component for the strategy framework.  load with:      python -m"
     },
     {
@@ -5895,7 +5967,7 @@
       "source_file": "strategy_framework/examples/__init__.py",
       "source_location": "L1",
       "id": "strategy_framework_examples_init_py",
-      "community": 41,
+      "community": 42,
       "norm_label": "__init__.py"
     },
     {
@@ -5904,7 +5976,7 @@
       "source_file": "strategy_framework/examples/__init__.py",
       "source_location": "L1",
       "id": "examples_init_rationale_1",
-      "community": 41,
+      "community": 42,
       "norm_label": "example strategy-framework component modules."
     },
     {
@@ -5965,7 +6037,7 @@
       "label": "_rolling_profile_levels()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L392",
+      "source_location": "L397",
       "id": "tools_enhanced_strategy_rolling_profile_levels",
       "community": 0,
       "norm_label": "_rolling_profile_levels()"
@@ -5974,7 +6046,7 @@
       "label": "_local_sweep_levels()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L425",
+      "source_location": "L430",
       "id": "tools_enhanced_strategy_local_sweep_levels",
       "community": 0,
       "norm_label": "_local_sweep_levels()"
@@ -5983,7 +6055,7 @@
       "label": "_local_absorption()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L461",
+      "source_location": "L466",
       "id": "tools_enhanced_strategy_local_absorption",
       "community": 0,
       "norm_label": "_local_absorption()"
@@ -5992,7 +6064,7 @@
       "label": "_local_structure_shift()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L491",
+      "source_location": "L496",
       "id": "tools_enhanced_strategy_local_structure_shift",
       "community": 0,
       "norm_label": "_local_structure_shift()"
@@ -6001,7 +6073,7 @@
       "label": "liquidity_confluence_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L519",
+      "source_location": "L524",
       "id": "tools_enhanced_strategy_liquidity_confluence_scorer",
       "community": 0,
       "norm_label": "liquidity_confluence_scorer()"
@@ -6010,7 +6082,7 @@
       "label": "make_liquidity_confluence_scorer()",
       "file_type": "code",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L628",
+      "source_location": "L633",
       "id": "tools_enhanced_strategy_make_liquidity_confluence_scorer",
       "community": 0,
       "norm_label": "make_liquidity_confluence_scorer()"
@@ -6019,8 +6091,8 @@
       "label": "Fast causal volume-profile proxy.      The first version rebuilt a binned histog",
       "file_type": "rationale",
       "source_file": "tools/enhanced_strategy.py",
-      "source_location": "L400",
-      "id": "tools_enhanced_strategy_rationale_400",
+      "source_location": "L405",
+      "id": "tools_enhanced_strategy_rationale_405",
       "community": 0,
       "norm_label": "fast causal volume-profile proxy.      the first version rebuilt a binned histog"
     },
@@ -6030,7 +6102,7 @@
       "source_file": "tools/strategy_framework.py",
       "source_location": "L1",
       "id": "tools_strategy_framework_py",
-      "community": 50,
+      "community": 51,
       "norm_label": "strategy_framework.py"
     },
     {
@@ -6039,7 +6111,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "id": "agents_md",
-      "community": 42,
+      "community": 43,
       "norm_label": "agents.md"
     },
     {
@@ -6048,7 +6120,7 @@
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "id": "tryingnew_agents_graphify",
-      "community": 42,
+      "community": 43,
       "norm_label": "graphify"
     },
     {
@@ -6219,7 +6291,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L1",
       "id": "googleruncode_readme_google_vm_md",
-      "community": 11,
+      "community": 12,
       "norm_label": "readme_google_vm.md"
     },
     {
@@ -6228,7 +6300,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L1",
       "id": "googleruncode_readme_google_vm_googleruncode",
-      "community": 11,
+      "community": 12,
       "norm_label": "googleruncode"
     },
     {
@@ -6237,7 +6309,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L5",
       "id": "googleruncode_readme_google_vm_did_we_get_a_good_strategy",
-      "community": 11,
+      "community": 12,
       "norm_label": "did we get a good strategy?"
     },
     {
@@ -6246,7 +6318,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L15",
       "id": "googleruncode_readme_google_vm_what_this_folder_contains",
-      "community": 11,
+      "community": 12,
       "norm_label": "what this folder contains"
     },
     {
@@ -6255,7 +6327,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L26",
       "id": "googleruncode_readme_google_vm_google_vm_recommendation",
-      "community": 11,
+      "community": 12,
       "norm_label": "google vm recommendation"
     },
     {
@@ -6264,7 +6336,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L37",
       "id": "googleruncode_readme_google_vm_secure_vm_setup",
-      "community": 11,
+      "community": 12,
       "norm_label": "secure vm setup"
     },
     {
@@ -6273,7 +6345,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L46",
       "id": "googleruncode_readme_google_vm_setup_on_ubuntu",
-      "community": 11,
+      "community": 12,
       "norm_label": "setup on ubuntu"
     },
     {
@@ -6282,7 +6354,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L48",
       "id": "googleruncode_readme_google_vm_codeblock_1",
-      "community": 11,
+      "community": 12,
       "norm_label": "code:bash (sudo apt update)"
     },
     {
@@ -6291,7 +6363,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L61",
       "id": "googleruncode_readme_google_vm_test_imports",
-      "community": 11,
+      "community": 12,
       "norm_label": "test imports"
     },
     {
@@ -6300,7 +6372,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L63",
       "id": "googleruncode_readme_google_vm_codeblock_2",
-      "community": 11,
+      "community": 12,
       "norm_label": "code:bash (source .venv/bin/activate)"
     },
     {
@@ -6309,7 +6381,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L68",
       "id": "googleruncode_readme_google_vm_send_a_one_time_live_scan_email",
-      "community": 11,
+      "community": 12,
       "norm_label": "send a one-time live scan email"
     },
     {
@@ -6318,7 +6390,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L70",
       "id": "googleruncode_readme_google_vm_codeblock_3",
-      "community": 11,
+      "community": 12,
       "norm_label": "code:bash (source .venv/bin/activate)"
     },
     {
@@ -6327,7 +6399,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L75",
       "id": "googleruncode_readme_google_vm_test_without_sending_email",
-      "community": 11,
+      "community": 12,
       "norm_label": "test without sending email"
     },
     {
@@ -6336,7 +6408,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L77",
       "id": "googleruncode_readme_google_vm_codeblock_4",
-      "community": 11,
+      "community": 12,
       "norm_label": "code:bash (source .venv/bin/activate)"
     },
     {
@@ -6345,7 +6417,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L82",
       "id": "googleruncode_readme_google_vm_run_continuously",
-      "community": 11,
+      "community": 12,
       "norm_label": "run continuously"
     },
     {
@@ -6354,7 +6426,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L84",
       "id": "googleruncode_readme_google_vm_codeblock_5",
-      "community": 11,
+      "community": 12,
       "norm_label": "code:bash (source .venv/bin/activate)"
     },
     {
@@ -6363,7 +6435,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L91",
       "id": "googleruncode_readme_google_vm_paper_trade_journal",
-      "community": 11,
+      "community": 12,
       "norm_label": "paper-trade journal"
     },
     {
@@ -6372,7 +6444,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L104",
       "id": "googleruncode_readme_google_vm_codeblock_6",
-      "community": 11,
+      "community": 12,
       "norm_label": "code:env (paper_trading_enabled=1)"
     },
     {
@@ -6381,7 +6453,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L130",
       "id": "googleruncode_readme_google_vm_codeblock_7",
-      "community": 11,
+      "community": 12,
       "norm_label": "code:bash (source .venv/bin/activate)"
     },
     {
@@ -6390,7 +6462,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L137",
       "id": "googleruncode_readme_google_vm_codeblock_8",
-      "community": 11,
+      "community": 12,
       "norm_label": "code:bash (source .venv/bin/activate)"
     },
     {
@@ -6399,7 +6471,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L142",
       "id": "googleruncode_readme_google_vm_rebuild_a_portfolio_report_with_the_current_code",
-      "community": 11,
+      "community": 12,
       "norm_label": "rebuild a portfolio report with the current code"
     },
     {
@@ -6408,7 +6480,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L144",
       "id": "googleruncode_readme_google_vm_codeblock_9",
-      "community": 11,
+      "community": 12,
       "norm_label": "code:bash (source .venv/bin/activate)"
     },
     {
@@ -6417,7 +6489,7 @@
       "source_file": "GoogleRunCode/README_GOOGLE_VM.md",
       "source_location": "L162",
       "id": "googleruncode_readme_google_vm_plain_english",
-      "community": 11,
+      "community": 12,
       "norm_label": "plain english"
     },
     {
@@ -6547,11 +6619,29 @@
       "norm_label": "ml direction"
     },
     {
+      "label": "bars: DataFrame with open/high/low/close.     signals: dict with 'signal' (+1/-1",
+      "file_type": "rationale",
+      "source_file": "GoogleRunCode/algo_download/backtest/engine.py",
+      "source_location": "L221",
+      "community": 11,
+      "norm_label": "bars: dataframe with open/high/low/close.     signals: dict with 'signal' (+1/-1",
+      "id": "backtest_engine_rationale_221"
+    },
+    {
+      "label": "Fast causal volume-profile proxy.      The first version rebuilt a binned histog",
+      "file_type": "rationale",
+      "source_file": "tools/enhanced_strategy.py",
+      "source_location": "L400",
+      "community": 0,
+      "norm_label": "fast causal volume-profile proxy.      the first version rebuilt a binned histog",
+      "id": "tools_enhanced_strategy_rationale_400"
+    },
+    {
       "label": "One optimizer-searchable parameter for a registered component.",
       "file_type": "rationale",
       "source_file": "strategy_framework/registry.py",
       "source_location": "L49",
-      "community": 4,
+      "community": 6,
       "norm_label": "one optimizer-searchable parameter for a registered component.",
       "id": "strategy_framework_registry_rationale_49"
     },
@@ -6560,7 +6650,7 @@
       "file_type": "rationale",
       "source_file": "strategy_framework/registry.py",
       "source_location": "L117",
-      "community": 4,
+      "community": 6,
       "norm_label": "a scorer component and its search space.",
       "id": "strategy_framework_registry_rationale_117"
     },
@@ -6569,7 +6659,7 @@
       "file_type": "rationale",
       "source_file": "strategy_framework/registry.py",
       "source_location": "L152",
-      "community": 4,
+      "community": 6,
       "norm_label": "register a scorer component for enhanced-strategy optimization.      use ``score",
       "id": "strategy_framework_registry_rationale_152"
     },
@@ -6578,7 +6668,7 @@
       "file_type": "rationale",
       "source_file": "strategy_framework/registry.py",
       "source_location": "L186",
-      "community": 4,
+      "community": 6,
       "norm_label": "clear runtime-registered components. intended for tests/smoke runs.",
       "id": "strategy_framework_registry_rationale_186"
     },
@@ -6587,7 +6677,7 @@
       "file_type": "rationale",
       "source_file": "strategy_framework/registry.py",
       "source_location": "L191",
-      "community": 4,
+      "community": 6,
       "norm_label": "import dotted modules or ``.py`` files that register components.",
       "id": "strategy_framework_registry_rationale_191"
     },
@@ -6596,7 +6686,7 @@
       "file_type": "rationale",
       "source_file": "strategy_framework/registry.py",
       "source_location": "L214",
-      "community": 4,
+      "community": 6,
       "norm_label": "suggest optimizer parameters for all registered components.",
       "id": "strategy_framework_registry_rationale_214"
     },
@@ -6605,7 +6695,7 @@
       "file_type": "rationale",
       "source_file": "strategy_framework/registry.py",
       "source_location": "L228",
-      "community": 4,
+      "community": 6,
       "norm_label": "return numeric bounds for seed jitter and neighborhood search.",
       "id": "strategy_framework_registry_rationale_228"
     },
@@ -6614,7 +6704,7 @@
       "file_type": "rationale",
       "source_file": "strategy_framework/registry.py",
       "source_location": "L244",
-      "community": 4,
+      "community": 6,
       "norm_label": "register runtime components on a ``confluencescorer`` instance.",
       "id": "strategy_framework_registry_rationale_244"
     },
@@ -10017,6 +10107,17 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "tests_test_walkforward_and_scorer_test_backtest_config_defaults_to_single_position",
+      "target": "algo_download_config_backtestconfig"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
       "source_location": "L42",
       "weight": 1.0,
       "source": "tests_test_walkforward_and_scorer_test_walk_forward_runs_and_aggregates",
@@ -10673,10 +10774,10 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "GoogleRunCode/algo_download/backtest/engine.py",
-      "source_location": "L221",
+      "source_location": "L229",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "backtest_engine_rationale_221",
+      "source": "backtest_engine_rationale_229",
       "target": "backtest_engine_run_backtest"
     },
     {
@@ -10729,6 +10830,28 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "tests_test_engine_test_run_backtest_default_does_not_reuse_slot_after_intrabar_exit",
+      "target": "backtest_engine_run_backtest"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
+      "source_location": "L170",
+      "weight": 1.0,
+      "source": "tests_test_engine_test_run_backtest_rejects_zero_max_concurrent",
+      "target": "backtest_engine_run_backtest"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
       "source_location": "L154",
       "weight": 1.0,
       "source": "tests_test_engine_test_run_backtest_equity_finite",
@@ -10743,6 +10866,16 @@
       "source_location": "L1000",
       "weight": 1.0,
       "source": "tools_enhanced_strategy_enhanced_backtest_strategy",
+      "target": "backtest_engine_run_backtest"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/algo_download/backtest/engine.py",
+      "source_location": "L221",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backtest_engine_rationale_221",
       "target": "backtest_engine_run_backtest"
     },
     {
@@ -14154,6 +14287,26 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "googleruncode_algo_download_tests_test_engine_py",
+      "target": "tests_test_engine_test_run_backtest_default_does_not_reuse_slot_after_intrabar_exit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
+      "source_location": "L164",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "googleruncode_algo_download_tests_test_engine_py",
+      "target": "tests_test_engine_test_run_backtest_rejects_zero_max_concurrent"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
+      "source_location": "L138",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "googleruncode_algo_download_tests_test_engine_py",
       "target": "tests_test_engine_test_run_backtest_equity_finite"
     },
     {
@@ -14197,6 +14350,28 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "tests_test_engine_test_run_backtest_invalid_direction_rejected",
+      "target": "tests_test_engine_make_bars"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
+      "source_location": "L147",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_engine_test_run_backtest_default_does_not_reuse_slot_after_intrabar_exit",
+      "target": "tests_test_engine_make_bars"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/algo_download/tests/test_engine.py",
+      "source_location": "L165",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tests_test_engine_test_run_backtest_rejects_zero_max_concurrent",
       "target": "tests_test_engine_make_bars"
     },
     {
@@ -14627,12 +14802,42 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/algo_download/tests/test_trade_hold_metrics.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "googleruncode_algo_download_tests_test_trade_hold_metrics_py",
+      "target": "tests_test_trade_hold_metrics_test_forward_trade_profile_reports_min_avg_max_hold_time",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/algo_download/tests/test_trade_hold_metrics.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "googleruncode_algo_download_tests_test_trade_hold_metrics_py",
+      "target": "tests_test_trade_hold_metrics_test_tick_summary_reports_min_avg_max_hold_time",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
       "source_location": "L15",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "googleruncode_algo_download_tests_test_walkforward_and_scorer_py",
       "target": "tests_test_walkforward_and_scorer_bars"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/algo_download/tests/test_walkforward_and_scorer.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "googleruncode_algo_download_tests_test_walkforward_and_scorer_py",
+      "target": "tests_test_walkforward_and_scorer_test_backtest_config_defaults_to_single_position"
     },
     {
       "relation": "contains",
@@ -15012,6 +15217,26 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
+      "source_location": "L365",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "googleruncode_scripts_live_trade_email_alert_py",
+      "target": "scripts_live_trade_email_alert_adverse_risk_per_unit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
+      "source_location": "L371",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "googleruncode_scripts_live_trade_email_alert_py",
+      "target": "scripts_live_trade_email_alert_maybe_tighten_same_side_stop"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
       "source_location": "L328",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -15181,6 +15406,28 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
+      "source_location": "L318",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_live_trade_email_alert_format_alert",
+      "target": "scripts_live_trade_email_alert_env_float"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
+      "source_location": "L391",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_live_trade_email_alert_maybe_tighten_same_side_stop",
+      "target": "scripts_live_trade_email_alert_env_float"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
       "source_location": "L337",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -15241,6 +15488,17 @@
       "confidence_score": 1.0,
       "source": "scripts_live_trade_email_alert_scan_once",
       "target": "scripts_live_trade_email_alert_fetch_klines"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
+      "source_location": "L316",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_live_trade_email_alert_format_alert",
+      "target": "scripts_live_trade_email_alert_fetch_latest_price"
     },
     {
       "relation": "calls",
@@ -15368,6 +15626,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
+      "source_location": "L424",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_live_trade_email_alert_maybe_tighten_same_side_stop",
+      "target": "scripts_live_trade_email_alert_append_ledger"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
       "source_location": "L371",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -15401,6 +15670,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
+      "source_location": "L412",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_live_trade_email_alert_maybe_tighten_same_side_stop",
+      "target": "scripts_live_trade_email_alert_utc_now_ms"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
       "source_location": "L368",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -15428,6 +15708,17 @@
       "confidence_score": 1.0,
       "source": "scripts_live_trade_email_alert_monitor_paper_trades",
       "target": "scripts_live_trade_email_alert_utc_now_ms"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
+      "source_location": "L415",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_live_trade_email_alert_maybe_tighten_same_side_stop",
+      "target": "scripts_live_trade_email_alert_ms_to_iso"
     },
     {
       "relation": "calls",
@@ -15489,11 +15780,44 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
+      "source_location": "L389",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_live_trade_email_alert_maybe_tighten_same_side_stop",
+      "target": "scripts_live_trade_email_alert_paper_signal_score"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
       "source_location": "L341",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "scripts_live_trade_email_alert_reversal_quality_decision",
       "target": "scripts_live_trade_email_alert_paper_signal_score"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
+      "source_location": "L407",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_live_trade_email_alert_maybe_tighten_same_side_stop",
+      "target": "scripts_live_trade_email_alert_adverse_risk_per_unit"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "GoogleRunCode/scripts/live_trade_email_alert.py",
+      "source_location": "L541",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_live_trade_email_alert_open_paper_trade",
+      "target": "scripts_live_trade_email_alert_maybe_tighten_same_side_stop"
     },
     {
       "relation": "calls",
@@ -19183,11 +19507,21 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "tools/enhanced_strategy.py",
+      "source_location": "L405",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tools_enhanced_strategy_rationale_405",
+      "target": "tools_enhanced_strategy_rolling_profile_levels"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tools/enhanced_strategy.py",
       "source_location": "L400",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tools_enhanced_strategy_rationale_400",
-      "target": "tools_enhanced_strategy_rolling_profile_levels",
-      "confidence_score": 1.0
+      "target": "tools_enhanced_strategy_rolling_profile_levels"
     },
     {
       "relation": "calls",
@@ -19784,5 +20118,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1e34701b529f31ac663280f7fd7d2b98c22159fe"
+  "built_at_commit": "236f28143ade98df32653b7651a0cfd31aad5c17"
 }

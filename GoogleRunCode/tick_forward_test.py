@@ -466,6 +466,21 @@ def summarize(equity: np.ndarray, trades: pd.DataFrame, initial_balance: float) 
     drawdown = equity / peaks - 1.0 if equity.size else np.array([0.0])
     risk = trades["risk_amt"].to_numpy(np.float64) if not trades.empty else np.zeros(0)
     ok_r = np.isfinite(risk) & (risk > 0)
+    if not trades.empty:
+        hold_bars = (
+            trades["exit_idx"].to_numpy(np.float64)
+            - trades["entry_idx"].to_numpy(np.float64)
+        ).clip(min=0.0)
+        if {"entry_ts_ms", "exit_ts_ms"}.issubset(trades.columns):
+            hold_hours = (
+                trades["exit_ts_ms"].to_numpy(np.float64)
+                - trades["entry_ts_ms"].to_numpy(np.float64)
+            ).clip(min=0.0) / 3_600_000.0
+        else:
+            hold_hours = np.zeros_like(hold_bars)
+    else:
+        hold_bars = np.zeros(0, dtype=np.float64)
+        hold_hours = np.zeros(0, dtype=np.float64)
     return {
         "n_bars": int(equity.shape[0]),
         "n_trades": int(pnls.shape[0]),
@@ -480,6 +495,12 @@ def summarize(equity: np.ndarray, trades: pd.DataFrame, initial_balance: float) 
         "avg_loss": float(losses.mean()) if losses.size else 0.0,
         "largest_win": float(wins.max()) if wins.size else 0.0,
         "largest_loss": float(losses.min()) if losses.size else 0.0,
+        "avg_hold_bars": float(hold_bars.mean()) if hold_bars.size else 0.0,
+        "min_hold_bars": float(hold_bars.min()) if hold_bars.size else 0.0,
+        "max_hold_bars": float(hold_bars.max()) if hold_bars.size else 0.0,
+        "avg_hold_hours": float(hold_hours.mean()) if hold_hours.size else 0.0,
+        "min_hold_hours": float(hold_hours.min()) if hold_hours.size else 0.0,
+        "max_hold_hours": float(hold_hours.max()) if hold_hours.size else 0.0,
     }
 
 

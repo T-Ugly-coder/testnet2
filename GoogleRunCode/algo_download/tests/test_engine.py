@@ -135,6 +135,45 @@ def test_run_backtest_invalid_direction_rejected():
     assert len(out["trades"]) == 0
 
 
+def test_run_backtest_default_does_not_reuse_slot_after_intrabar_exit():
+    # Signal at bar 0 opens a long at bar 1. Signal at bar 1 would also like
+    # to open at bar 2, but the first trade is still open at bar-2 open and
+    # only exits later inside bar 2. A single-position strategy must not use
+    # that later intrabar exit to justify another bar-2-open fill.
+    o = [100, 100, 100, 100]
+    h = [101, 105, 111, 101]
+    l = [99,   95,  99,  99]
+    c = [100, 102, 108, 100]
+    bars = _make_bars(o, h, l, c)
+    sig = np.zeros(4, dtype=np.int8)
+    sl_arr = np.full(4, np.nan)
+    tp_arr = np.full(4, np.nan)
+    sig[0] = 1
+    sig[1] = 1
+    sl_arr[0] = sl_arr[1] = 90.0
+    tp_arr[0] = tp_arr[1] = 110.0
+
+    out = run_backtest(bars, {"signal": sig, "sl": sl_arr, "tp": tp_arr},
+                       fee_bps=0.0, slip_bps=0.0)
+    trades = out["trades"]
+    assert len(trades) == 1
+    assert int(trades.iloc[0]["entry_idx"]) == 1
+    assert int(trades.iloc[0]["exit_idx"]) == 2
+
+
+def test_run_backtest_rejects_zero_max_concurrent():
+    bars = _make_bars([100, 100], [101, 101], [99, 99], [100, 100])
+    sig = np.zeros(2, dtype=np.int8)
+    sl_arr = np.full(2, np.nan)
+    tp_arr = np.full(2, np.nan)
+    with pytest.raises(ValueError, match="max_concurrent"):
+        run_backtest(
+            bars,
+            {"signal": sig, "sl": sl_arr, "tp": tp_arr},
+            max_concurrent=0,
+        )
+
+
 def test_run_backtest_equity_finite():
     rng = np.random.default_rng(42)
     n = 200

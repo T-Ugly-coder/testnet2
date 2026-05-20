@@ -40,7 +40,9 @@ class BacktestConfig:
     risk_per_trade: float = 0.01
     fee_bps: float = 4.0
     slippage_bps: float = 1.5
-    max_concurrent_trades: int = 3
+    # Single-symbol strategy runs should not pyramid by default. Raising this
+    # is an explicit portfolio/pyramiding choice, not the optimizer baseline.
+    max_concurrent_trades: int = 1
     train_years: int = 4
     test_years: int = 4
     purge_days: int = 2

@@ -1,16 +1,16 @@
-# Graph Report - tryingnew  (2026-05-19)
+# Graph Report - tryingnew  (2026-05-20)
 
 ## Corpus Check
-- 121 files · ~66,382 words
+- 122 files · ~67,717 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 737 nodes · 1264 edges · 51 communities (43 shown, 8 thin omitted)
-- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 113 edges (avg confidence: 0.79)
+- 747 nodes · 1287 edges · 52 communities (44 shown, 8 thin omitted)
+- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 116 edges (avg confidence: 0.79)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1e34701b`
+- Built from commit: `236f2814`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -51,25 +51,25 @@
 - [[_COMMUNITY_Community 33|Community 33]]
 - [[_COMMUNITY_Community 34|Community 34]]
 - [[_COMMUNITY_Community 35|Community 35]]
-- [[_COMMUNITY_Community 36|Community 36]]
 - [[_COMMUNITY_Community 37|Community 37]]
 - [[_COMMUNITY_Community 38|Community 38]]
 - [[_COMMUNITY_Community 39|Community 39]]
 - [[_COMMUNITY_Community 40|Community 40]]
 - [[_COMMUNITY_Community 41|Community 41]]
 - [[_COMMUNITY_Community 42|Community 42]]
+- [[_COMMUNITY_Community 43|Community 43]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `run()` - 17 edges
 2. `build_enhanced_signals()` - 17 edges
 3. `run_tick_validation()` - 15 edges
 4. `compute_perf()` - 15 edges
-5. `optimize()` - 13 edges
-6. `GoogleRunCode` - 13 edges
-7. `connect()` - 11 edges
-8. `ensure_ticks()` - 11 edges
+5. `run_backtest()` - 14 edges
+6. `optimize()` - 13 edges
+7. `GoogleRunCode` - 13 edges
+8. `open_paper_trade()` - 12 edges
 9. `connect()` - 11 edges
-10. `run_backtest()` - 11 edges
+10. `ensure_ticks()` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `main()` --calls--> `enhanced_backtest_strategy()`  [INFERRED]
@@ -83,15 +83,15 @@
 - `run_tick_validation()` --calls--> `build_enhanced_signals()`  [INFERRED]
   tick_forward_test.py → tools/enhanced_strategy.py
 
-## Communities (51 total, 8 thin omitted)
+## Communities (52 total, 8 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.07
-Nodes (60): adx(), anchored_vwap(), atr_wilder(), bollinger(), cvd_from_ticks(), cvd_proxy(), ema(), macd() (+52 more)
+Nodes (61): adx(), anchored_vwap(), atr_wilder(), bollinger(), cvd_from_ticks(), cvd_proxy(), ema(), macd() (+53 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.05
-Nodes (46): BacktestConfig, Config, DataConfig, HardwareConfig, LLMConfig, Central config — no cron, all timing handled by event loop., aggregate_walk_forward(), Fold (+38 more)
+Cohesion: 0.06
+Nodes (49): _bars_per_day(), _bars_per_month(), _evaluate(), optimize(), OptimizeConfig, _perf_to_fold_row(), rank_top_strategies(), Auto-optimizer over `ConfluenceScorer` parameters.  Pipeline -------- 1. Caller (+41 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.06
@@ -102,20 +102,20 @@ Cohesion: 0.09
 Nodes (46): _bars_range_ms(), main(), _parse_date_ms(), Download/import official Binance monthly aggTrades archives into tick cache., _archive_path(), _archive_url(), connect(), _covered_by_ranges() (+38 more)
 
 ### Community 4 - "Community 4"
+Cohesion: 0.15
+Nodes (34): adverse_risk_per_unit(), Alert, append_ledger(), Candidate, close_paper_trade(), env_float(), env_int(), fetch_klines() (+26 more)
+
+### Community 5 - "Community 5"
+Cohesion: 0.08
+Nodes (24): BacktestConfig, Config, DataConfig, HardwareConfig, LLMConfig, Central config — no cron, all timing handled by event loop., aggregate_walk_forward(), Fold (+16 more)
+
+### Community 6 - "Community 6"
 Cohesion: 0.07
 Nodes (26): apply_registered_components(), clear_registered_components(), ComponentSpec, load_component_modules(), ParamSpec, Extension registry for optimizer-discovered signal components.  New indicator or, A scorer component and its search space., A scorer component and its search space. (+18 more)
 
-### Community 5 - "Community 5"
-Cohesion: 0.15
-Nodes (32): Alert, append_ledger(), Candidate, close_paper_trade(), env_float(), env_int(), fetch_klines(), fetch_latest_price() (+24 more)
-
-### Community 6 - "Community 6"
+### Community 7 - "Community 7"
 Cohesion: 0.15
 Nodes (28): _archive_path(), _archive_url(), connect(), _covered_by_ranges(), download_monthly_archive(), ensure_archive_ticks(), ensure_ticks(), get_ticks() (+20 more)
-
-### Community 7 - "Community 7"
-Cohesion: 0.11
-Nodes (26): _check_required_columns(), _clean_series(), _dd_penalty(), _freq_penalty(), ObjectiveConfig, Composite objective for the auto-optimizer.  The objective collapses a multi-met, Weighted mean and (unbiased) weighted std for a 1-D array.      Falls back grace, Average trades per month across folds (weighted by fold bar-count). (+18 more)
 
 ### Community 8 - "Community 8"
 Cohesion: 0.2
@@ -130,12 +130,12 @@ Cohesion: 0.11
 Nodes (25): atr_percentile_rank(), autocorr_lag1_rolling(), classify_regime(), hurst_rolling(), parkinson_vol(), Regime classification — what professionals run BEFORE any pattern fires.  Implem, Average R/S statistic over non-overlapping windows of size `lag`., Rolling Hurst exponent via R/S analysis.      Uses sub-series sizes [window/16, (+17 more)
 
 ### Community 11 - "Community 11"
-Cohesion: 0.1
-Nodes (22): code:bash (sudo apt update), code:bash (source .venv/bin/activate), code:bash (source .venv/bin/activate), code:bash (source .venv/bin/activate), code:bash (source .venv/bin/activate), code:env (PAPER_TRADING_ENABLED=1), code:bash (source .venv/bin/activate), code:bash (source .venv/bin/activate) (+14 more)
+Cohesion: 0.15
+Nodes (22): Vectorized event-driven backtester.  Design: - Strategy emits SignalEvents on ba, bars: DataFrame with open/high/low/close.     signals: dict with 'signal' (+1/-1, bars: DataFrame with open/high/low/close.     signals: dict with 'signal' (+1/-1, Determine SL/TP resolution for one bar.      Returns (reason, exit_px):, _resolve_exit(), run_backtest(), _simulate(), TradeResult (+14 more)
 
 ### Community 12 - "Community 12"
-Cohesion: 0.17
-Nodes (19): Vectorized event-driven backtester.  Design: - Strategy emits SignalEvents on ba, bars: DataFrame with open/high/low/close.     signals: dict with 'signal' (+1/-1, Determine SL/TP resolution for one bar.      Returns (reason, exit_px):, _resolve_exit(), run_backtest(), _simulate(), TradeResult, _make_bars() (+11 more)
+Cohesion: 0.1
+Nodes (22): code:bash (sudo apt update), code:bash (source .venv/bin/activate), code:bash (source .venv/bin/activate), code:bash (source .venv/bin/activate), code:bash (source .venv/bin/activate), code:env (PAPER_TRADING_ENABLED=1), code:bash (source .venv/bin/activate), code:bash (source .venv/bin/activate) (+14 more)
 
 ### Community 13 - "Community 13"
 Cohesion: 0.18
@@ -170,12 +170,12 @@ Cohesion: 0.14
 Nodes (13): Candidate Selection Logic, code:powershell ("--save-top-trials", "25",), code:powershell (.\.venv\Scripts\python.exe tools\batch_tick_forward_test.py ), code:powershell (.\.venv\Scripts\python.exe tools\batch_tick_forward_test.py ), Current Active Run, Current Notable Results, Goal, Important Data (+5 more)
 
 ### Community 21 - "Community 21"
-Cohesion: 0.19
-Nodes (11): detect_sfp(), Swing Failure Pattern (SFP) — Tom Dante / TopStepTrader style.  An SFP forms whe, Returns (idx, side, level, wick_size).     side: 1 = bearish SFP (wick above res, _bool_mask(), build_signals(), Confluence strategy — bias + sweep + trigger.  Causality contract:     signal[i], Forward-fill structural trend (+1 bull, -1 bear, 0 unknown).      ev_type from b, Return length-n boolean mask: True at indices where side == want_side. (+3 more)
-
-### Community 22 - "Community 22"
 Cohesion: 0.28
 Nodes (12): equity_from_trades(), _jsonable(), load_bars(), load_best_params(), main(), Tick-level validation for optimized candle strategies.  Workflow: 1. Load forwar, resolve_trade_from_cache(), resolve_trade_with_ticks() (+4 more)
+
+### Community 22 - "Community 22"
+Cohesion: 0.19
+Nodes (11): detect_sfp(), Swing Failure Pattern (SFP) — Tom Dante / TopStepTrader style.  An SFP forms whe, Returns (idx, side, level, wick_size).     side: 1 = bearish SFP (wick above res, _bool_mask(), build_signals(), Confluence strategy — bias + sweep + trigger.  Causality contract:     signal[i], Forward-fill structural trend (+1 bull, -1 bear, 0 unknown).      ev_type from b, Return length-n boolean mask: True at indices where side == want_side. (+3 more)
 
 ### Community 23 - "Community 23"
 Cohesion: 0.47
@@ -226,19 +226,19 @@ Cohesion: 0.5
 Nodes (3): code:powershell (.\.venv\Scripts\python.exe -m algo_download.optimize --help), code:bash (powershell -NoProfile -ExecutionPolicy Bypass -Command ".\\.), OpenClaude Operating Rules
 
 ## Knowledge Gaps
-- **189 isolated node(s):** `Download Binance OHLC candles into the local DuckDB cache.  This script is inten`, `Parse YYYY-MM-DD or ISO datetime as UTC.`, `Run untouched forward-test data with optimizer-selected parameters.  This script`, `Download all files under the `algo/` directory from a Snowflake Workspace to yo`, `Replicates the scoring logic from auto_algo_finder.py` (+184 more)
+- **191 isolated node(s):** `Download Binance OHLC candles into the local DuckDB cache.  This script is inten`, `Parse YYYY-MM-DD or ISO datetime as UTC.`, `Run untouched forward-test data with optimizer-selected parameters.  This script`, `Download all files under the `algo/` directory from a Snowflake Workspace to yo`, `Replicates the scoring logic from auto_algo_finder.py` (+186 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `run_tick_validation()` connect `Community 3` to `Community 0`, `Community 12`, `Community 30`, `Community 23`?**
-  _High betweenness centrality (0.096) - this node is a cross-community bridge._
-- **Why does `enhanced_backtest_strategy()` connect `Community 0` to `Community 2`, `Community 3`, `Community 8`, `Community 12`, `Community 23`?**
-  _High betweenness centrality (0.058) - this node is a cross-community bridge._
-- **Why does `_build_scorer_signals()` connect `Community 30` to `Community 16`, `Community 3`, `Community 22`?**
-  _High betweenness centrality (0.057) - this node is a cross-community bridge._
+- **Why does `run_tick_validation()` connect `Community 3` to `Community 0`, `Community 11`, `Community 30`, `Community 23`?**
+  _High betweenness centrality (0.095) - this node is a cross-community bridge._
+- **Why does `enhanced_backtest_strategy()` connect `Community 0` to `Community 2`, `Community 3`, `Community 8`, `Community 11`, `Community 23`?**
+  _High betweenness centrality (0.059) - this node is a cross-community bridge._
+- **Why does `_build_scorer_signals()` connect `Community 30` to `Community 16`, `Community 3`, `Community 21`?**
+  _High betweenness centrality (0.056) - this node is a cross-community bridge._
 - **Are the 4 inferred relationships involving `run()` (e.g. with `OptimizeConfig` and `BacktestConfig`) actually correct?**
   _`run()` has 4 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 2 inferred relationships involving `build_enhanced_signals()` (e.g. with `apply_registered_components()` and `run_tick_validation()`) actually correct?**

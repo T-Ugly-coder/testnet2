@@ -110,6 +110,11 @@ def _simulate(open_: np.ndarray, high: np.ndarray, low: np.ndarray,
     slip = slip_bps / 10_000.0
 
     for i in range(n):
+        occupied_at_open = 0
+        for k in range(max_concurrent):
+            if open_idx[k] >= 0:
+                occupied_at_open += 1
+
         # 1) Check exits on already-open trades against bar i (with gap fills).
         for k in range(max_concurrent):
             if open_idx[k] < 0:
@@ -137,8 +142,11 @@ def _simulate(open_: np.ndarray, high: np.ndarray, low: np.ndarray,
                 open_idx[k] = -1
 
         # 2) Entry from prior-bar signal, filled at this bar's open.
+        # Capacity is based on positions already open at the bar open, before
+        # any intrabar SL/TP resolution. Otherwise a later-in-bar exit can
+        # incorrectly free a slot for an entry at the same candle open.
         new_slot = -1
-        if i > 0 and entry_signal[i - 1] != 0:
+        if i > 0 and entry_signal[i - 1] != 0 and occupied_at_open < max_concurrent:
             slot = -1
             for k in range(max_concurrent):
                 if open_idx[k] < 0:
@@ -217,11 +225,15 @@ def _simulate(open_: np.ndarray, high: np.ndarray, low: np.ndarray,
 def run_backtest(bars: pd.DataFrame, signals: dict,
                  risk: float = 0.01, fee_bps: float = 4.0,
                  slip_bps: float = 1.5, initial_balance: float = 100_000.0,
-                 max_concurrent: int = 3):
+                 max_concurrent: int = 1):
     """
     bars: DataFrame with open/high/low/close.
     signals: dict with 'signal' (+1/-1/0), 'sl' (float per bar), 'tp' (float per bar).
     """
+    max_concurrent = int(max_concurrent)
+    if max_concurrent < 1:
+        raise ValueError("max_concurrent must be >= 1")
+
     o = bars["open"].to_numpy(np.float64)
     h = bars["high"].to_numpy(np.float64)
     l = bars["low"].to_numpy(np.float64)
